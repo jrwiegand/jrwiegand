@@ -1,0 +1,331 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ca",
+				"category_list"
+			],
+			[
+				"P",
+				"PageAdmin"
+			],
+			[
+				"ad",
+				"add_page"
+			],
+			[
+				"djan",
+				"django_cat"
+			],
+			[
+				"add",
+				"add_cat"
+			],
+			[
+				"pyth",
+				"python_cat"
+			],
+			[
+				"url",
+				"urlpatterns"
+			],
+			[
+				"S",
+				"STATIC_URL"
+			],
+			[
+				"STAT",
+				"STATIC_PATH"
+			],
+			[
+				"second_",
+				"second_file_name"
+			],
+			[
+				"com",
+				"complete_file_name"
+			],
+			[
+				"firs",
+				"first_file_name"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 230.0,
+		"selected_items":
+		[
+			[
+				"git",
+				"Git: Commit history"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"show",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"shiow",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"error",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 462.0
+	},
+	"console":
+	{
+		"height": 109.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/josh/workspace/Stat Keeper/stats_keeper.sublime-workspace",
+		"/home/josh/workspace/PortalAsteroids/portalasteroids.sublime-workspace",
+		"/home/josh/workspace/PortalAsteroids/portalasteroids.sublime-project",
+		"/home/josh/workspace/Stat Keeper/stats_keeper.sublime-project",
+		"/home/josh/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/tango_with_django/urls.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/rango/urls.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/templates/rango/index.html",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/templates/rango/about.html",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/rango/models.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/tango_with_django/settings.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/populate_rango.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/rango/admin.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/rango.db",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/rango/views.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/templates/about.html",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/templates/index.html",
+		"/home/josh/workspace/tango_with_django_project/README.rst",
+		"/home/josh/workspace/tango_with_django_project/LICENSE.txt",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django_project/tango_with_django_project/wsgi.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django_project/tango_with_django_project/urls.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/settings.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/urls.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/wsgi.py",
+		"/home/josh/Envs/rango/lib/python2.7/site-packages/django/conf/__init__.py",
+		"/home/josh/Envs/rango/lib/python2.7/site-packages/django/__init__.py",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django/manage.py",
+		"/home/josh/workspace/tango_with_django_project/rango/views.py",
+		"/home/josh/workspace/tango_with_django_project/templates/rango/index.html",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django_project/settings.py",
+		"/home/josh/workspace/bmoresbest55.github.io/index.html",
+		"/var/log/apt/history.log",
+		"/home/josh/workspace/tango_with_django_project/tango_with_django_project/urls.py",
+		"/home/josh/Downloads/yamon (v1.0.17B)/readme.txt",
+		"/home/josh/Downloads/yamon (v1.0.17B)/default config.file",
+		"/home/josh/workspace/Py-Dj/lpthw/ex45.py",
+		"/home/josh/Downloads/yamon (v1.0.17B)/DC Itinerary.txt",
+		"/home/josh/Scripts/merge_avis.py",
+		"/home/josh/.ssh/id_rsa.pub",
+		"/home/josh/Downloads/yamon 1.0.6/readme.txt",
+		"/home/josh/workspace/Py-Dj/lpthw/situations.py",
+		"/usr/local/bin/pylint",
+		"/home/josh/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
+		"/home/josh/Scripts/domainscript.py",
+		"/home/josh/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/josh/workspace/Python/lpthw/ex13.py",
+		"/home/josh/workspace/Python/lpthw/ex10.py",
+		"/home/josh/Scripts/merge_avi.py",
+		"/home/josh/workspace/Python/lpthw/ex24.py",
+		"/home/josh/workspace/Python/think_python/chpt15.py",
+		"/home/josh/workspace/Python/lpthw/ex42.py",
+		"/home/josh/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/josh/workspace/Python/lpthw/ex1.py",
+		"/home/josh/workspace/code_examples/chapter_08_example_1.py",
+		"/home/josh/.config/sublime-text-3/Packages/SublimeLinter/Default (Linux).sublime-keymap",
+		"/home/josh/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/josh/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/josh/.zshrc",
+		"/home/josh/.zshenv",
+		"/home/josh/.oh-my-zsh/oh-my-zsh.sh",
+		"/home/josh/Documents/Salliemae.txt",
+		"/usr/share/applications/defaults.list",
+		"/usr/share/applications/sublime_text.desktop",
+		"/home/josh/.config/sublime-text-3/Packages/User/JSON.sublime-settings",
+		"/home/josh/.config/sublime-text-3/Packages/User/Distraction Free.sublime-settings"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"BASE_DIR",
+			"\"\"\"",
+			"tango_with_django",
+			"context",
+			"template",
+			"1",
+			"input(self)",
+			"raw_input",
+			"print \"",
+			"consonants",
+			"CONSONANTS",
+			"consonants",
+			"vowels",
+			"VOWELS",
+			"vowels",
+			"threes",
+			"fours",
+			"threewords",
+			"fourwords",
+			"outfile",
+			"output",
+			"prefix",
+			"_arg",
+			"_",
+			"lin",
+			"sublime-text",
+			"\"highlight_line\": false,"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "tango_with_django.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/workspace/Stat Keeper/stats_keeper.sublime-project"
+			]
+		],
+		"width": 304.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 158.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
