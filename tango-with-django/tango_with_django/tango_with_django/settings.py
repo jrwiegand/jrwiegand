@@ -89,3 +89,6 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # Media files, for development only
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Login redirect
+LOGIN_URL = '/login/'
