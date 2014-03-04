@@ -111,8 +111,7 @@ def add_page(request, category_name_url):
     return render_to_response('rango/add_page.html',
                              {'category_name_url': category_name_url,
                               'category_name'    : category_name,
-                              'form'             : form},
-                              context)
+                              'form'             : form}, context)
 
 
 def register(request):
@@ -154,7 +153,6 @@ def register(request):
 
 
 def user_login(request):
-
     context = RequestContext(request)
 
     if request.method == 'POST':
