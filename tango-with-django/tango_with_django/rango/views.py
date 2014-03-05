@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from datetime import datetime
 from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
@@ -26,8 +27,24 @@ def index(request):
     for category in category_list:
         category.url = encode_url(category.name)
 
-    page_views = Page.objects.order_by('-views')[:5]
-    context_dict['pages'] = page_views
+    page_list = Page.objects.order_by('-views')[:5]
+    context_dict['pages'] = page_list
+
+    response  = render_to_response('rango/index.html', context_dict, context)
+
+    visits = int(request.COOKIES.get('visits', '0'))
+
+    if request.session.get('last_visit'):
+        last_visit_time = request.session.get('last_visit')
+        visits = request.session.get('visits', 0)
+
+        if (datetime.now() - datetime.strptime(last_visit_time[:-7], "%Y-%m-%d %H:%M:%S")).days > 0:
+            request.session['visits'] = visits + 1
+            request.session['last_visit'] = str(datetime.now())
+
+    else:
+        request.session['last_visit'] = str(datetime.now())
+        request.session['visits'] = 1
 
     return render_to_response('rango/index.html', context_dict, context)
 
@@ -36,6 +53,10 @@ def about(request):
     context = RequestContext(request)
 
     context_dict = {'bold_message': "I am bold font from the context."}
+
+    count = request.session.get('visits', 0)
+
+    context_dict['visit_count'] = count
 
     return render_to_response('rango/about.html', context_dict, context)
 
