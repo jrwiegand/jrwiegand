@@ -7,6 +7,7 @@ from django.contrib.auth import logout
 from datetime import datetime
 from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
+from .search import run_query
 
 
 def encode_url(str):
@@ -206,3 +207,16 @@ def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect('/')
+
+
+def search(request):
+    context = RequestContext(request)
+    result_list = []
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+
+        if query:
+            result_list = run_query(query)
+
+    return render_to_response('rango/search.html', {'result_list': result_list}, context)
