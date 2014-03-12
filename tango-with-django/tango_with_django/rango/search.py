@@ -1,6 +1,5 @@
 import json
 import urllib, urllib2
-from keys import BING_API_KEY
 
 def run_query(search_terms):
     # Specify the base
@@ -31,7 +30,7 @@ def run_query(search_terms):
     # The username MUST be a blank string, and put in your API key!
     username = ''
     # Add your BING_API_KEY to a file called keys, which will not be commited to the repo
-    bing_api_key = BING_API_KEY
+    bing_api_key = 'zmpHYnnca1uV9b03zAqgVHyyM/qYStbHPR6T9+N30wM'
 
     # Create a 'password manager' which handles authentication for us.
     password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()

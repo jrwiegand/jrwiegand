@@ -11,7 +11,7 @@
         {% if registered %}
         <p>Thank you for registering.</p>
 
-        <p><a href="{% url 'login' %}">Login</a> when you are ready to rango.</p>
+        <p><a href="{% url 'user_login' %}">Login</a> when you are ready to rango.</p>
         {% else %}
 
         <form class="form-signin span8" id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">

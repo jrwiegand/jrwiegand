@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from .views import index, about, category, add_category, add_page, register, user_login, restricted, user_logout, search
+from .views import index, about, category, add_category, add_page, register, user_login, restricted, user_logout, profile, track_url
 
 urlpatterns = patterns('',
     url(r'^$', index, name='index'),
@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^login/$', user_login, name='user_login'),
     url(r'^restricted/', restricted, name='restricted'),
     url(r'^logout/$', user_logout, name='user_logout'),
-    url(r'^search/$', search, name='search'),
+    url(r'^profile/$', profile, name='profile'),
+    url(r'^goto/$', track_url, name='track_url'),
 )

@@ -9,9 +9,6 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
-    class Meta:
-        verbose_name_plural = "Categories"
-
 class Page(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
@@ -21,12 +18,13 @@ class Page(models.Model):
     def __unicode__(self):
         return self.title
 
-
 class UserProfile(models.Model):
+    # A required line - links a UserProfile to User.
     user = models.OneToOneField(User)
 
+    # The additional attributes we wish to include.
     website = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='profile_image', blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __unicode__(self):
         return self.user.username
