@@ -1,15 +1,15 @@
-from django.http import HttpResponseRedirect, HttpResponse
-from django.template import RequestContext
-from django.shortcuts import render_to_response, redirect
-from django.contrib.auth import logout
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render_to_response, redirect
+from django.template import RequestContext
 
 from datetime import datetime
 
-from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
+from .models import Category, Page
 from .search import run_query
 
 
@@ -225,7 +225,7 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/rango/')
+                return HttpResponseRedirect(reverse('index'))
             else:
                 context_dict['disabled_account'] = True
                 return render_to_response('rango/login.html', context_dict, context)
@@ -251,7 +251,7 @@ def restricted(request):
 def user_logout(request):
     logout(request)
 
-    return HttpResponseRedirect('/rango/')
+    return HttpResponseRedirect(reverse('index'))
 
 
 def search(request):
@@ -293,7 +293,7 @@ def profile(request):
 def track_url(request):
     context = RequestContext(request)
     page_id = None
-    url = '/rango/'
+    url = reverse('index')
     if request.method == 'GET':
         if 'page_id' in request.GET:
             page_id = request.GET['page_id']
