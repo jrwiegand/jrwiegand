@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="Sports"/>
+	
+	<CheckBoxPreference 
+    	android:summaryOn="@string/enabled"
+    	android:key="isBaseball"
+    	android:summaryOff="@string/disabled"
+    	android:title="@string/baseball">
+    </CheckBoxPreference>
+    
+    <CheckBoxPreference 
+    	android:summaryOn="@string/enabled"
+    	android:key="isBasketball"
+    	android:summaryOff="@string/disabled"
+    	android:title="@string/basketball">
+    </CheckBoxPreference>
+    
+    <CheckBoxPreference 
+    	android:summaryOn="@string/enabled"
+    	android:key="isFootball"
+    	android:summaryOff="@string/disabled"
+    	android:title="@string/football">
+    </CheckBoxPreference>
+    
+    <PreferenceCategory android:title="Setup"/>
+    
+    <PreferenceScreen
+    	android:key="baseballMenu"
+    	android:summary="@string/setup_summary"
+    	android:title="@string/baseball_setup"
+    	android:dependency="isBaseball">
+        
+        <CheckBoxPreference
+        	android:summary="Add the second team"
+        	android:title="Second Team (Away Team)"
+        	android:key="baseballSecondTeam">
+        </CheckBoxPreference>
+        
+        <PreferenceScreen
+        	android:title="Home Team"
+        	android:key="baseballHomeTeam"
+        	android:summary="Enter Home Team Information">
+        
+        	<EditTextPreference
+        		android:dialogTitle="Enter Name"
+        		android:dialogMessage="Home Team"
+        		android:title="Home Team Name"
+        		android:summary="Enter the home team name"
+        		android:key="baseballHomeTeamName"
+        		android:negativeButtonText="Cancel"
+        		android:positiveButtonText="Enter">
+        	</EditTextPreference>
+        	
+        	<PreferenceCategory android:title="Roster"/>
+        	
+        	<Preference
+        		android:summary="Add a player to the roster"
+        		android:title="Add Player"
+        		android:key="baseballAddHomePlayer"
+        		android:icon="@android:drawable/ic_menu_add">
+        	</Preference>
+        </PreferenceScreen>
+        
+        	<PreferenceScreen
+        		android:summary="Enter Away Team Information"
+        		android:title="Away Team"
+        		android:dependency="baseballSecondTeam"
+        		android:key="baseballAwayTeam">
+        		
+        		<EditTextPreference
+        			android:dialogTitle="Enter Name"
+        			android:dialogMessage="Away Team"
+        			android:key="baseballAwayTeamName"
+        			android:title="Away Team Name"
+        			android:summary="Enter the away team name"
+        			android:negativeButtonText="Cancel"
+        			android:positiveButtonText="Enter">
+        		</EditTextPreference>
+        		
+        		<PreferenceCategory android:title="Roster"/>
+        		
+        		<Preference
+        			android:icon="@android:drawable/ic_menu_add"
+        			android:title="Add Player"
+        			android:key="baseballAddAwayPlayer"
+        			android:summary="Add a player to the roster">
+        		</Preference>
+        </PreferenceScreen>
+    </PreferenceScreen>
+    <!-- THIS SECTION STILL NEEDS TO BE DONE -->
+    <PreferenceScreen
+    	android:key="basketballMenu"
+    	android:summary="@string/setup_summary"
+    	android:title="@string/basketball_setup"
+    	android:dependency="isBasketball">
+    </PreferenceScreen>
+	
+	<PreferenceScreen
+    	android:key="footballMenu"
+    	android:summary="@string/setup_summary"
+    	android:title="@string/football_setup"
+    	android:dependency="isFootball">
+    </PreferenceScreen>
+	
+</PreferenceScreen>
