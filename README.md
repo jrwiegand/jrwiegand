@@ -1,2 +1,2 @@
-# 7MiinWorkout
-Small app to re-learn these Android things
+# 7MinWorkout
+Playing with apps, 7-Minute workout is a good place to start.
