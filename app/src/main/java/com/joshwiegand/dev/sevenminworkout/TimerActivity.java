@@ -1,7 +1,6 @@
 package com.joshwiegand.dev.sevenminworkout;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 public class TimerActivity extends ActionBarActivity {
@@ -23,6 +23,20 @@ public class TimerActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        final TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
+        Button startButton = (Button) findViewById(R.id.startButton);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (titleTextView.getText().toString().startsWith("7")) {
+                    titleTextView.setText(R.string.started);
+                } else {
+                    titleTextView.setText(R.string.app_name);
+                }
+            }
+        });
     }
 
 
@@ -59,8 +73,7 @@ public class TimerActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_timer, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.fragment_timer, container, false);
         }
     }
 }
