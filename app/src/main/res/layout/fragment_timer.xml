@@ -30,4 +30,7 @@
         android:layout_alignParentEnd="true"
         android:gravity="center_vertical|center_horizontal" />
 
+    <TextView
+        android:layout_width=""
+        android:layout_height="" />
 </RelativeLayout>
