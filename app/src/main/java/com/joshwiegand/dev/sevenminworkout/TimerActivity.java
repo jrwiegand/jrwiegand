@@ -1,5 +1,6 @@
 package com.joshwiegand.dev.sevenminworkout;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class TimerActivity extends ActionBarActivity {
 
         final TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
         Button startButton = (Button) findViewById(R.id.startButton);
+        Activity startActivty = new Activity();
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
