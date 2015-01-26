@@ -17,5 +17,6 @@
     <string name="lunge">Lunge</string>
     <string name="push_up_rotate">Push-Up and Rotation</string>
     <string name="jumping_jacks">Side Planks</string>
+    <string name="done">Done!</string>
 
 </resources>
