@@ -1,6 +1,10 @@
 package com.joshwiegand.dev.sevenminworkout;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.ListPreference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,6 +18,13 @@ import android.widget.TextView;
 
 
 public class TimerActivity extends ActionBarActivity {
+
+    boolean CheckboxPreference;
+    String ListPreference;
+    String editTextPreference;
+    String ringtonePreference;
+    String secondEditTextPreference;
+    String customPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +43,8 @@ public class TimerActivity extends ActionBarActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (titleTextView.getText().toString().startsWith("7")) {
-                    titleTextView.setText(R.string.started);
-                } else {
-                    titleTextView.setText(R.string.app_name);
-                }
+                Intent portalAsteroidActivity = new Intent(getBaseContext(), PortalAsteroidActivity.class);
+                startActivity(portalAsteroidActivity);
             }
         });
     }
@@ -77,5 +85,20 @@ public class TimerActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             return inflater.inflate(R.layout.fragment_timer, container, false);
         }
+    }
+
+    /** Get the preferences of the user. */
+    private void getPrefs() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        CheckboxPreference = prefs.getBoolean("checkboxPref", true);
+        ListPreference = prefs.getString("listPref", "nr1");
+        editTextPreference = prefs.getString("editTextPref", "Nothing has been entered");
+        ringtonePreference = prefs.getString("ringtonePref", "DEFAULT_RINGTONE_URI");
+        secondEditTextPreference = prefs.getString("SecondEditTextPref", "Nothing has been entered");
+
+        // Get the custom preference
+        SharedPreferences mySharedPreferences = getSharedPreferences("myCustomSharedPrefs", Activity.MODE_PRIVATE);
+        customPref = mySharedPreferences.getString("myCusomPref", "");
     }
 }
