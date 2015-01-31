@@ -43,8 +43,9 @@ public class TimerActivity extends ActionBarActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent portalAsteroidActivity = new Intent(getBaseContext(), PortalAsteroidActivity.class);
-                //startActivity(portalAsteroidActivity);
+                /** TODO: create a new Intent in source and the manifest */
+                Intent portalAsteroidActivity = new Intent(getBaseContext(), PortalAsteroidActivity.class);
+                startActivity(portalAsteroidActivity);
             }
         });
     }
