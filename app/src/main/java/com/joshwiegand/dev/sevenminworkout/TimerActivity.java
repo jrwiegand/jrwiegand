@@ -1,13 +1,11 @@
 package com.joshwiegand.dev.sevenminworkout;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.ListPreference;
-import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,16 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class TimerActivity extends ActionBarActivity {
 
-    boolean CheckboxPreference;
-    String ListPreference;
-    String editTextPreference;
-    String ringtonePreference;
-    String secondEditTextPreference;
-    String customPref;
+    private boolean CheckboxPreference;
+    private String ListPreference;
+    private String editTextPreference;
+    private String ringtonePreference;
+    private String secondEditTextPreference;
+    private String customPref;
+    private TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
+    private Button startButton = (Button) findViewById(R.id.start_button);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +37,14 @@ public class TimerActivity extends ActionBarActivity {
                     .commit();
         }
 
-        final TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
-        Button startButton = (Button) findViewById(R.id.startButton);
         Activity startActivty = new Activity();
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /** TODO: create a new Intent in source and the manifest */
-                Intent portalAsteroidActivity = new Intent(getBaseContext(), PortalAsteroidActivity.class);
-                startActivity(portalAsteroidActivity);
+                //Intent portalAsteroidActivity = new Intent(getBaseContext(), PortalAsteroidActivity.class);
+                //startActivity(portalAsteroidActivity);
             }
         });
     }
@@ -71,6 +70,10 @@ public class TimerActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onStartClick(View view) {
+        Toast.makeText(this, "Starting now...", Toast.LENGTH_SHORT).show();
     }
 
     /**

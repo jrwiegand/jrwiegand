@@ -18,5 +18,6 @@
     <string name="push_up_rotate">Push-Up and Rotation</string>
     <string name="jumping_jacks">Side Planks</string>
     <string name="done">Done!</string>
+    <string name="start_hint">Click here to start your workout!</string>
 
 </resources>
