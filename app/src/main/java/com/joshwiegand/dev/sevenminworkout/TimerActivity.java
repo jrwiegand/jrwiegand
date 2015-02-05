@@ -43,8 +43,8 @@ public class TimerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 /** TODO: create a new Intent in source and the manifest */
-                //Intent portalAsteroidActivity = new Intent(getBaseContext(), PortalAsteroidActivity.class);
-                //startActivity(portalAsteroidActivity);
+                //Intent workoutActivity = new Intent(getBaseContext(), WorkoutActivity.class);
+                //startActivity(workoutActivity);
             }
         });
     }
@@ -85,8 +85,7 @@ public class TimerActivity extends ActionBarActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             return inflater.inflate(R.layout.fragment_timer, container, false);
         }
     }
