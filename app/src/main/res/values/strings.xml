@@ -19,5 +19,6 @@
     <string name="planks">Side Planks</string>
     <string name="done">Done!</string>
     <string name="start_hint">Click here to start your workout!</string>
+    <string name="testing">This is a test</string>
 
 </resources>
