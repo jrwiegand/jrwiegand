@@ -1,5 +1,6 @@
 package com.joshwiegand.dev.sevenminworkout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -8,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -17,12 +17,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
     }
 
 
@@ -49,7 +43,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onStartClick(View view) {
-        Toast.makeText(this, "Starting now...", Toast.LENGTH_SHORT).show();
+        Intent getNameScreenIntent = new Intent(this, WorkoutActivity.class);
+
+        final int result = 1;
+
+        getNameScreenIntent.putExtra("callingActivity", "Timer Started!");
+
+        startActivityForResult(getNameScreenIntent, result);
     }
 
     /**
@@ -64,5 +64,10 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             return inflater.inflate(R.layout.main_fragment, container, false);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
