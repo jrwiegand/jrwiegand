@@ -1,6 +1,7 @@
 package com.joshwiegand.dev.sevenminworkout;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
@@ -26,11 +27,12 @@ public class WorkoutActivity extends ActionBarActivity {
 
         Intent activityThatCalled = getIntent();
 
-        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
+        Resources res = getResources();
+        String[] exercises = res.getStringArray(R.array.exercises);
 
         final TextView callingActivityMessage = (TextView) findViewById(R.id.clock_text);
 
-        callingActivityMessage.setText(" " + previousActivity);
+        callingActivityMessage.setText(exercises[0]);
 
     }
 
@@ -41,7 +43,6 @@ public class WorkoutActivity extends ActionBarActivity {
 
         Intent goingBack = new Intent();
 
-        goingBack.putExtra("clockString", clockString);
         setResult(RESULT_OK, goingBack);
 
         finish();

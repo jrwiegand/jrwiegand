@@ -47,8 +47,6 @@ public class MainActivity extends ActionBarActivity {
 
         final int result = 1;
 
-        getNameScreenIntent.putExtra("callingActivity", "Timer Started!");
-
         startActivityForResult(getNameScreenIntent, result);
     }
 
