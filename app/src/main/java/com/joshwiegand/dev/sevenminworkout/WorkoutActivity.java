@@ -50,7 +50,6 @@ public class WorkoutActivity extends ActionBarActivity {
 
     public class WorkoutCountDownTimer extends CountDownTimer
     {
-
         public WorkoutCountDownTimer(long startTime, long interval)
         {
             super(startTime, interval);
@@ -66,7 +65,7 @@ public class WorkoutActivity extends ActionBarActivity {
         @Override
         public void onTick(long millisUntilFinished)
         {
-            text.setText("Time remain:" + millisUntilFinished);
+            text.setText("Time remaining:" + millisUntilFinished);
             timeElapsed = startTime - millisUntilFinished;
             timeElapsedView.setText("Time Elapsed: " + String.valueOf(timeElapsed));
         }
