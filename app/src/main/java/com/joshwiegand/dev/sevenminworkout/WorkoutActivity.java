@@ -41,6 +41,8 @@ public class WorkoutActivity extends ActionBarActivity {
 
         String clockString = String.valueOf(clockText.getText());
 
+        countDownTimer = new WorkoutCountDownTimer(startTime, interval);
+
         Intent goingBack = new Intent();
 
         setResult(RESULT_OK, goingBack);
