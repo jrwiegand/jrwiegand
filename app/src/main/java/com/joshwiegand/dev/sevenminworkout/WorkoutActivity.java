@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class WorkoutActivity extends ActionBarActivity {
 
-    private WorkoutCountDownTimer countDownTimer;
+    private WorkoutTimer countDownTimer;
     private long timeElapsed;
     private boolean timerHasStarted = false;
     private Button startB;
@@ -41,35 +41,12 @@ public class WorkoutActivity extends ActionBarActivity {
 
         String clockString = String.valueOf(clockText.getText());
 
-        countDownTimer = new WorkoutCountDownTimer(startTime, interval);
+        countDownTimer = new WorkoutTimer(startTime, interval);
 
         Intent goingBack = new Intent();
 
         setResult(RESULT_OK, goingBack);
 
         finish();
-    }
-
-    public class WorkoutCountDownTimer extends CountDownTimer
-    {
-        public WorkoutCountDownTimer(long startTime, long interval)
-        {
-            super(startTime, interval);
-        }
-
-        @Override
-        public void onFinish()
-        {
-            text.setText("Time's up!");
-            timeElapsedView.setText("Time Elapsed: " + String.valueOf(startTime));
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished)
-        {
-            text.setText("Time remaining:" + millisUntilFinished);
-            timeElapsed = startTime - millisUntilFinished;
-            timeElapsedView.setText("Time Elapsed: " + String.valueOf(timeElapsed));
-        }
     }
 }
