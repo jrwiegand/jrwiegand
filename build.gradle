@@ -11,6 +11,7 @@ repositories {
 
 configurations {
     markdownDoclet
+    quasar
 }
 
 
@@ -20,6 +21,9 @@ dependencies {
     testCompile 'junit:junit:4.11' // A dependency for a test framework.
 
     markdownDoclet 'ch.raffael.pegdown-doclet:pegdown-doclet:1.1.1'
+
+    compile "co.paralleluniverse:quasar-core:0.6.2:jdk8"
+    quasar "co.paralleluniverse:quasar-core:0.6.2:jdk8"
 }
 
 javadoc.options {
@@ -31,4 +35,6 @@ javadoc.options {
 
 run {
     systemProperty 'jmodern.name', 'Josh'
+    jvmArgs "-javaagent:${configurations.quasar.iterator().next()}" // gradle should make this simpler, too
+
 }
