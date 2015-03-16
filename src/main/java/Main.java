@@ -30,17 +30,9 @@ public class Main {
 
         new Fiber<Void>(() -> {
             for (int i = 0; i < 10; i++) {
-                SelectAction<Object> sa
-                        = select(receive(ch1),
-                                receive(ch2));
-                switch (sa.index()) {
-                    case 0:
-                        System.out.println(sa.message() != null ? "Got a number: " + (int) sa.message() : "ch1 closed");
-                        break;
-                    case 1:
-                        System.out.println(sa.message() != null ? "Got a string: " + (String) sa.message() : "ch2 closed");
-                        break;
-                }
+                select(
+                    receive(ch1, x -> System.out.println(x != null ? "Got a number: " + x : "ch1 closed")),
+                    receive(ch2, x -> System.out.println(x != null ? "Got a string: " + x : "ch2 closed")));
             }
         }).start().join(); // join waits for this fiber to finish
     }
