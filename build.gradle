@@ -22,6 +22,7 @@ dependencies {
 
     markdownDoclet 'ch.raffael.pegdown-doclet:pegdown-doclet:1.1.1'
 
+    compile "co.paralleluniverse:quasar-actors:0.6.2"
     compile "co.paralleluniverse:quasar-core:0.6.2:jdk8"
     quasar "co.paralleluniverse:quasar-core:0.6.2:jdk8"
 }
