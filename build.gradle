@@ -12,6 +12,7 @@ repositories {
 configurations {
     markdownDoclet
     quasar
+    checker
 }
 
 
@@ -25,6 +26,15 @@ dependencies {
     compile "co.paralleluniverse:quasar-actors:0.6.2"
     compile "co.paralleluniverse:quasar-core:0.6.2:jdk8"
     quasar "co.paralleluniverse:quasar-core:0.6.2:jdk8"
+
+    checker 'org.checkerframework:jdk8:1.8.1'
+    compile 'org.checkerframework:checker:1.8.1'
+}
+
+compileJava {
+    options.fork = true
+    options.forkOptions.jvmArgs = ["-Xbootclasspath/p:${configurations.checker.asPath}:${System.getenv('JAVA_HOME')}/lib/tools.jar"]
+    options.compilerArgs = ['-processor', 'org.checkerframework.checker.nullness.NullnessChecker,org.checkerframework.checker.units.UnitsChecker,org.checkerframework.checker.tainting.TaintingChecker']
 }
 
 javadoc.options {
