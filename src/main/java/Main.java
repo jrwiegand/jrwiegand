@@ -13,19 +13,20 @@ public class Main {
         Strand.sleep(Long.MAX_VALUE);
     }
 
+    @Upgrade
     static class BadActor extends BasicActor<String, Void> {
         private int count;
 
         @Override
         protected Void doRun() throws InterruptedException, SuspendExecution {
             System.out.println("(re)starting actor");
-            for(;;) {
+            for (;;) {
                 String m = receive(300, TimeUnit.MILLISECONDS);
                 if (m != null)
                     System.out.println("Got a message: " + m);
-                System.out.println("I am but a lowly actor that sometimes fails: - " + (count++));
+                System.out.println("I am a lowly, but improved, actor that still sometimes fails: - " + (count++));
 
-                if (ThreadLocalRandom.current().nextInt(30) == 0)
+                if (ThreadLocalRandom.current().nextInt(100) == 0)
                     throw new RuntimeException("darn");
 
                 checkCodeSwap(); // this is a convenient time for a code swap
@@ -45,7 +46,7 @@ public class Main {
             spawnBadActor();
 
             int count = 0;
-            for(;;) {
+            for (;;) {
                 receive(500, TimeUnit.MILLISECONDS);
                 myBadActor.send("hi from " + self() + " number " + (count++));
             }
