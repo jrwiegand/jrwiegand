@@ -10,42 +10,20 @@ repositories {
 }
 
 configurations {
-    markdownDoclet
     quasar
-    checker
 }
 
-
 dependencies {
-    compile 'com.google.guava:guava:17.0'
-
-    testCompile 'junit:junit:4.11' // A dependency for a test framework.
-
-    markdownDoclet 'ch.raffael.pegdown-doclet:pegdown-doclet:1.1.1'
 
     compile "co.paralleluniverse:quasar-actors:0.6.2"
     compile "co.paralleluniverse:quasar-core:0.6.2:jdk8"
     quasar "co.paralleluniverse:quasar-core:0.6.2:jdk8"
+    capsule "co.paralleluniverse:capsule:1.0-rc1"
 
-    checker 'org.checkerframework:jdk8:1.8.1'
-    compile 'org.checkerframework:checker:1.8.1'
+
+    testCompile 'junit:junit:4.11'
 }
-
-compileJava {
-    options.fork = true
-    options.forkOptions.jvmArgs = ["-Xbootclasspath/p:${configurations.checker.asPath}:${System.getenv('JAVA_HOME')}/lib/tools.jar"]
-    options.compilerArgs = ['-processor', 'org.checkerframework.checker.nullness.NullnessChecker,org.checkerframework.checker.units.UnitsChecker,org.checkerframework.checker.tainting.TaintingChecker']
-}
-
-javadoc.options {
-    docletpath = configurations.markdownDoclet.files.asType(List) // gradle should relly make this simpler
-    doclet = "ch.raffael.doclets.pegdown.PegdownDoclet"
-    addStringOption("parse-timeout", "10")
-}
-
 
 run {
-    systemProperty 'jmodern.name', 'Josh'
-    jvmArgs "-javaagent:${configurations.quasar.iterator().next()}" // gradle should make this simpler, too
-    systemProperty "co.paralleluniverse.actors.moduleDir", "${rootProject.projectDir}/modules"
+    jvmArgs "-javaagent:${configurations.quasar.iterator().next()}"
 }

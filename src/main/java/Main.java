@@ -1,19 +1,27 @@
 package jmodern;
 
-import org.checkerframework.checker.nullness.qual.*;
+import co.paralleluniverse.fibers.Fiber;
+import co.paralleluniverse.strands.Strand;
+import co.paralleluniverse.strands.channels.Channel;
+import co.paralleluniverse.strands.channels.Channels;
 
 public class Main {
-    public static void main (String[] args) {
-        String str1 = "hi";
-        foo(str1); // we know str1 to be non-null
+    public static void main(String[] args) throws Exception {
+        final Channel<Integer> ch = Channels.newChannel(0);
 
-        String str2 = System.getProperty("foo");
-        // foo(str2); // <-- doesn't compile as str2 may be null
-        if (str2 != null)
-            foo(str2); // after the null test it compiles
-    }
+        new Fiber<Void>(() -> {
+            for (int i = 0; i < 10; i++) {
+                Strand.sleep(100);
+                ch.send(i);
+            }
+            ch.close();
+        }).start();
 
-    static void foo(@NonNull String s) {
-        System.out.println("==> " + s.length());
+        new Fiber<Void>(() -> {
+            Integer x;
+            while((x = ch.receive()) != null)
+                System.out.println("--> " + x);
+        }).start().join(); // join waits for this fiber to finish
     }
 }
+
