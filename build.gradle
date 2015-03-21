@@ -12,6 +12,7 @@ repositories {
 configurations {
     quasar
     capsule
+    all*.exclude group: "org.apache.logging.log4j", module: "*"
 }
 
 dependencies {
@@ -22,6 +23,10 @@ dependencies {
     capsule "co.paralleluniverse:capsule:0.3.1"
 
     testCompile 'junit:junit:4.11'
+
+    compile "org.slf4j:slf4j-api:1.7.7"    // the SLF4J API
+    runtime "org.slf4j:slf4j-jdk14:1.7.7"  // SLF4J binding for java.util.logging
+
 }
 
 run {
