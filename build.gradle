@@ -11,15 +11,15 @@ repositories {
 
 configurations {
     quasar
+    capsule
 }
 
 dependencies {
+    compile "co.paralleluniverse:quasar-core:0.5.0:jdk8"
+    compile "co.paralleluniverse:quasar-actors:0.5.0"
+    quasar "co.paralleluniverse:quasar-core:0.5.0:jdk8"
 
-    compile "co.paralleluniverse:quasar-actors:0.6.2"
-    compile "co.paralleluniverse:quasar-core:0.6.2:jdk8"
-    quasar "co.paralleluniverse:quasar-core:0.6.2:jdk8"
-    capsule "co.paralleluniverse:capsule:1.0-rc1"
-
+    capsule "co.paralleluniverse:capsule:0.3.1"
 
     testCompile 'junit:junit:4.11'
 }
@@ -28,23 +28,33 @@ run {
     jvmArgs "-javaagent:${configurations.quasar.iterator().next()}"
 }
 
-task capsule(type: Jar, dependsOn: jar) {
+task capsule(type: Jar, dependsOn: classes) {
     archiveName = "jmodern-capsule.jar"
-
-    from jar // embed our application jar
-    from { configurations.runtime } // embed dependencies
-
-    from(configurations.capsule.collect { zipTree(it) }) { include 'Capsule.class' } // we just need the single Capsule class
+    from sourceSets.main.output // this way we don't need to extract
+    from { configurations.capsule.collect { zipTree(it) } }
 
     manifest {
         attributes(
-            'Main-Class'  : 'Capsule',
+            'Main-Class' : 'Capsule',
             'Application-Class' : mainClassName,
+            'Extract-Capsule' : 'false', // no need to extract the capsule
             'Min-Java-Version' : '1.8.0',
-            'JVM-Args' : run.jvmArgs.join(' '), // copy JVM args from the run task
-            'System-Properties' : run.systemProperties.collect { k,v -> "$k=$v" }.join(' '), // copy system properties
-            'Java-Agents' : configurations.quasar.iterator().next().getName()
+            'JVM-Args' : run.jvmArgs.join(' '),
+            'System-Properties' : run.systemProperties.collect { k,v -> "$k=$v" }.join(' '),
+            'Java-Agents' : getDependencies(configurations.quasar).iterator().next(),
+            'Dependencies': getDependencies(configurations.runtime).join(' ')
         )
     }
 }
 
+// converts Gradle dependencies to Capsule dependencies
+def getDependencies(config) {
+    return config.getAllDependencies().collect {
+        def res = it.group + ':' + it.name + ':' + it.version +
+            (!it.artifacts.isEmpty() ? ':' + it.artifacts.iterator().next().classifier : '')
+        if(!it.excludeRules.isEmpty()) {
+            res += "(" + it.excludeRules.collect { it.group + ':' + it.module }.join(',') + ")"
+        }
+        return res
+    }
+}

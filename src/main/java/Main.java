@@ -24,4 +24,3 @@ public class Main {
         }).start().join(); // join waits for this fiber to finish
     }
 }
-
