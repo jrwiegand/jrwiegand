@@ -27,3 +27,24 @@ dependencies {
 run {
     jvmArgs "-javaagent:${configurations.quasar.iterator().next()}"
 }
+
+task capsule(type: Jar, dependsOn: jar) {
+    archiveName = "jmodern-capsule.jar"
+
+    from jar // embed our application jar
+    from { configurations.runtime } // embed dependencies
+
+    from(configurations.capsule.collect { zipTree(it) }) { include 'Capsule.class' } // we just need the single Capsule class
+
+    manifest {
+        attributes(
+            'Main-Class'  : 'Capsule',
+            'Application-Class' : mainClassName,
+            'Min-Java-Version' : '1.8.0',
+            'JVM-Args' : run.jvmArgs.join(' '), // copy JVM args from the run task
+            'System-Properties' : run.systemProperties.collect { k,v -> "$k=$v" }.join(' '), // copy system properties
+            'Java-Agents' : configurations.quasar.iterator().next().getName()
+        )
+    }
+}
+
