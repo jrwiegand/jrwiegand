@@ -14,7 +14,7 @@ public class Main {
         final Channel<Integer> ch = Channels.newChannel(0);
 
         new Fiber<Void>(() -> {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 1000000; i++) {
                 Strand.sleep(100);
                 log.info("Sending {}", i);
                 ch.send(i);
