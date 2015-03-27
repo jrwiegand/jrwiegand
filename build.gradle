@@ -30,6 +30,8 @@ dependencies {
 
     runtime "org.jolokia:jolokia-core:1.2.1"
     jolokia "org.jolokia:jolokia-jvm:1.2.1:agent"
+
+    compile "com.codahale.metrics:metrics-core:3.0.2"
 }
 
 run {
