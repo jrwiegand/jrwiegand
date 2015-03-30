@@ -13,7 +13,6 @@ configurations {
     quasar
     capsule
     all*.exclude group: "org.apache.logging.log4j", module: "*"
-    jolokia
 }
 
 dependencies {
@@ -28,9 +27,6 @@ dependencies {
     compile "org.slf4j:slf4j-api:1.7.7"    // the SLF4J API
     runtime "org.slf4j:slf4j-jdk14:1.7.7"  // SLF4J binding for java.util.logging
 
-    runtime "org.jolokia:jolokia-core:1.2.1"
-    jolokia "org.jolokia:jolokia-jvm:1.2.1:agent"
-
     compile "com.codahale.metrics:metrics-core:3.0.2"
 }
 
@@ -41,8 +37,6 @@ run {
     systemProperty "com.sun.management.jmxremote.port", "9999"
     systemProperty "com.sun.management.jmxremote.authenticate", "false"
     systemProperty "com.sun.management.jmxremote.ssl", "false"
-
-    jvmArgs "-javaagent:${configurations.jolokia.iterator().next()}=port=7777,host=localhost"
 }
 
 task capsule(type: Jar, dependsOn: classes) {
@@ -58,8 +52,7 @@ task capsule(type: Jar, dependsOn: classes) {
             'Min-Java-Version' : '1.8.0',
             'JVM-Args' : run.jvmArgs.join(' '),
             'System-Properties' : run.systemProperties.collect { k,v -> "$k=$v" }.join(' '),
-            'Java-Agents' : getDependencies(configurations.quasar).iterator().next() +
-                            " ${getDependencies(configurations.jolokia).iterator().next()}=port=7777,host=localhost",
+            'Java-Agents' : getDependencies(configurations.quasar).iterator().next(),
             'Dependencies': getDependencies(configurations.runtime).join(' ')
         )
     }
