@@ -12,6 +12,7 @@ repositories {
 configurations {
     quasar
     capsule
+    byteman
     all*.exclude group: "org.apache.logging.log4j", module: "*"
 }
 
@@ -28,10 +29,13 @@ dependencies {
     runtime "org.slf4j:slf4j-jdk14:1.7.7"  // SLF4J binding for java.util.logging
 
     compile "com.codahale.metrics:metrics-core:3.0.2"
+
+    byteman "org.jboss.byteman:byteman:2.1.4.1"
 }
 
 run {
-    jvmArgs "-javaagent:${configurations.quasar.iterator().next()}"
+    jvmArgs "-javaagent:${configurations.byteman.iterator().next()}=listener:true,port:9977"
+    jvmArgs "-XX:+UnlockCommercialFeatures", "-XX:+FlightRecorder"
 
     systemProperty "com.sun.management.jmxremote", ""
     systemProperty "com.sun.management.jmxremote.port", "9999"
@@ -52,7 +56,7 @@ task capsule(type: Jar, dependsOn: classes) {
             'Min-Java-Version' : '1.8.0',
             'JVM-Args' : run.jvmArgs.join(' '),
             'System-Properties' : run.systemProperties.collect { k,v -> "$k=$v" }.join(' '),
-            'Java-Agents' : getDependencies(configurations.quasar).iterator().next(),
+            'Java-Agents' : "${getDependencies(configurations.byteman).iterator().next()}=listener:true,port:9977",
             'Dependencies': getDependencies(configurations.runtime).join(' ')
         )
     }
