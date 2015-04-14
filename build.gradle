@@ -31,6 +31,9 @@ dependencies {
     compile "com.codahale.metrics:metrics-core:3.0.2"
 
     byteman "org.jboss.byteman:byteman:2.1.4.1"
+
+    testCompile 'org.openjdk.jmh:jmh-core:0.8'
+    testCompile 'org.openjdk.jmh:jmh-generator-annprocess:0.8'
 }
 
 run {
@@ -72,4 +75,9 @@ def getDependencies(config) {
         }
         return res
     }
+}
+
+task bench(type: JavaExec, dependsOn: [classes, testClasses]) {
+    classpath = sourceSets.test.runtimeClasspath // we'll put jmodern.Benchamrk in the test directory
+    main = "jmodern.Benchmark";
 }
