@@ -1,0 +1,15 @@
+RULE trace foo entry
+CLASS jmodern.Main
+METHOD foo
+AT ENTRY
+IF true
+DO createTimer("timer")
+ENDRULE
+
+RULE trace foo exit
+CLASS jmodern.Main
+METHOD foo
+AT EXIT
+IF true
+DO traceln("::::::: foo(" + $1 + ") -> " + $! + " : " + resetTimer("timer") + "ms")
+ENDRULE
