@@ -4,80 +4,38 @@ apply plugin: 'application'
 sourceCompatibility = '1.8'
 
 mainClassName = 'jmodern.Main'
+version = '0.1.0'
 
 repositories {
     mavenCentral()
 }
 
 configurations {
-    quasar
     capsule
-    byteman
-    all*.exclude group: "org.apache.logging.log4j", module: "*"
 }
 
 dependencies {
-    compile "co.paralleluniverse:quasar-core:0.5.0:jdk8"
-    compile "co.paralleluniverse:quasar-actors:0.5.0"
-    quasar "co.paralleluniverse:quasar-core:0.5.0:jdk8"
-
-    capsule "co.paralleluniverse:capsule:0.3.1"
-
-    testCompile 'junit:junit:4.11'
-
-    compile "org.slf4j:slf4j-api:1.7.7"    // the SLF4J API
-    runtime "org.slf4j:slf4j-jdk14:1.7.7"  // SLF4J binding for java.util.logging
-
-    compile "com.codahale.metrics:metrics-core:3.0.2"
-
-    byteman "org.jboss.byteman:byteman:2.1.4.1"
-
-    testCompile 'org.openjdk.jmh:jmh-core:0.8'
-    testCompile 'org.openjdk.jmh:jmh-generator-annprocess:0.8'
-}
-
-run {
-    jvmArgs "-javaagent:${configurations.byteman.iterator().next()}=listener:true,port:9977"
-    jvmArgs "-XX:+UnlockCommercialFeatures", "-XX:+FlightRecorder"
-
-    systemProperty "com.sun.management.jmxremote", ""
-    systemProperty "com.sun.management.jmxremote.port", "9999"
-    systemProperty "com.sun.management.jmxremote.authenticate", "false"
-    systemProperty "com.sun.management.jmxremote.ssl", "false"
+    compile 'io.dropwizard:dropwizard-core:0.8.1'
+    capsule 'co.paralleluniverse:capsule:1.0-rc1'
+    testCompile 'junit:junit:4.12'
 }
 
 task capsule(type: Jar, dependsOn: classes) {
-    archiveName = "jmodern-capsule.jar"
-    from sourceSets.main.output // this way we don't need to extract
-    from { configurations.capsule.collect { zipTree(it) } }
+    archiveName = "jmodern-web.jar"
+
+    from jar // embed our application jar
+    from { configurations.runtime } // embed dependencies
+
+    from(configurations.capsule.collect { zipTree(it) }) { include 'Capsule.class' } // we just need the single Capsule class
 
     manifest {
         attributes(
-            'Main-Class' : 'Capsule',
-            'Application-Class' : mainClassName,
-            'Extract-Capsule' : 'false', // no need to extract the capsule
+            'Main-Class'  :   'Capsule',
+            'Application-Class'   : mainClassName,
+            'Application-Version' : version,
             'Min-Java-Version' : '1.8.0',
             'JVM-Args' : run.jvmArgs.join(' '),
             'System-Properties' : run.systemProperties.collect { k,v -> "$k=$v" }.join(' '),
-            'Java-Agents' : "${getDependencies(configurations.byteman).iterator().next()}=listener:true,port:9977",
-            'Dependencies': getDependencies(configurations.runtime).join(' ')
         )
     }
-}
-
-// converts Gradle dependencies to Capsule dependencies
-def getDependencies(config) {
-    return config.getAllDependencies().collect {
-        def res = it.group + ':' + it.name + ':' + it.version +
-            (!it.artifacts.isEmpty() ? ':' + it.artifacts.iterator().next().classifier : '')
-        if(!it.excludeRules.isEmpty()) {
-            res += "(" + it.excludeRules.collect { it.group + ':' + it.module }.join(',') + ")"
-        }
-        return res
-    }
-}
-
-task bench(type: JavaExec, dependsOn: [classes, testClasses]) {
-    classpath = sourceSets.test.runtimeClasspath // we'll put jmodern.Benchamrk in the test directory
-    main = "jmodern.Benchmark";
 }
