@@ -16,30 +16,19 @@ configurations {
 
 dependencies {
     compile 'io.dropwizard:dropwizard-core:0.7.0'
-    compile 'io.dropwizard:dropwizard-client:0.7.0'
-    compile 'com.netflix.feign:feign-core:6.1.2'
-    compile 'com.netflix.feign:feign-jaxrs:6.1.2'
-    compile 'com.netflix.feign:feign-jackson:6.1.2'
-    compile 'io.dropwizard:dropwizard-db:0.7.0'
-    compile 'io.dropwizard:dropwizard-jdbi:0.7.0'
-    runtime 'com.h2database:h2:1.4.178'
     capsule 'co.paralleluniverse:capsule:0.4.0'
     testCompile 'junit:junit:4.11'
-}
-
-run {
-    systemProperty "dropwizard.config", "build/resources/main/jmodern.yml"
 }
 
 task capsule(type: Jar, dependsOn: classes) {
     archiveName = "jmodern-web.jar"
 
-    from { sourceSets.main.resources }
-
     from jar // embed our application jar
     from { configurations.runtime } // embed dependencies
 
     from(configurations.capsule.collect { zipTree(it) }) { include 'Capsule.class' } // we just need the single Capsule class
+
+    from { sourceSets.main.resources }
 
     manifest {
         attributes(
@@ -51,4 +40,8 @@ task capsule(type: Jar, dependsOn: classes) {
             'System-Properties' : (run.systemProperties + ["dropwizard.config": '$CAPSULE_DIR/jmodern.yml']).collect { k,v -> "$k=$v" }.join(' '),
         )
     }
+}
+
+run {
+    systemProperty "dropwizard.config", "build/resources/main/jmodern.yml"
 }
