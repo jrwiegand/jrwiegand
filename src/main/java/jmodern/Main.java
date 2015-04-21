@@ -12,6 +12,9 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import org.hibernate.validator.constraints.*;
+import io.dropwizard.client.*;
+import com.sun.jersey.api.client.Client;
+
 
 public class Main extends Application<Main.JModernConfiguration> {
     public static void main(String[] args) throws Exception {
@@ -25,8 +28,11 @@ public class Main extends Application<Main.JModernConfiguration> {
     @Override
     public void run(JModernConfiguration cfg, Environment env) {
         JmxReporter.forRegistry(env.metrics()).build().start(); // Manually add JMX reporting (Dropwizard regression)
-
+        
         env.jersey().register(new HelloWorldResource(cfg));
+
+        Client client = new JerseyClientBuilder(env).using(cfg.getJerseyClientConfiguration()).build("client");
+        env.jersey().register(new ConsumerResource(client));
     }
 
     // YAML Configuration
@@ -36,6 +42,9 @@ public class Main extends Application<Main.JModernConfiguration> {
 
         public String getTemplate()    { return template; }
         public String getDefaultName() { return defaultName; }
+
+        @Valid @NotNull @JsonProperty JerseyClientConfiguration httpClient = new JerseyClientConfiguration();
+        public JerseyClientConfiguration getJerseyClientConfiguration() { return httpClient; }
     }
 
     // The actual service
@@ -74,5 +83,23 @@ public class Main extends Application<Main.JModernConfiguration> {
 
         @JsonProperty public long getId() { return id; }
         @JsonProperty public String getContent() { return content; }
+    }
+
+    @Path("/consumer")
+    @Produces(MediaType.TEXT_PLAIN)
+    public static class ConsumerResource {
+        private final Client client;
+
+        public ConsumerResource(Client client) {
+            this.client = client;
+        }
+
+        @Timed
+        @GET
+        public String consume() {
+            Saying saying = client.resource(UriBuilder.fromUri("http://localhost:8080/hello-world").queryParam("name", "consumer").build())
+                    .get(Saying.class);
+            return String.format("The service is saying: %s (id: %d)",  saying.getContent(), saying.getId());
+        }
     }
 }
