@@ -14,6 +14,8 @@ import javax.ws.rs.core.*;
 import org.hibernate.validator.constraints.*;
 import io.dropwizard.client.*;
 import com.sun.jersey.api.client.Client;
+import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
 
 
 public class Main extends Application<Main.JModernConfiguration> {
