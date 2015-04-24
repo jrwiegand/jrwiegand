@@ -16,6 +16,9 @@ import io.dropwizard.client.*;
 import com.sun.jersey.api.client.Client;
 import javax.validation.constraints.NotNull;
 import javax.validation.Valid;
+import feign.Feign;
+import feign.jackson.*;
+import feign.jaxrs.*;
 
 
 public class Main extends Application<Main.JModernConfiguration> {
@@ -33,8 +36,11 @@ public class Main extends Application<Main.JModernConfiguration> {
         
         env.jersey().register(new HelloWorldResource(cfg));
 
-        Client client = new JerseyClientBuilder(env).using(cfg.getJerseyClientConfiguration()).build("client");
-        env.jersey().register(new ConsumerResource(client));
+        Feign.Builder feignBuilder = Feign.builder()
+            .contract(new JAXRSModule.JAXRSContract()) // we want JAX-RS annotations
+            .encoder(new JacksonEncoder()) // we want Jackson because that's what Dropwizard uses already
+            .decoder(new JacksonDecoder());
+        env.jersey().register(new ConsumerResource(feignBuilder));
     }
 
     // YAML Configuration
@@ -90,18 +96,25 @@ public class Main extends Application<Main.JModernConfiguration> {
     @Path("/consumer")
     @Produces(MediaType.TEXT_PLAIN)
     public static class ConsumerResource {
-        private final Client client;
+        private final HelloWorldAPI hellowWorld;
 
-        public ConsumerResource(Client client) {
-            this.client = client;
+        public ConsumerResource(Feign.Builder feignBuilder) {
+            this.hellowWorld = feignBuilder.target(HelloWorldAPI.class, "http://localhost:8080");
         }
 
         @Timed
         @GET
         public String consume() {
-            Saying saying = client.resource(UriBuilder.fromUri("http://localhost:8080/hello-world").queryParam("name", "consumer").build())
-                    .get(Saying.class);
+            Saying saying = hellowWorld.hi("consumer");
             return String.format("The service is saying: %s (id: %d)",  saying.getContent(), saying.getId());
         }
+    }
+
+    interface HelloWorldAPI {
+        @GET @Path("/hello-world")
+        Saying hi(@QueryParam("name") String name);
+
+        @GET @Path("/hello-world")
+        Saying hi();
     }
 }
