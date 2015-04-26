@@ -25,6 +25,9 @@ import org.skife.jdbi.v2.*;
 import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import org.skife.jdbi.v2.tweak.*;
+import org.jooq.Record;
+import org.jooq.RecordMapper;
+import static org.jooq.impl.DSL.*;
 
 public class Main extends Application<Main.JModernConfiguration> {
     public static void main(String[] args) throws Exception {
@@ -49,6 +52,9 @@ public class Main extends Application<Main.JModernConfiguration> {
         
         final DBI dbi = new DBIFactory().build(env, cfg.getDataSourceFactory(), "db");
         env.jersey().register(new DBResource(dbi));
+
+        DataSource ds = cfg.getDataSourceFactory().build(env.metrics(), "db");
+        env.jersey().register(new DBResource(ds));
     }
 
     // YAML Configuration
@@ -104,34 +110,48 @@ public class Main extends Application<Main.JModernConfiguration> {
     @Path("/db")
     @Produces(MediaType.APPLICATION_JSON)
     public static class DBResource {
-        private final ModernDAO dao;
+        private final DataSource ds;
+        private static final RecordMapper<Record, Something> toSomething =
+                record -> new Something(record.getValue(field("id", Integer.class)), record.getValue(field("name", String.class)));
 
-        public DBResource(DBI dbi) {
-            this.dao = dbi.onDemand(ModernDAO.class);
+        public DBResource(DataSource ds) throws SQLException {
+            this.ds = ds;
 
-            try (Handle h = dbi.open()) {
-                h.execute("create table something (id int primary key auto_increment, name varchar(100))");
+            try (Connection conn = ds.getConnection()) {
+                conn.createStatement().execute("create table something (id int primary key auto_increment, name varchar(100))");
+
                 String[] names = { "Gigantic", "Bone Machine", "Hey", "Cactus" };
-                Arrays.stream(names).forEach(name -> h.insert("insert into something (name) values (?)", name));
+                DSLContext context = using(conn);
+                Arrays.stream(names).forEach(name -> context.insertInto(table("something"), field("name")).values(name).execute());
             }
         }
 
         @Timed
         @POST @Path("/add")
-        public Something add(String name) {
-            return find(dao.insert(name));
+        public Something add(String name) throws SQLException {
+            try (Connection conn = ds.getConnection()) {
+                // this does not work
+                int id = using(conn).insertInto(table("something"), field("name")).values(name).returning(field("id"))
+                           .fetchOne().into(Integer.class);
+                return find(id);
+            }
         }
 
         @Timed
         @GET @Path("/item/{id}")
-        public Something find(@PathParam("id") Integer id) {
-            return dao.findById(id);
+        public Something find(@PathParam("id") Integer id) throws SQLException {
+            try (Connection conn = ds.getConnection()) {
+                return using(conn).select(field("id"), field("name")).from(table("something"))
+                        .where(field("id", Integer.class).equal(id)).fetchOne().map(toSomething);
+            }
         }
 
         @Timed
         @GET @Path("/all")
-        public List<Something> all(@PathParam("id") Integer id) {
-            return dao.all();
+        public List<Something> all(@PathParam("id") Integer id) throws SQLException {
+            try (Connection conn = ds.getConnection()) {
+                return using(conn).select(field("id"), field("name")).from(table("something")).fetch().map(toSomething);
+            }
         }
     }
 
