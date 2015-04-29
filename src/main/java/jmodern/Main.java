@@ -55,6 +55,9 @@ public class Main extends Application<Main.JModernConfiguration> {
 
         DataSource ds = cfg.getDataSourceFactory().build(env.metrics(), "db");
         env.jersey().register(new DBResource(ds));
+
+        ObjectGraph objectGraph = ObjectGraph.create(new ModernModule(cfg));
+        env.jersey().register(objectGraph.get(HelloWorldResource.class));
     }
 
     // YAML Configuration
@@ -73,12 +76,10 @@ public class Main extends Application<Main.JModernConfiguration> {
     @Produces(MediaType.APPLICATION_JSON)
     public static class HelloWorldResource {
         private final AtomicLong counter = new AtomicLong();
-        private final String template;
-        private final String defaultName;
+        @Inject @Named("template") String template;
+        @Inject @Named("defaultName") String defaultName;
 
-        public HelloWorldResource(JModernConfiguration configuration) {
-            this.template = configuration.getTemplate();
-            this.defaultName = configuration.getDefaultName();
+        HelloWorldResource() {
         }
 
         @Timed // monitor timing of this service with Metrics
@@ -206,5 +207,22 @@ public class Main extends Application<Main.JModernConfiguration> {
 
         @SqlQuery("select * from something")
         List<Something> all();
+    }
+
+    @Module(injects = HelloWorldResource.class)
+    class ModernModule {
+        private final JModernConfiguration cfg;
+
+        public ModernModule(JModernConfiguration cfg) {
+            this.cfg = cfg;
+        }
+
+        @Provides @Named("template") String provideTemplate() {
+            return cfg.getTemplate();
+        }
+
+        @Provides @Named("defaultName") String provideDefaultName() {
+            return cfg.getDefaultName();
+        }
     }
 }
