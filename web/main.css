@@ -52,9 +52,9 @@
 }
 
 .name {
-    font-family: "source-sans-pro", sans-serif;
+    font-family: "source-sans-pro",sans-serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 35px;
     letter-spacing: 0.26em;
     line-height: 1;
@@ -67,7 +67,7 @@
 }
 
 .tag {
-    font-family: "source-sans-pro", sans-serif;
+    font-family: "source-sans-pro",sans-serif;
     font-style: italic;
     font-weight: 300;
     font-size: 13px;
