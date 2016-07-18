@@ -21,12 +21,12 @@
 
 .background::after {
     border: 1px solid rgba(255, 255, 255, 0.2);
-    bottom: 10px;
-    content: "";
-    left: 10px;
-    position: fixed;
-    right: 10px;
     top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    content: "";
+    position: fixed;
 }
 
 .inner {
@@ -43,39 +43,38 @@
     content: "";
     display: block;
     height: 337px;
-    left: 50%;
-    margin-left: -168px;
-    margin-top: -168px;
-    position: absolute;
-    top: 50%;
     width: 337px;
+    top: 50%;
+    left: 50%;
+    margin-top: -168px;
+    margin-left: -168px;
+    position: absolute;
 }
 
 .title {
-    font-family: "source-sans-pro",sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 35px;
+    font-family: "adelle",serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+    color: #ffffff;
     letter-spacing: 0.26em;
     line-height: 1;
     text-transform: uppercase;
-    z-index: 2;
-    color: #ffffff;
     bottom: 225px;
     left: 50%;
     margin-left: -237px;
     padding: 0;
     position: fixed;
     width: 475px;
+    z-index: 2;
 }
 
 .tag {
-    font-family: "source-sans-pro",sans-serif;
-    font-style: italic;
-    font-weight: 300;
+    font-family: "adelle",serif;
+    font-style: normal;
+    font-weight: 100;
     font-size: 13px;
     color: #ffffff;
-    z-index: 2;
     letter-spacing: 0.4em;
     line-height: 2.2;
     text-transform: uppercase;
@@ -85,6 +84,7 @@
     padding: 0;
     position: fixed;
     width: 475px;
+    z-index: 2;
 }
 
 .links {
@@ -111,13 +111,13 @@
 }
 
 .email {
-    color: #ffffff;
-    font-family: "learning-curve", cursive;
+    font-family: "fira-sans-2",sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    text-decoration: none;
+    font-size: 15px;
+    color: #ffffff;
     opacity: 0.5;
+    text-decoration: none;
 }
 
 .email:hover,
