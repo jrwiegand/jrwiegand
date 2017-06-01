@@ -1,6 +1,7 @@
 package com.joshwiegand.portal.asteroids;
 
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class SpaceObject extends Sprite {
     // The x-component of this sprite's velocity.
