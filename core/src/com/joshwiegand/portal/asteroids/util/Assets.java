@@ -26,9 +26,9 @@ public class Assets {
     }
 
     private static void initTextures() {
-        PLAYER = new TextureRegion(new Texture("spaceship.png"));
-        SMALL_ASTEROID = new TextureRegion(new Texture("asteroid.png"));
-        LARGE_ASTEROID = new TextureRegion(new Texture("largeAsteroid.png"));
+        PLAYER = new TextureRegion(new Texture("ship.png"));
+        SMALL_ASTEROID = new TextureRegion(new Texture("asteroid_small.png"));
+        LARGE_ASTEROID = new TextureRegion(new Texture("asteroid_large.png"));
         MISSILE = new TextureRegion(new Texture("missile.gif"));
         EXPLOSION = new TextureRegion(new Texture("explosion.png"));
         BG = new TextureRegion(new Texture("bg.png"));
@@ -39,7 +39,7 @@ public class Assets {
         Files files = Gdx.app.getFiles();
         Files.FileType internal = Files.FileType.Internal;
 
-        PLAYER_EXPLOSION = audio.newSound(files.getFileHandle("playerExplosion.wav", internal));
+        PLAYER_EXPLOSION = audio.newSound(files.getFileHandle("explosion.wav", internal));
         SHOT = audio.newSound(files.getFileHandle("shot.mp3", internal));
     }
 }
