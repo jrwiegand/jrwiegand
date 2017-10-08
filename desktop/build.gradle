@@ -1,4 +1,4 @@
-apply plugin: "java"
+apply plugin: "kotlin"
 
 sourceCompatibility = 1.6
 sourceSets.main.java.srcDirs = [ "src/" ]
@@ -28,7 +28,7 @@ task dist(type: Jar) {
     from files(sourceSets.main.output.resourcesDir)
     from {configurations.compile.collect {zipTree(it)}}
     from files(project.assetsDir);
- 
+
     manifest {
         attributes 'Main-Class': project.mainClassName
     }

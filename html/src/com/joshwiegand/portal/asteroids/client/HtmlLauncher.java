@@ -3,7 +3,7 @@ package com.joshwiegand.portal.asteroids.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.joshwiegand.portal.asteroids.PortalAsteroids;
+import com.joshwiegand.portal.asteroids.Application;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -14,6 +14,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener () {
-                return new PortalAsteroids();
+                return new Application();
         }
 }

@@ -1,21 +1,29 @@
-package com.joshwiegand.portal.asteroids;
+package com.joshwiegand.portal.asteroids.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.joshwiegand.portal.asteroids.Application;
+import com.joshwiegand.portal.asteroids.objects.Asteroid;
+import com.joshwiegand.portal.asteroids.objects.BaseObject;
+import com.joshwiegand.portal.asteroids.objects.Explosion;
+import com.joshwiegand.portal.asteroids.objects.LargeAsteroid;
+import com.joshwiegand.portal.asteroids.objects.Missile;
+import com.joshwiegand.portal.asteroids.objects.Player;
+import com.joshwiegand.portal.asteroids.objects.SmallAsteroid;
 
-class GameModel {
+public class GameModel {
 
     private int gameState;
     private static final int GAME_PLAY = 0;
     private static final int GAME_OVER = 1;
 
-    private GameControl controller;
+    private com.joshwiegand.portal.asteroids.game.GameControl controller;
 
 
     //Make an array list for all of the sprites (except player
     //who will only have one sprite at any time)
-    private static Array<SpaceObject> sprites;
+    private static Array<BaseObject> sprites;
 
     private Player player;
 
@@ -40,13 +48,13 @@ class GameModel {
 
     private int respawnTimer;
 
-    GameModel(GameControl c) {
+    public GameModel(com.joshwiegand.portal.asteroids.game.GameControl c) {
 
         float height = Gdx.graphics.getHeight();
         float width = Gdx.graphics.getWidth();
 
         controller = c;
-        sprites = new Array<SpaceObject>();
+        sprites = new Array<BaseObject>();
         player = new Player(width / 2, height / 2);
         sprites.add(player);
 
@@ -61,7 +69,7 @@ class GameModel {
         loopStart = System.currentTimeMillis();
     }
 
-    void update() {
+    public void update() {
         long loopTime = System.currentTimeMillis() - loopStart;
         Gdx.app.log("Score", score + ". Loop completed in " + loopTime + " ms. Ship angle at " + ((int) (player.getShipAngle() * MathUtils.radiansToDegrees % 360)) + " degrees. Difficulty: " + difficulty + ".");
 
@@ -85,23 +93,23 @@ class GameModel {
 
         if (gameState == GAME_PLAY && playerAlive) {
 
-            if (controller.buttons[GameControl.UP])
+            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.UP])
                 player.setVelocity(player.getVelocityX(), player.getVelocityY() + Player.THRUST_STEP);
 
-            if (controller.buttons[GameControl.DOWN])
+            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.DOWN])
                 player.setVelocity(player.getVelocityX(), player.getVelocityY() - Player.THRUST_STEP);
 
-            if (controller.buttons[GameControl.LEFT])
+            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.LEFT])
                 player.setVelocity(player.getVelocityX() - Player.THRUST_STEP, player.getVelocityY());
 
-            if (controller.buttons[GameControl.RIGHT])
+            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.RIGHT])
                 player.setVelocity(player.getVelocityX() + Player.THRUST_STEP, player.getVelocityY());
 
             // Doesn't work
-            if (controller.buttons[GameControl.B])
+            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.B])
                 player.stop();
 
-            if ((controller.buttons[GameControl.SPACE] || Gdx.input.isTouched()) && missileTimer <= 0)
+            if ((controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.SPACE] || Gdx.input.isTouched()) && missileTimer <= 0)
                 shoot();
 
             player.setVelocity(player.getVelocityX() + Gdx.input.getAccelerometerY(), player.getVelocityY() - Gdx.input.getAccelerometerX());
@@ -113,7 +121,7 @@ class GameModel {
         float height = Gdx.graphics.getHeight();
         float width = Gdx.graphics.getWidth();
 
-        for (SpaceObject s : sprites) {
+        for (BaseObject s : sprites) {
             x = s.getX() + s.getOriginX();
             y = s.getY() + s.getOriginY();
             if (s instanceof Explosion && ((Explosion) s).getExplosionTimer() <= 0)
@@ -135,7 +143,7 @@ class GameModel {
         checkCollisions();
     }
 
-    Array<SpaceObject> getSprites() {
+    public Array<BaseObject> getSprites() {
         return sprites;
     }
 
@@ -144,7 +152,7 @@ class GameModel {
      */
 
     private void shoot() {
-        //precompute some trig
+        //pre-compute some trig
 
         float originX = player.getX() + player.getOriginX();
         float originY = player.getY() + player.getOriginY();
@@ -157,7 +165,7 @@ class GameModel {
         //create the missile and add it to the game
         Missile missile = new Missile(missileX, missileY, Missile.MAX_SPEED * MathUtils.cos(-player.getShipAngle() + MathUtils.PI / 2), Missile.MAX_SPEED * MathUtils.sin(-player.getShipAngle() + MathUtils.PI / 2));
         sprites.add(missile);
-        PortalAsteroids.shot();
+        Application.shot();
 
         missileTimer = 100;
     }
@@ -168,17 +176,17 @@ class GameModel {
         float angle = MathUtils.random(90) + 45;
 
         switch (side) {
-            case GameControl.UP:
+            case com.joshwiegand.portal.asteroids.game.GameControl.UP:
                 astroX = MathUtils.random(Gdx.graphics.getWidth());
                 astroY = Gdx.graphics.getHeight();
                 angle += 180;
                 break;
-            case GameControl.DOWN:
+            case com.joshwiegand.portal.asteroids.game.GameControl.DOWN:
                 astroX = MathUtils.random(Gdx.graphics.getWidth());
                 astroY = 0;
                 angle += 0;
                 break;
-            case GameControl.LEFT:
+            case com.joshwiegand.portal.asteroids.game.GameControl.LEFT:
                 astroX = 0;
                 astroY = MathUtils.random(Gdx.graphics.getHeight());
                 angle += 270;
@@ -243,10 +251,10 @@ class GameModel {
         // iterate over the n(n-1)/2 distinct pairs of sprites
 
         for (int i = 0; i < sprites.size; i++) {
-            SpaceObject s1 = sprites.get(i);
+            BaseObject s1 = sprites.get(i);
 
             for (int j = i + 1; j < sprites.size; j++) {
-                SpaceObject s2 = sprites.get(j);
+                BaseObject s2 = sprites.get(j);
 
                 if (close(s1, s2))// && s1.collidesWith(s2))
                 {
@@ -258,7 +266,7 @@ class GameModel {
     }
 
 
-    private boolean close(SpaceObject s1, SpaceObject s2) {
+    private boolean close(BaseObject s1, BaseObject s2) {
         double sumRadii = (s1.getHeight() + s2.getHeight()) / 2;
 
         return (Math.sqrt(Math.pow((s1.getX()) - (s2.getX()), 2)
@@ -266,12 +274,12 @@ class GameModel {
     }
 
 
-    private void handleCollision(SpaceObject s1, SpaceObject s2) {
+    private void handleCollision(BaseObject s1, BaseObject s2) {
 
         if (s1 instanceof Asteroid || s2 instanceof Asteroid) {
             // make sure that s2 is an Asteroid
             if (s1 instanceof Asteroid) {
-                SpaceObject temp = s1;
+                BaseObject temp = s1;
                 s1 = s2;
                 s2 = temp;
             }
@@ -331,15 +339,15 @@ class GameModel {
         playerAlive = true;
     }
 
-    int getScore() {
+    public int getScore() {
         return score;
     }
 
-    int getLives() {
+    public int getLives() {
         return lives;
     }
 
-    Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 }
