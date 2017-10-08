@@ -21,7 +21,7 @@ public class GameModel {
     private com.joshwiegand.portal.asteroids.game.GameControl controller;
 
 
-    //Make an array list for all of the sprites (except player
+    //Make an array list for all of the sprites (except PLAYER
     //who will only have one sprite at any time)
     private static Array<BaseObject> sprites;
 
@@ -148,7 +148,7 @@ public class GameModel {
     }
 
     /**
-     * Fires a missile in the direction the player is facing.
+     * Fires a missile in the direction the PLAYER is facing.
      */
 
     private void shoot() {

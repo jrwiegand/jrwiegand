@@ -2,6 +2,7 @@ package com.joshwiegand.portal.asteroids.objects;
 
 import com.joshwiegand.portal.asteroids.game.GameModel;
 import com.joshwiegand.portal.asteroids.Application;
+import com.joshwiegand.portal.asteroids.util.Assets;
 
 /**
  * This class will detail the constants and behavior of the asteroids in this game.
@@ -14,7 +15,7 @@ public class Explosion extends BaseObject {
     private int explosionTimer;
 
     public Explosion(float x, float y) {
-        super(Application.explosionTexture, x, y, SIZE, 0, 0);
+        super(Assets.EXPLOSION, x, y, SIZE, 0, 0);
         Application.explosion();
         explosionTimer = 100;
     }

@@ -37,7 +37,7 @@ public class Asteroid extends BaseObject {
     }
 
     /**
-     * Handles a collision between this asteroid and any obstacles it can collide with, including the player's ship,
+     * Handles a collision between this asteroid and any obstacles it can collide with, including the PLAYER's ship,
      * missles, and enemy ships.
      */
     public boolean hitTaken() {

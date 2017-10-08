@@ -1,6 +1,6 @@
 package com.joshwiegand.portal.asteroids.objects;
 
-import com.joshwiegand.portal.asteroids.Application;
+import com.joshwiegand.portal.asteroids.util.Assets;
 
 public class SmallAsteroid extends Asteroid {
 
@@ -9,6 +9,6 @@ public class SmallAsteroid extends Asteroid {
     private static final int HITS = 1;
 
     public SmallAsteroid(float x, float y, float vX, float vY) {
-        super(Application.smallAsteroidTexture, x, y, SIZE, vX, vY, HITS);
+        super(Assets.SMALL_ASTEROID, x, y, SIZE, vX, vY, HITS);
     }
 }

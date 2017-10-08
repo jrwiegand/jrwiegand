@@ -2,10 +2,10 @@ package com.joshwiegand.portal.asteroids.objects;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.joshwiegand.portal.asteroids.game.GameModel;
-import com.joshwiegand.portal.asteroids.Application;
+import com.joshwiegand.portal.asteroids.util.Assets;
 
 /**
- * This class will detail the constants of the player's sprite.  Will extend the sprite class.  The player will be able
+ * This class will detail the constants of the PLAYER's sprite.  Will extend the sprite class.  The PLAYER will be able
  * to rotate the sprite with the arrow keys as well as thrust which increases the ship's velocity in the direction it is
  * facing.
  */
@@ -26,13 +26,13 @@ public class Player extends BaseObject {
 
 
     /**
-     * This method creates a ship.  Since this is the player's ship, it will always start at the same position with the
+     * This method creates a ship.  Since this is the PLAYER's ship, it will always start at the same position with the
      * same initial velocity (zero) and the same width and height. The ship will initially face the positive x-axis and
      * the life count will default to 3.
      */
 
     public Player(float x, float y) {
-        super(Application.playerTexture, x, y, SIZE);
+        super(Assets.PLAYER, x, y, SIZE);
         shipAngle = 0;
         setRotation(-shipAngle);
     }

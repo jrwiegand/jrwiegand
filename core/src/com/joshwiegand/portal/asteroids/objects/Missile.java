@@ -1,9 +1,9 @@
 package com.joshwiegand.portal.asteroids.objects;
 
-import com.joshwiegand.portal.asteroids.Application;
+import com.joshwiegand.portal.asteroids.util.Assets;
 
 /**
- * This class details the constants and behavior of a missile in this game.  A missile can be fired by the player's ship
+ * This class details the constants and behavior of a missile in this game.  A missile can be fired by the PLAYER's ship
  * or the enemy ships.
  */
 public class Missile extends BaseObject {
@@ -22,6 +22,6 @@ public class Missile extends BaseObject {
      * Creates a missile at the given position with the given velocity.
      */
     public Missile(float x, float y, float velX, float velY) {
-        super(Application.missileTexture, x, y, SIZE, velX, velY);
+        super(Assets.MISSILE, x, y, SIZE, velX, velY);
     }
 }
