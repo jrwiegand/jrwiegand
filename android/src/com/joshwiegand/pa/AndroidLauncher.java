@@ -1,4 +1,4 @@
-package com.joshwiegand.portal.asteroids;
+package com.joshwiegand.pa;
 
 import android.os.Bundle;
 

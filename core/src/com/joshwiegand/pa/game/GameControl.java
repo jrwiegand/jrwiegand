@@ -1,4 +1,4 @@
-package com.joshwiegand.portal.asteroids.game;
+package com.joshwiegand.pa.game;
 
 import com.badlogic.gdx.InputProcessor;
 

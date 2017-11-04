@@ -1,6 +1,6 @@
-package com.joshwiegand.portal.asteroids.objects;
+package com.joshwiegand.pa.objects;
 
-import com.joshwiegand.portal.asteroids.util.Assets;
+import com.joshwiegand.pa.util.Assets;
 
 public class SmallAsteroid extends Asteroid {
 

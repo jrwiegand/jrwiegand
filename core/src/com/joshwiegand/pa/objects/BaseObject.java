@@ -1,8 +1,8 @@
-package com.joshwiegand.portal.asteroids.objects;
+package com.joshwiegand.pa.objects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.joshwiegand.portal.asteroids.game.GameModel;
+import com.joshwiegand.pa.game.GameModel;
 
 public class BaseObject extends Sprite {
     // The x-component of this sprite's velocity.

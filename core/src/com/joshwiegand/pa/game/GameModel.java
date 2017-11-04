@@ -1,16 +1,16 @@
-package com.joshwiegand.portal.asteroids.game;
+package com.joshwiegand.pa.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.joshwiegand.portal.asteroids.Application;
-import com.joshwiegand.portal.asteroids.objects.Asteroid;
-import com.joshwiegand.portal.asteroids.objects.BaseObject;
-import com.joshwiegand.portal.asteroids.objects.Explosion;
-import com.joshwiegand.portal.asteroids.objects.LargeAsteroid;
-import com.joshwiegand.portal.asteroids.objects.Missile;
-import com.joshwiegand.portal.asteroids.objects.Player;
-import com.joshwiegand.portal.asteroids.objects.SmallAsteroid;
+import com.joshwiegand.pa.Application;
+import com.joshwiegand.pa.objects.Asteroid;
+import com.joshwiegand.pa.objects.BaseObject;
+import com.joshwiegand.pa.objects.Explosion;
+import com.joshwiegand.pa.objects.LargeAsteroid;
+import com.joshwiegand.pa.objects.Missile;
+import com.joshwiegand.pa.objects.Player;
+import com.joshwiegand.pa.objects.SmallAsteroid;
 
 public class GameModel {
 
@@ -18,7 +18,7 @@ public class GameModel {
     private static final int GAME_PLAY = 0;
     private static final int GAME_OVER = 1;
 
-    private com.joshwiegand.portal.asteroids.game.GameControl controller;
+    private com.joshwiegand.pa.game.GameControl controller;
 
 
     //Make an array list for all of the sprites (except PLAYER
@@ -48,7 +48,7 @@ public class GameModel {
 
     private int respawnTimer;
 
-    public GameModel(com.joshwiegand.portal.asteroids.game.GameControl c) {
+    public GameModel(com.joshwiegand.pa.game.GameControl c) {
 
         float height = Gdx.graphics.getHeight();
         float width = Gdx.graphics.getWidth();
@@ -93,23 +93,23 @@ public class GameModel {
 
         if (gameState == GAME_PLAY && playerAlive) {
 
-            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.UP])
+            if (controller.buttons[com.joshwiegand.pa.game.GameControl.UP])
                 player.setVelocity(player.getVelocityX(), player.getVelocityY() + Player.THRUST_STEP);
 
-            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.DOWN])
+            if (controller.buttons[com.joshwiegand.pa.game.GameControl.DOWN])
                 player.setVelocity(player.getVelocityX(), player.getVelocityY() - Player.THRUST_STEP);
 
-            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.LEFT])
+            if (controller.buttons[com.joshwiegand.pa.game.GameControl.LEFT])
                 player.setVelocity(player.getVelocityX() - Player.THRUST_STEP, player.getVelocityY());
 
-            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.RIGHT])
+            if (controller.buttons[com.joshwiegand.pa.game.GameControl.RIGHT])
                 player.setVelocity(player.getVelocityX() + Player.THRUST_STEP, player.getVelocityY());
 
             // Doesn't work
-            if (controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.B])
+            if (controller.buttons[com.joshwiegand.pa.game.GameControl.B])
                 player.stop();
 
-            if ((controller.buttons[com.joshwiegand.portal.asteroids.game.GameControl.SPACE] || Gdx.input.isTouched()) && missileTimer <= 0)
+            if ((controller.buttons[com.joshwiegand.pa.game.GameControl.SPACE] || Gdx.input.isTouched()) && missileTimer <= 0)
                 shoot();
 
             player.setVelocity(player.getVelocityX() + Gdx.input.getAccelerometerY(), player.getVelocityY() - Gdx.input.getAccelerometerX());
@@ -176,17 +176,17 @@ public class GameModel {
         float angle = MathUtils.random(90) + 45;
 
         switch (side) {
-            case com.joshwiegand.portal.asteroids.game.GameControl.UP:
+            case com.joshwiegand.pa.game.GameControl.UP:
                 astroX = MathUtils.random(Gdx.graphics.getWidth());
                 astroY = Gdx.graphics.getHeight();
                 angle += 180;
                 break;
-            case com.joshwiegand.portal.asteroids.game.GameControl.DOWN:
+            case com.joshwiegand.pa.game.GameControl.DOWN:
                 astroX = MathUtils.random(Gdx.graphics.getWidth());
                 astroY = 0;
                 angle += 0;
                 break;
-            case com.joshwiegand.portal.asteroids.game.GameControl.LEFT:
+            case com.joshwiegand.pa.game.GameControl.LEFT:
                 astroX = 0;
                 astroY = MathUtils.random(Gdx.graphics.getHeight());
                 angle += 270;

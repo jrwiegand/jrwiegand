@@ -1,8 +1,8 @@
-package com.joshwiegand.portal.asteroids.objects;
+package com.joshwiegand.pa.objects;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.joshwiegand.portal.asteroids.game.GameModel;
-import com.joshwiegand.portal.asteroids.util.Assets;
+import com.joshwiegand.pa.game.GameModel;
+import com.joshwiegand.pa.util.Assets;
 
 /**
  * This class will detail the constants of the PLAYER's sprite.  Will extend the sprite class.  The PLAYER will be able

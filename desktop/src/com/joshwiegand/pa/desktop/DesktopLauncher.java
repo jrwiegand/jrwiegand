@@ -1,8 +1,8 @@
-package com.joshwiegand.portal.asteroids.desktop;
+package com.joshwiegand.pa.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.joshwiegand.portal.asteroids.Application;
+import com.joshwiegand.pa.Application;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

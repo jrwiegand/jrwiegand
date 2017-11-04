@@ -8,7 +8,7 @@
 	<inherits name='com.badlogic.ashley_gwt' />
 	<inherits name='Box2DLights' />
 
-    <inherits name='com.joshwiegand.portal.asteroids.GdxDefinition' />
+    <inherits name='com.joshwiegand.pa.GdxDefinition' />
     
     <collapse-all-properties />
     

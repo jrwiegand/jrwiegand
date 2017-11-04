@@ -1,8 +1,8 @@
-package com.joshwiegand.portal.asteroids.objects;
+package com.joshwiegand.pa.objects;
 
-import com.joshwiegand.portal.asteroids.game.GameModel;
-import com.joshwiegand.portal.asteroids.Application;
-import com.joshwiegand.portal.asteroids.util.Assets;
+import com.joshwiegand.pa.game.GameModel;
+import com.joshwiegand.pa.Application;
+import com.joshwiegand.pa.util.Assets;
 
 /**
  * This class will detail the constants and behavior of the asteroids in this game.

@@ -9,7 +9,7 @@
 	<inherits name='Box2DLights' />
 
 	<inherits name='PortalAsteroids' />
-	<entry-point class='com.joshwiegand.portal.asteroids.client.HtmlLauncher' />
+	<entry-point class='com.joshwiegand.pa.client.HtmlLauncher' />
 	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
 </module>

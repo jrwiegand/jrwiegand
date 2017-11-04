@@ -1,6 +1,6 @@
-package com.joshwiegand.portal.asteroids.objects;
+package com.joshwiegand.pa.objects;
 
-import com.joshwiegand.portal.asteroids.util.Assets;
+import com.joshwiegand.pa.util.Assets;
 
 /**
  * This class details the constants and behavior of a missile in this game.  A missile can be fired by the PLAYER's ship

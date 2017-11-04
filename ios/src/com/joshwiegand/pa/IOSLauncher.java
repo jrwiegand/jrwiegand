@@ -1,4 +1,4 @@
-package com.joshwiegand.portal.asteroids;
+package com.joshwiegand.pa;
 
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;

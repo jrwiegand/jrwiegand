@@ -1,17 +1,17 @@
-package com.joshwiegand.portal.asteroids;
+package com.joshwiegand.pa;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.joshwiegand.portal.asteroids.game.GameControl;
-import com.joshwiegand.portal.asteroids.game.GameModel;
-import com.joshwiegand.portal.asteroids.util.Assets;
+import com.joshwiegand.pa.game.GameControl;
+import com.joshwiegand.pa.game.GameModel;
+import com.joshwiegand.pa.util.Assets;
 
 public class Application extends ApplicationAdapter {
     private SpriteBatch batch;
-    private com.joshwiegand.portal.asteroids.game.GameModel model;
+    private com.joshwiegand.pa.game.GameModel model;
 
     @Override
     public void create() {

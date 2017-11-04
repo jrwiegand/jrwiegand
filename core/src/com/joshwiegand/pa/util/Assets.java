@@ -1,4 +1,4 @@
-package com.joshwiegand.portal.asteroids.util;
+package com.joshwiegand.pa.util;
 
 import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Files;

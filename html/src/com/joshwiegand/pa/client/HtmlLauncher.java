@@ -1,9 +1,9 @@
-package com.joshwiegand.portal.asteroids.client;
+package com.joshwiegand.pa.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.joshwiegand.portal.asteroids.Application;
+import com.joshwiegand.pa.Application;
 
 public class HtmlLauncher extends GwtApplication {
 
