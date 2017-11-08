@@ -1,7 +1,6 @@
 package com.joshwiegand.pa.objects;
 
 import com.joshwiegand.pa.game.GameModel;
-import com.joshwiegand.pa.Application;
 import com.joshwiegand.pa.util.Assets;
 
 /**
@@ -16,7 +15,7 @@ public class Explosion extends BaseObject {
 
     public Explosion(float x, float y) {
         super(Assets.EXPLOSION, x, y, SIZE, 0, 0);
-        Application.explosion();
+        Assets.PLAYER_EXPLOSION.play();
         explosionTimer = 100;
     }
 

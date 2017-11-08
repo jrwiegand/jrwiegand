@@ -3,7 +3,6 @@ package com.joshwiegand.pa.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.joshwiegand.pa.Application;
 import com.joshwiegand.pa.objects.Asteroid;
 import com.joshwiegand.pa.objects.BaseObject;
 import com.joshwiegand.pa.objects.Explosion;
@@ -11,6 +10,7 @@ import com.joshwiegand.pa.objects.LargeAsteroid;
 import com.joshwiegand.pa.objects.Missile;
 import com.joshwiegand.pa.objects.Player;
 import com.joshwiegand.pa.objects.SmallAsteroid;
+import com.joshwiegand.pa.util.Assets;
 
 public class GameModel {
 
@@ -165,7 +165,7 @@ public class GameModel {
         //create the missile and add it to the game
         Missile missile = new Missile(missileX, missileY, Missile.MAX_SPEED * MathUtils.cos(-player.getShipAngle() + MathUtils.PI / 2), Missile.MAX_SPEED * MathUtils.sin(-player.getShipAngle() + MathUtils.PI / 2));
         sprites.add(missile);
-        Application.shot();
+        Assets.SHOT.play();
 
         missileTimer = 100;
     }
