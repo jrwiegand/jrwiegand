@@ -1,0 +1,19 @@
+{
+    "name": "josh-wiegand-com",
+    "version": "2.0.0",
+    "description": "joshwiegand.com",
+    "main": "index.html",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jrwiegand/josh-wiegand-com.git"
+    },
+    "keywords": [
+        "website"
+    ],
+    "author": "Josh Wiegand",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jrwiegand/josh-wiegand-com/issues"
+    },
+    "homepage": "https://github.com/jrwiegand/josh-wiegand-com#readme"
+}
