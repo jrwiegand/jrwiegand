@@ -1,6 +1,6 @@
 @file:JvmName("Desktop")
 
-package com.joshwiegand.desktop
+package com.joshwiegand.abandon
 
 import com.badlogic.gdx.Files.FileType
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication
