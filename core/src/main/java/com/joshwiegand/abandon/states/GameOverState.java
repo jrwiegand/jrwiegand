@@ -95,7 +95,7 @@ public class GameOverState extends State {
         );
         Save.save();
       }
-      this.gsm.setState(StateManager.MENU);
+      this.gsm.setState(StateManager.Companion.getMENU());
     }
 
     if (Gdx.input.isKeyJustPressed(Keys.UP)) {

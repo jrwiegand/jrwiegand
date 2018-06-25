@@ -15,7 +15,7 @@ public class Save {
   public static void save() {
     try {
       ObjectOutputStream out = new ObjectOutputStream(
-          new FileOutputStream("highscores.sav")
+          new FileOutputStream("high_scores.sav")
       );
       out.writeObject(data);
       out.close();
@@ -31,7 +31,7 @@ public class Save {
         init();
         return;
       }
-      ObjectInputStream in = new ObjectInputStream(new FileInputStream("highscores.sav"));
+      ObjectInputStream in = new ObjectInputStream(new FileInputStream("high_scores.sav"));
       data = (Data) in.readObject();
       in.close();
     } catch (Exception e) {
@@ -41,7 +41,7 @@ public class Save {
   }
 
   private static boolean saveFileExists() {
-    return new File("highscores.sav").exists();
+    return new File("high_scores.sav").exists();
   }
 
   private static void init() {

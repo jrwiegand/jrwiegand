@@ -99,13 +99,13 @@ public class PlayState extends State {
     this.numAsteroidsLeft--;
     float delayDelta = this.maxDelay - this.minDelay;
     this.currentDelay = this.minDelay + (delayDelta * this.numAsteroidsLeft / this.totalAsteroids);
-    if (a.getType() == Asteroid.LARGE) {
-      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
-      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
+    if (a.getType() == Asteroid.Companion.getLARGE()) {
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.Companion.getMEDIUM()));
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.Companion.getMEDIUM()));
     }
-    if (a.getType() == Asteroid.MEDIUM) {
-      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
-      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
+    if (a.getType() == Asteroid.Companion.getMEDIUM()) {
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.Companion.getSMALL()));
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.Companion.getSMALL()));
     }
   }
 
@@ -132,7 +132,7 @@ public class PlayState extends State {
         dy = y - this.player.gety();
         dist = (float) Math.sqrt(dx * dx + dy * dy);
       }
-      this.asteroids.add(new Asteroid(x, y, Asteroid.LARGE));
+      this.asteroids.add(new Asteroid(x, y, Asteroid.Companion.getLARGE()));
     }
   }
 
@@ -150,16 +150,16 @@ public class PlayState extends State {
     this.player.update(delta);
     if (this.player.isDead()) {
       if (this.player.getLives() == 0) {
-        Jukebox.stopAll();
+        Jukebox.INSTANCE.stopAll();
         Save.data.setTenativeScore(this.player.getScore());
-        this.gsm.setState(StateManager.GAME_OVER);
+        this.gsm.setState(StateManager.Companion.getGAME_OVER());
         return;
       }
       this.player.reset();
       this.player.loseLife();
       this.flyingSaucer = null;
-      Jukebox.stop("smallsaucer");
-      Jukebox.stop("largesaucer");
+      Jukebox.INSTANCE.stop("smallsaucer");
+      Jukebox.INSTANCE.stop("largesaucer");
       return;
     }
 
@@ -177,8 +177,8 @@ public class PlayState extends State {
       this.fsTimer += delta;
       if (this.fsTimer >= this.fsTime) {
         this.fsTimer = 0;
-        int type = MathUtils.random() < 0.5 ? FlyingSaucer.SMALL : FlyingSaucer.LARGE;
-        int direction = MathUtils.random() < 0.5 ? FlyingSaucer.RIGHT : FlyingSaucer.LEFT;
+        int type = MathUtils.random() < 0.5 ? FlyingSaucer.Companion.getSMALL() : FlyingSaucer.Companion.getLARGE();
+        int direction = MathUtils.random() < 0.5 ? FlyingSaucer.Companion.getRIGHT() : FlyingSaucer.Companion.getLEFT();
         this.flyingSaucer = new FlyingSaucer(type, direction, this.player, this.enemyBullets);
       }
     }
@@ -187,8 +187,8 @@ public class PlayState extends State {
       this.flyingSaucer.update(delta);
       if (this.flyingSaucer.shouldRemove()) {
         this.flyingSaucer = null;
-        Jukebox.stop("smallsaucer");
-        Jukebox.stop("largesaucer");
+        Jukebox.INSTANCE.stop("smallsaucer");
+        Jukebox.INSTANCE.stop("largesaucer");
       }
     }
 
@@ -222,9 +222,9 @@ public class PlayState extends State {
     this.bgTimer += delta;
     if (this.player.isNotHit() && this.bgTimer >= this.currentDelay) {
       if (this.playLowPulse) {
-        Jukebox.play("pulselow");
+        Jukebox.INSTANCE.play("pulselow");
       } else {
-        Jukebox.play("pulsehigh");
+        Jukebox.INSTANCE.play("pulsehigh");
       }
       this.playLowPulse = !this.playLowPulse;
       this.bgTimer = 0;
@@ -241,7 +241,7 @@ public class PlayState extends State {
           this.player.hit();
           this.asteroids.remove(i);
           splitAsteroids(a);
-          Jukebox.play("explode");
+          Jukebox.INSTANCE.play("explode");
           break;
         }
       }
@@ -258,7 +258,7 @@ public class PlayState extends State {
           this.asteroids.remove(j);
           splitAsteroids(a);
           this.player.incrementScore(a.getScore());
-          Jukebox.play("explode");
+          Jukebox.INSTANCE.play("explode");
           break;
         }
       }
@@ -271,9 +271,9 @@ public class PlayState extends State {
         createParticles(this.player.getx(), this.player.gety());
         createParticles(this.flyingSaucer.getx(), this.flyingSaucer.gety());
         this.flyingSaucer = null;
-        Jukebox.stop("smallsaucer");
-        Jukebox.stop("largesaucer");
-        Jukebox.play("explode");
+        Jukebox.INSTANCE.stop("smallsaucer");
+        Jukebox.INSTANCE.stop("largesaucer");
+        Jukebox.INSTANCE.play("explode");
       }
     }
 
@@ -286,9 +286,9 @@ public class PlayState extends State {
           createParticles(this.flyingSaucer.getx(), this.flyingSaucer.gety());
           this.player.incrementScore(this.flyingSaucer.getScore());
           this.flyingSaucer = null;
-          Jukebox.stop("smallsaucer");
-          Jukebox.stop("largesaucer");
-          Jukebox.play("explode");
+          Jukebox.INSTANCE.stop("smallsaucer");
+          Jukebox.INSTANCE.stop("largesaucer");
+          Jukebox.INSTANCE.play("explode");
           break;
         }
       }
@@ -301,7 +301,7 @@ public class PlayState extends State {
         if (this.player.contains(b.getx(), b.gety())) {
           this.player.hit();
           this.enemyBullets.remove(i);
-          Jukebox.play("explode");
+          Jukebox.INSTANCE.play("explode");
           break;
         }
       }
@@ -317,9 +317,9 @@ public class PlayState extends State {
           createParticles(a.getx(), a.gety());
           createParticles(this.flyingSaucer.getx(), this.flyingSaucer.gety());
           this.flyingSaucer = null;
-          Jukebox.stop("smallsaucer");
-          Jukebox.stop("largesaucer");
-          Jukebox.play("explode");
+          Jukebox.INSTANCE.stop("smallsaucer");
+          Jukebox.INSTANCE.stop("largesaucer");
+          Jukebox.INSTANCE.play("explode");
           break;
         }
       }
@@ -337,7 +337,7 @@ public class PlayState extends State {
           this.enemyBullets.remove(i);
           i--;
           createParticles(a.getx(), a.gety());
-          Jukebox.play("explode");
+          Jukebox.INSTANCE.play("explode");
           break;
         }
       }

@@ -61,7 +61,7 @@ public class HighScoreState extends State {
 
   public void handleInput() {
     if (Gdx.input.isKeyJustPressed(Keys.ENTER) || Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
-      gsm.setState(StateManager.MENU);
+      gsm.setState(StateManager.Companion.getMENU());
     }
   }
 

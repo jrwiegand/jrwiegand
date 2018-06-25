@@ -53,7 +53,7 @@ public class MenuState extends State {
           new Asteroid(
               MathUtils.random(Application.WIDTH),
               MathUtils.random(Application.HEIGHT),
-              Asteroid.LARGE
+                  Asteroid.Companion.getLARGE()
           )
       );
     }
@@ -122,11 +122,11 @@ public class MenuState extends State {
   private void select() {
     // play
     if (this.currentItem == 0) {
-      this.gsm.setState(StateManager.PLAY);
+      this.gsm.setState(StateManager.Companion.getPLAY());
     }
     // high scores
     else if (this.currentItem == 1) {
-      this.gsm.setState(StateManager.HIGH_SCORE);
+      this.gsm.setState(StateManager.Companion.getHIGH_SCORE());
     } else if (this.currentItem == 2) {
       Gdx.app.exit();
     }
