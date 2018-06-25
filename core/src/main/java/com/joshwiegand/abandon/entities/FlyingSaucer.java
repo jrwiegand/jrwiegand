@@ -39,72 +39,72 @@ public class FlyingSaucer extends SpaceObject {
     this.player = player;
     this.bullets = bullets;
 
-    speed = 70;
+    this.speed = 70;
     if (direction == LEFT) {
-      dx = -speed;
-      x = Application.WIDTH;
+      this.dx = -this.speed;
+      this.x = Application.WIDTH;
     } else if (direction == RIGHT) {
-      dx = speed;
-      x = 0;
+      this.dx = this.speed;
+      this.x = 0;
     }
-    y = MathUtils.random(Application.HEIGHT);
+    this.y = MathUtils.random(Application.HEIGHT);
 
-    shapex = new float[6];
-    shapey = new float[6];
+    this.shapex = new float[6];
+    this.shapey = new float[6];
     setShape();
 
     if (type == LARGE) {
-      score = 200;
+      this.score = 200;
       Jukebox.loop("largesaucer");
     } else if (type == SMALL) {
-      score = 1000;
+      this.score = 1000;
       Jukebox.loop("smallsaucer");
     }
 
-    fireTimer = 0;
-    fireTime = 1;
+    this.fireTimer = 0;
+    this.fireTime = 1;
 
-    pathTimer = 0;
-    pathTime1 = 2;
-    pathTime2 = pathTime1 + 2;
+    this.pathTimer = 0;
+    this.pathTime1 = 2;
+    this.pathTime2 = this.pathTime1 + 2;
   }
 
   private void setShape() {
-    if (type == LARGE) {
-      shapex[0] = x - 10;
-      shapey[0] = y;
+    if (this.type == LARGE) {
+      this.shapex[0] = this.x - 10;
+      this.shapey[0] = this.y;
 
-      shapex[1] = x - 3;
-      shapey[1] = y - 5;
+      this.shapex[1] = this.x - 3;
+      this.shapey[1] = this.y - 5;
 
-      shapex[2] = x + 3;
+      this.shapex[2] = x + 3;
       shapey[2] = y - 5;
 
-      shapex[3] = x + 10;
+      this.shapex[3] = x + 10;
       shapey[3] = y;
 
-      shapex[4] = x + 3;
+      this.shapex[4] = x + 3;
       shapey[4] = y + 5;
 
-      shapex[5] = x - 3;
+      this.shapex[5] = x - 3;
       shapey[5] = y + 5;
     } else if (type == SMALL) {
-      shapex[0] = x - 6;
+      this.shapex[0] = x - 6;
       shapey[0] = y;
 
-      shapex[1] = x - 2;
+      this.shapex[1] = x - 2;
       shapey[1] = y - 3;
 
-      shapex[2] = x + 2;
+      this.shapex[2] = x + 2;
       shapey[2] = y - 3;
 
-      shapex[3] = x + 6;
+      this.shapex[3] = x + 6;
       shapey[3] = y;
 
-      shapex[4] = x + 2;
+      this.shapex[4] = x + 2;
       shapey[4] = y + 3;
 
-      shapex[5] = x - 2;
+      this.shapex[5] = x - 2;
       shapey[5] = y + 3;
     }
   }
@@ -120,7 +120,7 @@ public class FlyingSaucer extends SpaceObject {
   public void update(float dt) {
 
     // fire
-    if (!player.isHit()) {
+    if (player.isNotHit()) {
       fireTimer += dt;
       if (fireTimer > fireTime) {
         fireTimer = 0;
@@ -177,14 +177,14 @@ public class FlyingSaucer extends SpaceObject {
     sr.setColor(1, 1, 1, 1);
     sr.begin(ShapeType.Line);
 
-    for (int i = 0, j = shapex.length - 1;
-        i < shapex.length;
+    for (int i = 0, j = this.shapex.length - 1;
+        i < this.shapex.length;
         j = i++) {
 
-      sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
+      sr.line(this.shapex[i], shapey[i], this.shapex[j], shapey[j]);
     }
 
-    sr.line(shapex[0], shapey[0], shapex[3], shapey[3]);
+    sr.line(this.shapex[0], shapey[0], this.shapex[3], shapey[3]);
 
     sr.end();
   }

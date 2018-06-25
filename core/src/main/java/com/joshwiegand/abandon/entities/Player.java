@@ -13,7 +13,7 @@ import com.joshwiegand.abandon.managers.Jukebox;
 
 public class Player extends SpaceObject {
 
-  private final int MAX_BULLETS = 4;
+  private static final int MAX_BULLETS = 4;
   private ArrayList<Bullet> bullets;
 
   private float[] flamex;
@@ -43,72 +43,72 @@ public class Player extends SpaceObject {
   public Player(ArrayList<Bullet> bullets) {
     this.bullets = bullets;
 
-    x = Application.WIDTH / 2;
-    y = Application.HEIGHT / 2;
+    this.x = Application.WIDTH / 2;
+    this.y = Application.HEIGHT / 2;
 
-    maxSpeed = 300;
-    acceleration = 200;
-    deceleration = 10;
+    this.maxSpeed = 300;
+    this.acceleration = 200;
+    this.deceleration = 10;
 
-    shapex = new float[4];
-    shapey = new float[4];
-    flamex = new float[3];
-    flamey = new float[3];
+    this.shapex = new float[4];
+    this.shapey = new float[4];
+    this.flamex = new float[3];
+    this.flamey = new float[3];
 
-    radians = 3.1415f / 2;
-    rotationSpeed = 3;
+    this.radians = 3.1415f / 2;
+    this.rotationSpeed = 3;
 
-    hit = false;
-    hitTimer = 0;
-    hitTime = 2;
+    this.hit = false;
+    this.hitTimer = 0;
+    this.hitTime = 2;
 
-    score = 0;
-    extraLives = 3;
-    requiredScore = 10000;
+    this.score = 0;
+    this.extraLives = 3;
+    this.requiredScore = 10000;
   }
 
   private void setShape() {
-    shapex[0] = x + MathUtils.cos(radians) * 8;
-    shapey[0] = y + MathUtils.sin(radians) * 8;
+    this.shapex[0] = this.x + MathUtils.cos(this.radians) * 8;
+    this.shapey[0] = this.y + MathUtils.sin(this.radians) * 8;
 
-    shapex[1] = x + MathUtils.cos(radians - 4 * 3.1415f / 5) * 8;
-    shapey[1] = y + MathUtils.sin(radians - 4 * 3.1415f / 5) * 8;
+    this.shapex[1] = this.x + MathUtils.cos(this.radians - 4 * 3.1415f / 5) * 8;
+    this.shapey[1] = this.y + MathUtils.sin(this.radians - 4 * 3.1415f / 5) * 8;
 
-    shapex[2] = x + MathUtils.cos(radians + 3.1415f) * 5;
-    shapey[2] = y + MathUtils.sin(radians + 3.1415f) * 5;
+    this.shapex[2] = this.x + MathUtils.cos(this.radians + 3.1415f) * 5;
+    this.shapey[2] = this.y + MathUtils.sin(this.radians + 3.1415f) * 5;
 
-    shapex[3] = x + MathUtils.cos(radians + 4 * 3.1415f / 5) * 8;
-    shapey[3] = y + MathUtils.sin(radians + 4 * 3.1415f / 5) * 8;
+    this.shapex[3] = this.x + MathUtils.cos(this.radians + 4 * 3.1415f / 5) * 8;
+    this.shapey[3] = this.y + MathUtils.sin(this.radians + 4 * 3.1415f / 5) * 8;
   }
 
   private void setFlame() {
-    flamex[0] = x + MathUtils.cos(radians - 5 * 3.1415f / 6) * 5;
-    flamey[0] = y + MathUtils.sin(radians - 5 * 3.1415f / 6) * 5;
+    this.flamex[0] = this.x + MathUtils.cos(this.radians - 5 * 3.1415f / 6) * 5;
+    this.flamey[0] = this.y + MathUtils.sin(this.radians - 5 * 3.1415f / 6) * 5;
 
-    flamex[1] = x + MathUtils.cos(radians - 3.1415f) *
-        (6 + acceleratingTimer * 50);
-    flamey[1] = y + MathUtils.sin(radians - 3.1415f) *
-        (6 + acceleratingTimer * 50);
+    this.flamex[1] = this.x + MathUtils.cos(this.radians - 3.1415f) *
+        (6 + this.acceleratingTimer * 50);
+    this.flamey[1] = this.y + MathUtils.sin(this.radians - 3.1415f) *
+        (6 + this.acceleratingTimer * 50);
 
-    flamex[2] = x + MathUtils.cos(radians + 5 * 3.1415f / 6) * 5;
-    flamey[2] = y + MathUtils.sin(radians + 5 * 3.1415f / 6) * 5;
+    this.flamex[2] = this.x + MathUtils.cos(this.radians + 5 * 3.1415f / 6) * 5;
+    this.flamey[2] = this.y + MathUtils.sin(this.radians + 5 * 3.1415f / 6) * 5;
   }
 
   public void setLeft(boolean b) {
-    left = b;
+    this.left = b;
   }
 
   public void setRight(boolean b) {
-    right = b;
+    this.right = b;
   }
 
   public void setUp(boolean b) {
-    if (b && !up && !hit) {
+    if (b && !this.up && !this.hit) {
       Jukebox.loop("thruster");
     } else if (!b) {
       Jukebox.stop("thruster");
     }
-    up = b;
+    this.up = b;
   }
 
   public void setPosition(float x, float y) {
@@ -116,148 +116,149 @@ public class Player extends SpaceObject {
     setShape();
   }
 
-  public boolean isHit() {
-    return hit;
+  public boolean isNotHit() {
+    return !this.hit;
   }
 
   public boolean isDead() {
-    return dead;
+    return this.dead;
   }
 
   public void reset() {
-    x = Application.WIDTH / 2;
-    y = Application.HEIGHT / 2;
+    this.x = Application.WIDTH / 2;
+    this.y = Application.HEIGHT / 2;
     setShape();
-    hit = dead = false;
+    this.hit = this.dead = false;
   }
 
   public long getScore() {
-    return score;
+    return this.score;
   }
 
   public int getLives() {
-    return extraLives;
+    return this.extraLives;
   }
 
   public void loseLife() {
-    extraLives--;
+    this.extraLives--;
   }
 
   public void incrementScore(long l) {
-    score += l;
+    this.score += l;
   }
 
   public void shoot() {
-    if (bullets.size() == MAX_BULLETS) {
+    if (this.bullets.size() == MAX_BULLETS) {
       return;
     }
-    bullets.add(new Bullet(x, y, radians));
+    this.bullets.add(new Bullet(this.x, this.y, this.radians));
     Jukebox.play("shoot");
   }
 
   public void hit() {
-    if (hit) {
+    if (this.hit) {
       return;
     }
 
-    hit = true;
-    dx = dy = 0;
-    left = right = up = false;
+    this.hit = true;
+    this.dx = this.dy = 0;
+    this.left = this.right = this.up = false;
     Jukebox.stop("thruster");
 
-    hitLines = new Line2D.Float[4];
-    for (int i = 0, j = hitLines.length - 1;
-        i < hitLines.length;
-        j = i++) {
-      hitLines[i] = new Line2D.Float(
-          shapex[i], shapey[i], shapex[j], shapey[j]
+    this.hitLines = new Line2D.Float[4];
+    for (int i = 0, j = this.hitLines.length - 1; i < this.hitLines.length; j = i++) {
+      this.hitLines[i] = new Line2D.Float(
+              this.shapex[i],
+              this.shapey[i],
+              this.shapex[j],
+              this.shapey[j]
       );
     }
 
-    hitLinesVector = new Point2D.Float[4];
-    hitLinesVector[0] = new Point2D.Float(
-        MathUtils.cos(radians + 1.5f),
-        MathUtils.sin(radians + 1.5f)
+    this.hitLinesVector = new Point2D.Float[4];
+    this.hitLinesVector[0] = new Point2D.Float(
+        MathUtils.cos(this.radians + 1.5f),
+        MathUtils.sin(this.radians + 1.5f)
     );
-    hitLinesVector[1] = new Point2D.Float(
-        MathUtils.cos(radians - 1.5f),
-        MathUtils.sin(radians - 1.5f)
+    this.hitLinesVector[1] = new Point2D.Float(
+        MathUtils.cos(this.radians - 1.5f),
+        MathUtils.sin(this.radians - 1.5f)
     );
-    hitLinesVector[2] = new Point2D.Float(
-        MathUtils.cos(radians - 2.8f),
-        MathUtils.sin(radians - 2.8f)
+    this.hitLinesVector[2] = new Point2D.Float(
+        MathUtils.cos(this.radians - 2.8f),
+        MathUtils.sin(this.radians - 2.8f)
     );
-    hitLinesVector[3] = new Point2D.Float(
-        MathUtils.cos(radians + 2.8f),
-        MathUtils.sin(radians + 2.8f)
+    this.hitLinesVector[3] = new Point2D.Float(
+        MathUtils.cos(this.radians + 2.8f),
+        MathUtils.sin(this.radians + 2.8f)
     );
   }
 
   public void update(float dt) {
     // check if hit
-    if (hit) {
-      hitTimer += dt;
-      if (hitTimer > hitTime) {
-        dead = true;
-        hitTimer = 0;
+    if (this.hit) {
+      this.hitTimer += dt;
+      if (this.hitTimer > this.hitTime) {
+        this.dead = true;
+        this.hitTimer = 0;
       }
-      for (int i = 0; i < hitLines.length; i++) {
-        hitLines[i].setLine(
-            hitLines[i].x1 + hitLinesVector[i].x * 10 * dt,
-            hitLines[i].y1 + hitLinesVector[i].y * 10 * dt,
-            hitLines[i].x2 + hitLinesVector[i].x * 10 * dt,
-            hitLines[i].y2 + hitLinesVector[i].y * 10 * dt
+      for (int i = 0; i < this.hitLines.length; i++) {
+        this.hitLines[i].setLine(
+                this.hitLines[i].x1 + this.hitLinesVector[i].x * 10 * dt,
+                this.hitLines[i].y1 + this.hitLinesVector[i].y * 10 * dt,
+                this.hitLines[i].x2 + this.hitLinesVector[i].x * 10 * dt,
+                this.hitLines[i].y2 + this.hitLinesVector[i].y * 10 * dt
         );
       }
       return;
     }
 
     // check extra lives
-    if (score >= requiredScore) {
-      extraLives++;
-      requiredScore += 10000;
+    if (this.score >= this.requiredScore) {
+      this.extraLives++;
+      this.requiredScore += 10000;
       Jukebox.play("extralife");
     }
 
     // turning
-    if (left) {
-      radians += rotationSpeed * dt;
-    } else if (right) {
-      radians -= rotationSpeed * dt;
+    if (this.left) {
+      this.radians += this.rotationSpeed * dt;
+    } else if (this.right) {
+      this.radians -= this.rotationSpeed * dt;
     }
 
     // accelerating
-    if (up) {
-      dx += MathUtils.cos(radians) * acceleration * dt;
-      dy += MathUtils.sin(radians) * acceleration * dt;
-      acceleratingTimer += dt;
-      if (acceleratingTimer > 0.1f) {
-        acceleratingTimer = 0;
+    if (this.up) {
+      this.dx += MathUtils.cos(this.radians) * this.acceleration * dt;
+      this.dy += MathUtils.sin(this.radians) * this.acceleration * dt;
+      this.acceleratingTimer += dt;
+      if (this.acceleratingTimer > 0.1f) {
+        this.acceleratingTimer = 0;
       }
     } else {
-      acceleratingTimer = 0;
+      this.acceleratingTimer = 0;
     }
 
     // deceleration
-    float vec = (float) Math.sqrt(dx * dx + dy * dy);
+    float vec = (float) Math.sqrt(this.dx * this.dx + this.dy * this.dy);
     if (vec > 0) {
-      dx -= (dx / vec) * deceleration * dt;
-      dy -= (dy / vec) * deceleration * dt;
+      this.dx -= (this.dx / vec) * this.deceleration * dt;
+      this.dy -= (this.dy / vec) * this.deceleration * dt;
     }
-    if (vec > maxSpeed) {
-      dx = (dx / vec) * maxSpeed;
-      dy = (dy / vec) * maxSpeed;
+    if (vec > this.maxSpeed) {
+      this.dx = (this.dx / vec) * this.maxSpeed;
+      this.dy = (this.dy / vec) * this.maxSpeed;
     }
 
     // set position
-    x += dx * dt;
-    y += dy * dt;
+    this.x += this.dx * dt;
+    this.y += this.dy * dt;
 
     // set shape
     setShape();
 
     // set flame
-    if (up) {
+    if (this.up) {
       setFlame();
     }
 
@@ -271,8 +272,8 @@ public class Player extends SpaceObject {
     sr.begin(ShapeType.Line);
 
     // check if hit
-    if (hit) {
-      for (Float hitLine : hitLines) {
+    if (this.hit) {
+      for (Float hitLine : this.hitLines) {
         sr.line(hitLine.x1, hitLine.y1, hitLine.x2, hitLine.y2);
       }
       sr.end();
@@ -280,20 +281,20 @@ public class Player extends SpaceObject {
     }
 
     // draw ship
-    for (int i = 0, j = shapex.length - 1;
-        i < shapex.length;
+    for (int i = 0, j = this.shapex.length - 1;
+        i < this.shapex.length;
         j = i++) {
 
-      sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
+      sr.line(this.shapex[i], this.shapey[i], this.shapex[j], this.shapey[j]);
     }
 
     // draw flames
-    if (up) {
-      for (int i = 0, j = flamex.length - 1;
-          i < flamex.length;
+    if (this.up) {
+      for (int i = 0, j = this.flamex.length - 1;
+          i < this.flamex.length;
           j = i++) {
 
-        sr.line(flamex[i], flamey[i], flamex[j], flamey[j]);
+        sr.line(this.flamex[i], this.flamey[i], this.flamex[j], this.flamey[j]);
 
       }
     }

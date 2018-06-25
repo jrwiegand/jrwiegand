@@ -15,42 +15,40 @@ public class Asteroid extends SpaceObject {
 
   private int score;
 
-  private boolean remove;
-
   public Asteroid(float x, float y, int type) {
     this.x = x;
     this.y = y;
     this.type = type;
 
     if (type == SMALL) {
-      numPoints = 8;
-      width = height = 12;
-      speed = MathUtils.random(70, 100);
-      score = 100;
+      this.numPoints = 8;
+      this.width = this.height = 12;
+      this.speed = MathUtils.random(70, 100);
+      this.score = 100;
     } else if (type == MEDIUM) {
-      numPoints = 10;
-      width = height = 20;
-      speed = MathUtils.random(50, 60);
-      score = 50;
+      this.numPoints = 10;
+      this.width = this.height = 20;
+      this.speed = MathUtils.random(50, 60);
+      this.score = 50;
     } else if (type == LARGE) {
-      numPoints = 12;
-      width = height = 40;
-      speed = MathUtils.random(20, 30);
-      score = 20;
+      this.numPoints = 12;
+      this.width = this.height = 40;
+      this.speed = MathUtils.random(20, 30);
+      this.score = 20;
     }
 
-    rotationSpeed = MathUtils.random(-1, 1);
+    this.rotationSpeed = MathUtils.random(-1, 1);
 
-    radians = MathUtils.random(2 * 3.1415f);
-    dx = MathUtils.cos(radians) * speed;
-    dy = MathUtils.sin(radians) * speed;
+    this.radians = MathUtils.random(2 * 3.1415f);
+    this.dx = MathUtils.cos(this.radians) * this.speed;
+    this.dy = MathUtils.sin(this.radians) * this.speed;
 
-    shapex = new float[numPoints];
-    shapey = new float[numPoints];
-    dists = new float[numPoints];
+    this.shapex = new float[this.numPoints];
+    this.shapey = new float[this.numPoints];
+    dists = new float[this.numPoints];
 
-    int radius = width / 2;
-    for (int i = 0; i < numPoints; i++) {
+    int radius = this.width / 2;
+    for (int i = 0; i < this.numPoints; i++) {
       dists[i] = MathUtils.random(radius / 2, radius);
     }
     setShape();
@@ -58,30 +56,26 @@ public class Asteroid extends SpaceObject {
 
   private void setShape() {
     float angle = 0;
-    for (int i = 0; i < numPoints; i++) {
-      shapex[i] = x + MathUtils.cos(angle + radians) * dists[i];
-      shapey[i] = y + MathUtils.sin(angle + radians) * dists[i];
-      angle += 2 * 3.1415f / numPoints;
+    for (int i = 0; i < this.numPoints; i++) {
+      this.shapex[i] = this.x + MathUtils.cos(angle + this.radians) * this.dists[i];
+      this.shapey[i] = this.y + MathUtils.sin(angle + this.radians) * this.dists[i];
+      angle += 2 * 3.1415f / this.numPoints;
     }
   }
 
   public int getType() {
-    return type;
-  }
-
-  public boolean shouldRemove() {
-    return remove;
+    return this.type;
   }
 
   public int getScore() {
-    return score;
+    return this.score;
   }
 
   public void update(float dt) {
-    x += dx * dt;
-    y += dy * dt;
+    this.x += this.dx * dt;
+    this.y += this.dy * dt;
 
-    radians += rotationSpeed * dt;
+    this.radians += this.rotationSpeed * dt;
     setShape();
 
     wrap();
@@ -90,11 +84,8 @@ public class Asteroid extends SpaceObject {
   public void draw(ShapeRenderer sr) {
     sr.setColor(1, 1, 1, 1);
     sr.begin(ShapeType.Line);
-    for (int i = 0, j = shapex.length - 1;
-        i < shapex.length;
-        j = i++) {
-
-      sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
+    for (int i = 0, j = this.shapex.length - 1; i < this.shapex.length; j = i++) {
+      sr.line(this.shapex[i], this.shapey[i], this.shapex[j], this.shapey[j]);
     }
     sr.end();
   }

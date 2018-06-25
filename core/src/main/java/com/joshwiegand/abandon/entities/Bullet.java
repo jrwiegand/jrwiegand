@@ -11,41 +11,41 @@ public class Bullet extends SpaceObject {
 
   private boolean remove;
 
-  public Bullet(float x, float y, float radians) {
+  Bullet(float x, float y, float radians) {
     this.x = x;
     this.y = y;
     this.radians = radians;
 
     float speed = 350;
-    dx = MathUtils.cos(radians) * speed;
-    dy = MathUtils.sin(radians) * speed;
+    this.dx = MathUtils.cos(radians) * speed;
+    this.dy = MathUtils.sin(radians) * speed;
 
-    width = height = 2;
+    this.width = this.height = 2;
 
-    lifeTimer = 0;
-    lifeTime = 1;
+    this.lifeTimer = 0;
+    this.lifeTime = 1;
   }
 
   public boolean shouldRemove() {
-    return remove;
+    return this.remove;
   }
 
   public void update(float dt) {
-    x += dx * dt;
-    y += dy * dt;
+    this.x += this.dx * dt;
+    this.y += this.dy * dt;
 
     wrap();
 
-    lifeTimer += dt;
-    if (lifeTimer > lifeTime) {
-      remove = true;
+    this.lifeTimer += dt;
+    if (this.lifeTimer > this.lifeTime) {
+      this.remove = true;
     }
   }
 
   public void draw(ShapeRenderer sr) {
     sr.setColor(1, 1, 1, 1);
     sr.begin(ShapeType.Line);
-    sr.circle(x - width / 2, y - height / 2, width / 2);
+    sr.circle(this.x - this.width / 2, this.y - this.height / 2, this.width / 2);
     sr.end();
   }
 }

@@ -28,20 +28,20 @@ public class GameOverState extends State {
   }
 
   public void init() {
-    sb = new SpriteBatch();
-    sr = new ShapeRenderer();
+    this.sb = new SpriteBatch();
+    this.sr = new ShapeRenderer();
 
-    newHighScore = Save.data.isHighScore(Save.data.getTentativeScore());
-    if (newHighScore) {
-      newName = new char[]{'A', 'A', 'A'};
-      currentChar = 0;
+    this.newHighScore = Save.data.isHighScore(Save.data.getTentativeScore());
+    if (this.newHighScore) {
+      this.newName = new char[]{'A', 'A', 'A'};
+      this.currentChar = 0;
     }
 
     FreeTypeFontGenerator gen = new FreeTypeFontGenerator(
         Gdx.files.internal("fonts/Hyperspace Bold.ttf")
     );
-    gameOverFont = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
-    font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
+    this.gameOverFont = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
+    this.font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
   }
 
   public void update(float delta) {
@@ -50,98 +50,93 @@ public class GameOverState extends State {
 
   public void draw() {
 
-    sb.setProjectionMatrix(Application.camera.combined);
+    this.sb.setProjectionMatrix(Application.camera.combined);
 
-    sb.begin();
+    this.sb.begin();
 
     String s;
     float w;
 
     s = "Game Over";
-    w = gameOverFont.getSpaceWidth();
-    gameOverFont.draw(sb, s, (Application.WIDTH - w) / 2, 220);
+    w = this.gameOverFont.getSpaceWidth();
+    this.gameOverFont.draw(this.sb, s, (Application.WIDTH - w) / 2, 220);
 
-    if (!newHighScore) {
-      sb.end();
+    if (!this.newHighScore) {
+      this.sb.end();
       return;
     }
 
     s = "New High Score: " + Save.data.getTentativeScore();
-    w = font.getSpaceWidth();
-    font.draw(sb, s, (Application.WIDTH - w) / 2, 180);
+    w = this.font.getSpaceWidth();
+    this.font.draw(this.sb, s, (Application.WIDTH - w) / 2, 180);
 
-    for (int i = 0; i < newName.length; i++) {
-      font.draw(
-          sb,
-          Character.toString(newName[i]),
-          230 + 14 * i,
-          120
-      );
+    for (int i = 0; i < this.newName.length; i++) {
+      this.font.draw(sb, Character.toString(this.newName[i]), 230 + 14 * i, 120);
     }
 
-    sb.end();
+    this.sb.end();
 
-    sr.begin(ShapeType.Line);
-    sr.line(
-        230 + 14 * currentChar,
+    this.sr.begin(ShapeType.Line);
+    this.sr.line(
+        230 + 14 * this.currentChar,
         100,
-        244 + 14 * currentChar,
+        244 + 14 * this.currentChar,
         100
     );
-    sr.end();
+    this.sr.end();
   }
 
   public void handleInput() {
     if (Gdx.input.isKeyJustPressed(Keys.ENTER)) {
-      if (newHighScore) {
+      if (this.newHighScore) {
         Save.data.addHighScore(
             Save.data.getTentativeScore(),
-            new String(newName)
+            new String(this.newName)
         );
         Save.save();
       }
-      gsm.setState(StateManager.MENU);
+      this.gsm.setState(StateManager.MENU);
     }
 
     if (Gdx.input.isKeyJustPressed(Keys.UP)) {
-      if (newName[currentChar] == ' ') {
-        newName[currentChar] = 'Z';
+      if (this.newName[this.currentChar] == ' ') {
+        this.newName[this.currentChar] = 'Z';
       } else {
-        newName[currentChar]--;
-        if (newName[currentChar] < 'A') {
-          newName[currentChar] = ' ';
+        this.newName[this.currentChar]--;
+        if (this.newName[this.currentChar] < 'A') {
+          this.newName[this.currentChar] = ' ';
         }
       }
     }
 
     if (Gdx.input.isKeyJustPressed(Keys.DOWN)) {
-      if (newName[currentChar] == ' ') {
-        newName[currentChar] = 'A';
+      if (this.newName[this.currentChar] == ' ') {
+        this.newName[this.currentChar] = 'A';
       } else {
-        newName[currentChar]++;
-        if (newName[currentChar] > 'Z') {
-          newName[currentChar] = ' ';
+        this.newName[this.currentChar]++;
+        if (this.newName[this.currentChar] > 'Z') {
+          this.newName[this.currentChar] = ' ';
         }
       }
     }
 
     if (Gdx.input.isKeyJustPressed(Keys.RIGHT)) {
-      if (currentChar < newName.length - 1) {
-        currentChar++;
+      if (this.currentChar < this.newName.length - 1) {
+        this.currentChar++;
       }
     }
 
     if (Gdx.input.isKeyJustPressed(Keys.LEFT)) {
-      if (currentChar > 0) {
-        currentChar--;
+      if (this.currentChar > 0) {
+        this.currentChar--;
       }
     }
   }
 
   public void dispose() {
-    sb.dispose();
-    sr.dispose();
-    gameOverFont.dispose();
-    font.dispose();
+    this.sb.dispose();
+    this.sr.dispose();
+    this.gameOverFont.dispose();
+    this.font.dispose();
   }
 }

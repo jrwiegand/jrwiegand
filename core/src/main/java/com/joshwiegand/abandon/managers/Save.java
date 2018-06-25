@@ -40,11 +40,11 @@ public class Save {
     }
   }
 
-  public static boolean saveFileExists() {
+  private static boolean saveFileExists() {
     return new File("highscores.sav").exists();
   }
 
-  public static void init() {
+  private static void init() {
     data = new Data();
     data.init();
     save();

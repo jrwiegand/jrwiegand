@@ -4,9 +4,9 @@ import com.joshwiegand.abandon.managers.StateManager;
 
 public abstract class State {
 
-  protected StateManager gsm;
+  StateManager gsm;
 
-  protected State(StateManager gsm) {
+  State(StateManager gsm) {
     this.gsm = gsm;
     init();
   }

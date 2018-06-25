@@ -33,27 +33,23 @@ public class MenuState extends State {
   }
 
   public void init() {
-    sb = new SpriteBatch();
-    sr = new ShapeRenderer();
+    this.sb = new SpriteBatch();
+    this.sr = new ShapeRenderer();
 
     FreeTypeFontGenerator gen = new FreeTypeFontGenerator(
         Gdx.files.internal("fonts/Hyperspace Bold.ttf")
     );
 
-    titleFont = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
-    titleFont.setColor(Color.WHITE);
+    this.titleFont = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
+    this.titleFont.setColor(Color.WHITE);
 
-    font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
+    this.font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
 
-    menuItems = new String[]{
-        "Play",
-        "Highscores",
-        "Quit"
-    };
+    this.menuItems = new String[]{ "Play", "Highscores", "Quit" };
 
-    asteroids = new ArrayList<>();
+    this.asteroids = new ArrayList<>();
     for (int i = 0; i < 6; i++) {
-      asteroids.add(
+      this.asteroids.add(
           new Asteroid(
               MathUtils.random(Application.WIDTH),
               MathUtils.random(Application.HEIGHT),
@@ -67,60 +63,55 @@ public class MenuState extends State {
   public void update(float delta) {
     handleInput();
 
-    for (Asteroid asteroid : asteroids) {
+    for (Asteroid asteroid : this.asteroids) {
       asteroid.update(delta);
     }
   }
 
   public void draw() {
 
-    sb.setProjectionMatrix(Application.camera.combined);
-    sr.setProjectionMatrix(Application.camera.combined);
+    this.sb.setProjectionMatrix(Application.camera.combined);
+    this.sr.setProjectionMatrix(Application.camera.combined);
 
     // draw asteroids
-    for (Asteroid asteroid : asteroids) {
-      asteroid.draw(sr);
+    for (Asteroid asteroid : this.asteroids) {
+      asteroid.draw(this.sr);
     }
 
-    sb.begin();
+    this.sb.begin();
 
     // draw title
-    float width = titleFont.getSpaceWidth();
+    float width = this.titleFont.getSpaceWidth();
     String title = "Asteroids";
-    titleFont.draw(
-        sb,
-            title,
-        (Application.WIDTH - width) / 2,
-        300
-    );
+    this.titleFont.draw(this.sb, title, (Application.WIDTH - width) / 2, 300);
 
     // draw menu
-    for (int i = 0; i < menuItems.length; i++) {
-      width = font.getSpaceWidth();
-      if (currentItem == i) {
-        font.setColor(Color.RED);
+    for (int i = 0; i < this.menuItems.length; i++) {
+      width = this.font.getSpaceWidth();
+      if (this.currentItem == i) {
+        this.font.setColor(Color.RED);
       } else {
-        font.setColor(Color.WHITE);
+        this.font.setColor(Color.WHITE);
       }
-      font.draw(
-          sb,
-          menuItems[i],
+      this.font.draw(
+          this.sb,
+          this.menuItems[i],
           (Application.WIDTH - width) / 2,
           180 - 35 * i
       );
     }
-    sb.end();
+    this.sb.end();
   }
 
   public void handleInput() {
     if (Gdx.input.isKeyJustPressed(Keys.UP)) {
-      if (currentItem > 0) {
-        currentItem--;
+      if (this.currentItem > 0) {
+        this.currentItem--;
       }
     }
     if (Gdx.input.isKeyJustPressed(Keys.DOWN)) {
-      if (currentItem < menuItems.length - 1) {
-        currentItem++;
+      if (this.currentItem < this.menuItems.length - 1) {
+        this.currentItem++;
       }
     }
     if (Gdx.input.isKeyJustPressed(Keys.ENTER)) {
@@ -130,21 +121,21 @@ public class MenuState extends State {
 
   private void select() {
     // play
-    if (currentItem == 0) {
-      gsm.setState(StateManager.PLAY);
+    if (this.currentItem == 0) {
+      this.gsm.setState(StateManager.PLAY);
     }
     // high scores
-    else if (currentItem == 1) {
-      gsm.setState(StateManager.HIGH_SCORE);
-    } else if (currentItem == 2) {
+    else if (this.currentItem == 1) {
+      this.gsm.setState(StateManager.HIGH_SCORE);
+    } else if (this.currentItem == 2) {
       Gdx.app.exit();
     }
   }
 
   public void dispose() {
-    sb.dispose();
-    sr.dispose();
-    titleFont.dispose();
-    font.dispose();
+    this.sb.dispose();
+    this.sr.dispose();
+    this.titleFont.dispose();
+    this.font.dispose();
   }
 }

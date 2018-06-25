@@ -53,92 +53,86 @@ public class PlayState extends State {
   }
 
   public void init() {
-    sb = new SpriteBatch();
-    sr = new ShapeRenderer();
+    this.sb = new SpriteBatch();
+    this.sr = new ShapeRenderer();
 
     FreeTypeFontGenerator gen =
         new FreeTypeFontGenerator(
             Gdx.files.internal("fonts/Hyperspace Bold.ttf")
         );
 
-    font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
+    this.font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
 
-    bullets = new ArrayList<Bullet>();
+    this.bullets = new ArrayList<>();
 
-    player = new Player(bullets);
+    this.player = new Player(this.bullets);
 
-    asteroids = new ArrayList<Asteroid>();
+    this.asteroids = new ArrayList<>();
 
-    particles = new ArrayList<Particle>();
+    this.particles = new ArrayList<>();
 
-    level = 1;
+    this.level = 1;
     spawnAsteroids();
 
-    hudPlayer = new Player(null);
+    this.hudPlayer = new Player(null);
 
-    fsTimer = 0;
-    fsTime = 15;
-    enemyBullets = new ArrayList<Bullet>();
+    this.fsTimer = 0;
+    this.fsTime = 15;
+    this.enemyBullets = new ArrayList<>();
 
     // set up bg music
-    maxDelay = 1;
-    minDelay = 0.25f;
-    currentDelay = maxDelay;
-    bgTimer = maxDelay;
-    playLowPulse = true;
+    this.maxDelay = 1;
+    this.minDelay = 0.25f;
+    this.currentDelay = this.maxDelay;
+    this.bgTimer = this.maxDelay;
+    this.playLowPulse = true;
   }
 
   private void createParticles(float x, float y) {
     for (int i = 0; i < 6; i++) {
-      particles.add(new Particle(x, y));
+      this.particles.add(new Particle(x, y));
     }
   }
 
   private void splitAsteroids(Asteroid a) {
     createParticles(a.getx(), a.gety());
-    numAsteroidsLeft--;
-    currentDelay = ((maxDelay - minDelay) *
-        numAsteroidsLeft / totalAsteroids)
-        + minDelay;
+    this.numAsteroidsLeft--;
+    float delayDelta = this.maxDelay - this.minDelay;
+    this.currentDelay = this.minDelay + (delayDelta * this.numAsteroidsLeft / this.totalAsteroids);
     if (a.getType() == Asteroid.LARGE) {
-      asteroids.add(
-          new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
-      asteroids.add(
-          new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
     }
     if (a.getType() == Asteroid.MEDIUM) {
-      asteroids.add(
-          new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
-      asteroids.add(
-          new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
+      this.asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
     }
   }
 
   private void spawnAsteroids() {
-    asteroids.clear();
+    this.asteroids.clear();
 
-    int numToSpawn = 4 + level - 1;
-    totalAsteroids = numToSpawn * 7;
-    numAsteroidsLeft = totalAsteroids;
-    currentDelay = maxDelay;
+    int numToSpawn = 4 + this.level - 1;
+    this.totalAsteroids = numToSpawn * 7;
+    this.numAsteroidsLeft = this.totalAsteroids;
+    this.currentDelay = this.maxDelay;
 
     for (int i = 0; i < numToSpawn; i++) {
-
       float x = MathUtils.random(Application.WIDTH);
       float y = MathUtils.random(Application.HEIGHT);
 
-      float dx = x - player.getx();
-      float dy = y - player.gety();
+      float dx = x - this.player.getx();
+      float dy = y - this.player.gety();
       float dist = (float) Math.sqrt(dx * dx + dy * dy);
 
       while (dist < 100) {
         x = MathUtils.random(Application.WIDTH);
         y = MathUtils.random(Application.HEIGHT);
-        dx = x - player.getx();
-        dy = y - player.gety();
+        dx = x - this.player.getx();
+        dy = y - this.player.gety();
         dist = (float) Math.sqrt(dx * dx + dy * dy);
       }
-      asteroids.add(new Asteroid(x, y, Asteroid.LARGE));
+      this.asteroids.add(new Asteroid(x, y, Asteroid.LARGE));
     }
   }
 
@@ -147,87 +141,76 @@ public class PlayState extends State {
     handleInput();
 
     // next level
-    if (asteroids.size() == 0) {
-      level++;
+    if (this.asteroids.size() == 0) {
+      this.level++;
       spawnAsteroids();
     }
 
     // update player
-    player.update(delta);
-    if (player.isDead()) {
-      if (player.getLives() == 0) {
+    this.player.update(delta);
+    if (this.player.isDead()) {
+      if (this.player.getLives() == 0) {
         Jukebox.stopAll();
-        Save.data.setTenativeScore(player.getScore());
-        gsm.setState(StateManager.GAME_OVER);
+        Save.data.setTenativeScore(this.player.getScore());
+        this.gsm.setState(StateManager.GAME_OVER);
         return;
       }
-      player.reset();
-      player.loseLife();
-      flyingSaucer = null;
+      this.player.reset();
+      this.player.loseLife();
+      this.flyingSaucer = null;
       Jukebox.stop("smallsaucer");
       Jukebox.stop("largesaucer");
       return;
     }
 
     // update player bullets
-    for (int i = 0; i < bullets.size(); i++) {
-      bullets.get(i).update(delta);
-      if (bullets.get(i).shouldRemove()) {
-        bullets.remove(i);
+    for (int i = 0; i < this.bullets.size(); i++) {
+      this.bullets.get(i).update(delta);
+      if (this.bullets.get(i).shouldRemove()) {
+        this.bullets.remove(i);
         i--;
       }
     }
 
     // update flying saucer
-    if (flyingSaucer == null) {
-      fsTimer += delta;
-      if (fsTimer >= fsTime) {
-        fsTimer = 0;
-        int type = MathUtils.random() < 0.5 ?
-            FlyingSaucer.SMALL : FlyingSaucer.LARGE;
-        int direction = MathUtils.random() < 0.5 ?
-            FlyingSaucer.RIGHT : FlyingSaucer.LEFT;
-        flyingSaucer = new FlyingSaucer(
-            type,
-            direction,
-            player,
-            enemyBullets
-        );
+    if (this.flyingSaucer == null) {
+      this.fsTimer += delta;
+      if (this.fsTimer >= this.fsTime) {
+        this.fsTimer = 0;
+        int type = MathUtils.random() < 0.5 ? FlyingSaucer.SMALL : FlyingSaucer.LARGE;
+        int direction = MathUtils.random() < 0.5 ? FlyingSaucer.RIGHT : FlyingSaucer.LEFT;
+        this.flyingSaucer = new FlyingSaucer(type, direction, this.player, this.enemyBullets);
       }
     }
     // if there is a flying saucer already
     else {
-      flyingSaucer.update(delta);
-      if (flyingSaucer.shouldRemove()) {
-        flyingSaucer = null;
+      this.flyingSaucer.update(delta);
+      if (this.flyingSaucer.shouldRemove()) {
+        this.flyingSaucer = null;
         Jukebox.stop("smallsaucer");
         Jukebox.stop("largesaucer");
       }
     }
 
     // update fs bullets
-    for (int i = 0; i < enemyBullets.size(); i++) {
-      enemyBullets.get(i).update(delta);
-      if (enemyBullets.get(i).shouldRemove()) {
-        enemyBullets.remove(i);
+    for (int i = 0; i < this.enemyBullets.size(); i++) {
+      this.enemyBullets.get(i).update(delta);
+      if (this.enemyBullets.get(i).shouldRemove()) {
+        this.enemyBullets.remove(i);
         i--;
       }
     }
 
     // update asteroids
-    for (int i = 0; i < asteroids.size(); i++) {
-      asteroids.get(i).update(delta);
-      if (asteroids.get(i).shouldRemove()) {
-        asteroids.remove(i);
-        i--;
-      }
+    for (int i = 0; i < this.asteroids.size(); i++) {
+      this.asteroids.get(i).update(delta);
     }
 
     // update particles
-    for (int i = 0; i < particles.size(); i++) {
-      particles.get(i).update(delta);
-      if (particles.get(i).shouldRemove()) {
-        particles.remove(i);
+    for (int i = 0; i < this.particles.size(); i++) {
+      this.particles.get(i).update(delta);
+      if (this.particles.get(i).shouldRemove()) {
+        this.particles.remove(i);
         i--;
       }
     }
@@ -236,28 +219,27 @@ public class PlayState extends State {
     checkCollisions();
 
     // play bg music
-    bgTimer += delta;
-    if (!player.isHit() && bgTimer >= currentDelay) {
-      if (playLowPulse) {
+    this.bgTimer += delta;
+    if (this.player.isNotHit() && this.bgTimer >= this.currentDelay) {
+      if (this.playLowPulse) {
         Jukebox.play("pulselow");
       } else {
         Jukebox.play("pulsehigh");
       }
-      playLowPulse = !playLowPulse;
-      bgTimer = 0;
+      this.playLowPulse = !this.playLowPulse;
+      this.bgTimer = 0;
     }
   }
 
   private void checkCollisions() {
 
     // player-asteroid collision
-    if (!player.isHit()) {
-      for (int i = 0; i < asteroids.size(); i++) {
-        Asteroid a = asteroids.get(i);
-        if (a.intersects(player)) {
-          player.hit();
-          asteroids.remove(i);
-          i--;
+    if (this.player.isNotHit()) {
+      for (int i = 0; i < this.asteroids.size(); i++) {
+        Asteroid a = this.asteroids.get(i);
+        if (a.intersects(this.player)) {
+          this.player.hit();
+          this.asteroids.remove(i);
           splitAsteroids(a);
           Jukebox.play("explode");
           break;
@@ -266,17 +248,16 @@ public class PlayState extends State {
     }
 
     // bullet-asteroid collision
-    for (int i = 0; i < bullets.size(); i++) {
-      Bullet b = bullets.get(i);
-      for (int j = 0; j < asteroids.size(); j++) {
-        Asteroid a = asteroids.get(j);
+    for (int i = 0; i < this.bullets.size(); i++) {
+      Bullet b = this.bullets.get(i);
+      for (int j = 0; j < this.asteroids.size(); j++) {
+        Asteroid a = this.asteroids.get(j);
         if (a.contains(b.getx(), b.gety())) {
-          bullets.remove(i);
+          this.bullets.remove(i);
           i--;
-          asteroids.remove(j);
-          j--;
+          this.asteroids.remove(j);
           splitAsteroids(a);
-          player.incrementScore(a.getScore());
+          this.player.incrementScore(a.getScore());
           Jukebox.play("explode");
           break;
         }
@@ -284,12 +265,12 @@ public class PlayState extends State {
     }
 
     // player-flying saucer collision
-    if (flyingSaucer != null) {
-      if (player.intersects(flyingSaucer)) {
-        player.hit();
-        createParticles(player.getx(), player.gety());
-        createParticles(flyingSaucer.getx(), flyingSaucer.gety());
-        flyingSaucer = null;
+    if (this.flyingSaucer != null) {
+      if (this.player.intersects(this.flyingSaucer)) {
+        this.player.hit();
+        createParticles(this.player.getx(), this.player.gety());
+        createParticles(this.flyingSaucer.getx(), this.flyingSaucer.gety());
+        this.flyingSaucer = null;
         Jukebox.stop("smallsaucer");
         Jukebox.stop("largesaucer");
         Jukebox.play("explode");
@@ -297,18 +278,14 @@ public class PlayState extends State {
     }
 
     // bullet-flying saucer collision
-    if (flyingSaucer != null) {
-      for (int i = 0; i < bullets.size(); i++) {
-        Bullet b = bullets.get(i);
-        if (flyingSaucer.contains(b.getx(), b.gety())) {
-          bullets.remove(i);
-          i--;
-          createParticles(
-              flyingSaucer.getx(),
-              flyingSaucer.gety()
-          );
-          player.incrementScore(flyingSaucer.getScore());
-          flyingSaucer = null;
+    if (this.flyingSaucer != null) {
+      for (int i = 0; i < this.bullets.size(); i++) {
+        Bullet b = this.bullets.get(i);
+        if (this.flyingSaucer.contains(b.getx(), b.gety())) {
+          this.bullets.remove(i);
+          createParticles(this.flyingSaucer.getx(), this.flyingSaucer.gety());
+          this.player.incrementScore(this.flyingSaucer.getScore());
+          this.flyingSaucer = null;
           Jukebox.stop("smallsaucer");
           Jukebox.stop("largesaucer");
           Jukebox.play("explode");
@@ -318,13 +295,12 @@ public class PlayState extends State {
     }
 
     // player-enemy bullets collision
-    if (!player.isHit()) {
-      for (int i = 0; i < enemyBullets.size(); i++) {
-        Bullet b = enemyBullets.get(i);
-        if (player.contains(b.getx(), b.gety())) {
-          player.hit();
-          enemyBullets.remove(i);
-          i--;
+    if (this.player.isNotHit()) {
+      for (int i = 0; i < this.enemyBullets.size(); i++) {
+        Bullet b = this.enemyBullets.get(i);
+        if (this.player.contains(b.getx(), b.gety())) {
+          this.player.hit();
+          this.enemyBullets.remove(i);
           Jukebox.play("explode");
           break;
         }
@@ -332,19 +308,15 @@ public class PlayState extends State {
     }
 
     // flying saucer-asteroid collision
-    if (flyingSaucer != null) {
-      for (int i = 0; i < asteroids.size(); i++) {
-        Asteroid a = asteroids.get(i);
-        if (a.intersects(flyingSaucer)) {
-          asteroids.remove(i);
-          i--;
+    if (this.flyingSaucer != null) {
+      for (int i = 0; i < this.asteroids.size(); i++) {
+        Asteroid a = this.asteroids.get(i);
+        if (a.intersects(this.flyingSaucer)) {
+          this.asteroids.remove(i);
           splitAsteroids(a);
           createParticles(a.getx(), a.gety());
-          createParticles(
-              flyingSaucer.getx(),
-              flyingSaucer.gety()
-          );
-          flyingSaucer = null;
+          createParticles(this.flyingSaucer.getx(), this.flyingSaucer.gety());
+          this.flyingSaucer = null;
           Jukebox.stop("smallsaucer");
           Jukebox.stop("largesaucer");
           Jukebox.play("explode");
@@ -354,15 +326,15 @@ public class PlayState extends State {
     }
 
     // asteroid-enemy bullet collision
-    for (int i = 0; i < enemyBullets.size(); i++) {
-      Bullet b = enemyBullets.get(i);
-      for (int j = 0; j < asteroids.size(); j++) {
-        Asteroid a = asteroids.get(j);
+    for (int i = 0; i < this.enemyBullets.size(); i++) {
+      Bullet b = this.enemyBullets.get(i);
+      for (int j = 0; j < this.asteroids.size(); j++) {
+        Asteroid a = this.asteroids.get(j);
         if (a.contains(b.getx(), b.gety())) {
-          asteroids.remove(j);
-          j--;
+          this.asteroids.remove(j);
+//          j--;
           splitAsteroids(a);
-          enemyBullets.remove(i);
+          this.enemyBullets.remove(i);
           i--;
           createParticles(a.getx(), a.gety());
           Jukebox.play("explode");
@@ -373,67 +345,67 @@ public class PlayState extends State {
   }
 
   public void draw() {
-    sb.setProjectionMatrix(Application.camera.combined);
-    sr.setProjectionMatrix(Application.camera.combined);
+    this.sb.setProjectionMatrix(Application.camera.combined);
+    this.sr.setProjectionMatrix(Application.camera.combined);
 
     // draw player
-    player.draw(sr);
+    this.player.draw(this.sr);
 
     // draw bullets
-    for (Bullet bullet : bullets) {
-      bullet.draw(sr);
+    for (Bullet bullet : this.bullets) {
+      bullet.draw(this.sr);
     }
 
     // draw flying saucer
-    if (flyingSaucer != null) {
-      flyingSaucer.draw(sr);
+    if (this.flyingSaucer != null) {
+      this.flyingSaucer.draw(this.sr);
     }
 
     // draw fs bullets
-    for (Bullet enemyBullet : enemyBullets) {
-      enemyBullet.draw(sr);
+    for (Bullet enemyBullet : this.enemyBullets) {
+      enemyBullet.draw(this.sr);
     }
 
-    // draw asteroids
-    for (Asteroid asteroid : asteroids) {
-      asteroid.draw(sr);
+    // draw this.asteroids
+    for (Asteroid asteroid : this.asteroids) {
+      asteroid.draw(this.sr);
     }
 
     // draw particles
-    for (Particle particle : particles) {
-      particle.draw(sr);
+    for (Particle particle : this.particles) {
+      particle.draw(this.sr);
     }
 
     // draw score
-    sb.setColor(1, 1, 1, 1);
-    sb.begin();
-    font.draw(sb, Long.toString(player.getScore()), 40, 390);
-    sb.end();
+    this.sb.setColor(1, 1, 1, 1);
+    this.sb.begin();
+    this.font.draw(this.sb, Long.toString(this.player.getScore()), 40, 390);
+    this.sb.end();
 
     // draw lives
-    for (int i = 0; i < player.getLives(); i++) {
-      hudPlayer.setPosition(40 + i * 10, 360);
-      hudPlayer.draw(sr);
+    for (int i = 0; i < this.player.getLives(); i++) {
+      this.hudPlayer.setPosition(40 + i * 10, 360);
+      this.hudPlayer.draw(this.sr);
     }
   }
 
   public void handleInput() {
-    if (!player.isHit()) {
+    if (this.player.isNotHit()) {
       // continuous and fluid ship movement
-      player.setLeft(Gdx.input.isKeyPressed(Keys.LEFT));
-      player.setRight(Gdx.input.isKeyPressed(Keys.RIGHT));
-      player.setUp(Gdx.input.isKeyPressed(Keys.UP));
+      this.player.setLeft(Gdx.input.isKeyPressed(Keys.LEFT));
+      this.player.setRight(Gdx.input.isKeyPressed(Keys.RIGHT));
+      this.player.setUp(Gdx.input.isKeyPressed(Keys.UP));
 
       // Single shot at a time
       if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
-        player.shoot();
+        this.player.shoot();
       }
     }
   }
 
   public void dispose() {
-    sb.dispose();
-    sr.dispose();
-    font.dispose();
+    this.sb.dispose();
+    this.sr.dispose();
+    this.font.dispose();
   }
 }

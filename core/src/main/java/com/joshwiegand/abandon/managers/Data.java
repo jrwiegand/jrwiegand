@@ -12,60 +12,60 @@ public class Data implements Serializable {
 
   private long tentativeScore;
 
-  public Data() {
-    highScores = new long[MAX_SCORES];
-    names = new String[MAX_SCORES];
+  Data() {
+    this.highScores = new long[this.MAX_SCORES];
+    this.names = new String[this.MAX_SCORES];
   }
 
   // sets up an empty high scores table
   public void init() {
-    for (int i = 0; i < MAX_SCORES; i++) {
-      highScores[i] = 0;
-      names[i] = "---";
+    for (int i = 0; i < this.MAX_SCORES; i++) {
+      this.highScores[i] = 0;
+      this.names[i] = "---";
     }
   }
 
   public long[] getHighScores() {
-    return highScores;
+    return this.highScores;
   }
 
   public String[] getNames() {
-    return names;
+    return this.names;
   }
 
   public long getTentativeScore() {
-    return tentativeScore;
+    return this.tentativeScore;
   }
 
   public void setTenativeScore(long i) {
-    tentativeScore = i;
+    this.tentativeScore = i;
   }
 
   public boolean isHighScore(long score) {
-    return score > highScores[MAX_SCORES - 1];
+    return score > this.highScores[this.MAX_SCORES - 1];
   }
 
   public void addHighScore(long newScore, String name) {
     if (isHighScore(newScore)) {
-      highScores[MAX_SCORES - 1] = newScore;
-      names[MAX_SCORES - 1] = name;
+      this.highScores[this.MAX_SCORES - 1] = newScore;
+      this.names[this.MAX_SCORES - 1] = name;
       sortHighScores();
     }
   }
 
-  public void sortHighScores() {
-    for (int i = 0; i < MAX_SCORES; i++) {
-      long score = highScores[i];
-      String name = names[i];
+  private void sortHighScores() {
+    for (int i = 0; i < this.MAX_SCORES; i++) {
+      long score = this.highScores[i];
+      String name = this.names[i];
       int j;
       for (j = i - 1;
-          j >= 0 && highScores[j] < score;
+          j >= 0 && this.highScores[j] < score;
           j--) {
-        highScores[j + 1] = highScores[j];
-        names[j + 1] = names[j];
+        this.highScores[j + 1] = this.highScores[j];
+        this.names[j + 1] = this.names[j];
       }
-      highScores[j + 1] = score;
-      names[j + 1] = name;
+      this.highScores[j + 1] = score;
+      this.names[j + 1] = name;
     }
   }
 }

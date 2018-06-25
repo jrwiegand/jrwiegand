@@ -23,16 +23,16 @@ public class HighScoreState extends State {
   }
 
   public void init() {
-    sb = new SpriteBatch();
+    this.sb = new SpriteBatch();
 
     FreeTypeFontGenerator gen = new FreeTypeFontGenerator(
-        Gdx.files.internal("fonts/Hyperspace Bold.ttf")
+      Gdx.files.internal("fonts/Hyperspace Bold.ttf")
     );
-    font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
+    this.font = gen.generateFont(new FreeTypeFontGenerator.FreeTypeFontParameter());
 
     Save.load();
-    highScores = Save.data.getHighScores();
-    names = Save.data.getNames();
+    this.highScores = Save.data.getHighScores();
+    this.names = Save.data.getNames();
   }
 
   public void update(float delta) {
@@ -40,39 +40,33 @@ public class HighScoreState extends State {
   }
 
   public void draw() {
-    sb.setProjectionMatrix(Application.camera.combined);
+    this.sb.setProjectionMatrix(Application.camera.combined);
 
-    sb.begin();
+    this.sb.begin();
 
     String s;
     float w;
 
     s = "High Scores";
-    w = font.getSpaceWidth();
-    font.draw(sb, s, (Application.WIDTH - w) / 2, 300);
+    w = this.font.getSpaceWidth();
+    this.font.draw(this.sb, s, (Application.WIDTH - w) / 2, 300);
 
-    for (int i = 0; i < highScores.length; i++) {
-      s = String.format(
-          "%2d. %7s %s",
-          i + 1,
-          highScores[i],
-          names[i]
-      );
-      w = font.getSpaceWidth();
-      font.draw(sb, s, (Application.WIDTH - w) / 2, 270 - 20 * i);
+    for (int i = 0; i < this.highScores.length; i++) {
+      s = String.format("%2d. %7s %s", i + 1, this.highScores[i], this.names[i]);
+      w = this.font.getSpaceWidth();
+      this.font.draw(this.sb, s, (Application.WIDTH - w) / 2, 270 - 20 * i);
     }
-    sb.end();
+    this.sb.end();
   }
 
   public void handleInput() {
-    if (Gdx.input.isKeyJustPressed(Keys.ENTER) ||
-        Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
+    if (Gdx.input.isKeyJustPressed(Keys.ENTER) || Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
       gsm.setState(StateManager.MENU);
     }
   }
 
   public void dispose() {
-    sb.dispose();
-    font.dispose();
+    this.sb.dispose();
+    this.font.dispose();
   }
 }

@@ -21,28 +21,28 @@ public class StateManager {
   }
 
   public void setState(int state) {
-    if (gameState != null) {
-      gameState.dispose();
+    if (this.gameState != null) {
+      this.gameState.dispose();
     }
     if (state == MENU) {
-      gameState = new MenuState(this);
+      this.gameState = new MenuState(this);
     }
     if (state == PLAY) {
-      gameState = new PlayState(this);
+      this.gameState = new PlayState(this);
     }
     if (state == HIGH_SCORE) {
-      gameState = new HighScoreState(this);
+      this.gameState = new HighScoreState(this);
     }
     if (state == GAME_OVER) {
-      gameState = new GameOverState(this);
+      this.gameState = new GameOverState(this);
     }
   }
 
   public void update(float dt) {
-    gameState.update(dt);
+    this.gameState.update(dt);
   }
 
   public void draw() {
-    gameState.draw();
+    this.gameState.draw();
   }
 }
