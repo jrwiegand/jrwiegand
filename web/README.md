@@ -1,1 +1,1 @@
-Landing page for joshwiegand.com
+www.joshwiegand.com
