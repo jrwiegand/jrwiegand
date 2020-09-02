@@ -23,26 +23,21 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        // Shows a view to create a new resource
+        return view('articles.create');
     }
 
     public function store()
     {
-        // Persist the new resource
-    }
+        // validation
 
-    public function edit()
-    {
-        // Show a view to edit an existing resource
-    }
+        // clean up
+        $article = new Article();
+        $article->title = request('title');
+        $article->excerpt = request('excerpt');
+        $article->body = request('body');
 
-    public function update()
-    {
-        // Persist the edited resource
-    }
+        $article->save();
 
-    public function destroy()
-    {
-        // Delete the resource
+        return redirect('/articles');
     }
 }
