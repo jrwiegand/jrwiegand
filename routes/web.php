@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+
+    $container = new \App\Container();
+
+    $container->bind('example', function() {
+        return new \App\Example();
+    });
+
+    $example = $container->resolve('example');
+
+    $example->go();
+
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
