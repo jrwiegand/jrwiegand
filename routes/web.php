@@ -17,6 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/about', function () {
+    return view ('about', [
+        'articles' => App\Article::take(3)->latest()->get()
+    ]);
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/articles', 'ArticlesController@index')->name('articles.index');
+Route::post('/articles', 'ArticlesController@store');
+Route::get('/articles/create', 'ArticlesController@create');
+Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
+Route::get('/articles/{article}/edit', 'ArticlesController@edit');
+Route::put('/articles/{article}', 'ArticlesController@update');
