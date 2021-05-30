@@ -1,5 +1,6 @@
 # website
 
+Personal homepage for me using [Zola](https://github.com/getzola/zola) & [tailwindcss](https://github.com/tailwindlabs/tailwindcss).
 
 ## Getting Started
 
