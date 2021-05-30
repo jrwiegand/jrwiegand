@@ -1,6 +1,5 @@
-# JoshWiegand.com
+# website
 
-Personal homepage for me using [Next.js](https://github.com/vercel/next.js).
 
 ## Getting Started
 
