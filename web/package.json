@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "postcss styles/styles.css --output static/styles.min.css --no-map",
-    "watch": "postcss styles/styles.css --output static/styles.min.css --watch",
+    "watch": "postcss styles/styles.css --output static/styles.min.css --no-map --watch",
     "prettier": "prettier --write ."
   },
   "dependencies": {
