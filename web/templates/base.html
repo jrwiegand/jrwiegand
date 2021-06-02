@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width">
+
     <title>{{config.extra.name}}</title>
+
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+
     <meta name="description" content="{{config.extra.name}}'s Homepage" />
     <meta property="og:title" content="Homepage - {{config.extra.name}}" />
-    <meta
-      property="og:description"
-      content="{{config.extra.name}}'s Homepage"
-    />
+    <meta property="og:description" content="{{config.extra.name}}'s Homepage" />
     <meta property="og:image" content="{{config.base_url}}/profile.jpg" />
     <meta property="og:image:alt" content="{{config.extra.name}}" />
     <meta property="og:locale" content="en_US" />
@@ -19,11 +21,12 @@
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/my.webmanifest">
     <meta name="theme-color" content="#111827" />
-    <link href="/styles.min.css" rel="stylesheet" type="text/css" />
   </head>
 
-  <body class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <main class="container">{% block content %} {% endblock %}</main>
+  <body class="bg-gray-50 dark:bg-gray-900 px-5 py-8 mx-auto max-w-prose">
+    <main>{% block content %} {% endblock %}</main>
   </body>
 </html>
