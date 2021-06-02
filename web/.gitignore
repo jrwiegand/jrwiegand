@@ -5,7 +5,7 @@
 
 # build artifacts
 /dist
-/static/*.css
+/static/styles.css
 
 # secrets
 .env
