@@ -143,7 +143,7 @@ hc() {
 
 ## check status on a given url and notify
 cs() {
-    local status_result=$(curl -I -L -s "$1" | grep 200)
+    local status_result=$(curl -I -L -s "$1" | rg 200)
     if [ -z "$status_result" ]
     then
 
