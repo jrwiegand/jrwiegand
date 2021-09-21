@@ -7,13 +7,12 @@ HOMEBREW_NO_ANALYTICS=1
 
 export ZSH="$HOME"/.oh-my-zsh
 export UPDATE_ZSH_DAYS=7
+export NVM_LAZY_LOAD=true
 export REPO_DIR="$(dirname $(readlink "$HOME"/.zshrc))"
-export VOLTA_HOME="$HOME"/.volta
 
 plugins=(
     history-substring-search
-    zsh-navigation-tools
-    zsh_reload
+    zsh-nvm
 )
 
 source "$ZSH"/oh-my-zsh.sh
@@ -37,6 +36,7 @@ alias did='vim +"normal Go" +"r!date" +"put_" "$HOME"/did.txt'
 update() {
     local all=false
     local mac=false
+    local node=false
     local rust=false
     local php=false
     local brew=false
@@ -48,6 +48,8 @@ update() {
                 all=true;;
             --mac | -m)
                 mac=true;;
+	    --node | -n)
+	        node=true;;
             --rust | -r)
                 rust=true;;
             --php | -p)
@@ -61,6 +63,13 @@ update() {
     if [ "$all" = true ] || [ "$mac" = true ] ; then
         echo "Updating macOS..."
         softwareupdate -i -a
+    fi
+
+    if [ "$all" = true ] || [ "$node" = true ] ; then
+	echo "\nUpdating node..."
+	nvm install --lts
+	npm update npm --global
+	npm update --global
     fi
 
     if [ "$all" = true ] || [ "$rust" = true ] ; then
@@ -186,5 +195,3 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 ## openssl
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
-## volta
-export PATH="$VOLTA_HOME/bin:$PATH"
