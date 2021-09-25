@@ -181,7 +181,7 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
 export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 
 ## java
-export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+282/libexec/openjdk.jdk/Contents/Home"
+export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+302/libexec/openjdk.jdk/Contents/Home"
 
 ## ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
