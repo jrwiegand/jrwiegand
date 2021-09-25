@@ -86,7 +86,7 @@ update() {
         echo "\nUpdating brew..."
         brew update
         brew upgrade --greedy
-        brew cleanup
+        brew cleanup -s
         brew doctor
     fi
 }
