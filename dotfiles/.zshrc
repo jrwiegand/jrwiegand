@@ -7,12 +7,10 @@ HOMEBREW_NO_ANALYTICS=1
 
 export ZSH="$HOME"/.oh-my-zsh
 export UPDATE_ZSH_DAYS=7
-export NVM_LAZY_LOAD=true
 export REPO_DIR="$(dirname $(readlink "$HOME"/.zshrc))"
 
 plugins=(
     history-substring-search
-    zsh-nvm
 )
 
 source "$ZSH"/oh-my-zsh.sh
@@ -67,7 +65,6 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
 	echo "\nUpdating node..."
-	nvm install --lts
 	npm update npm --global
 	npm update --global
     fi
@@ -165,17 +162,21 @@ cs() {
 ## default path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
 
+## node (via volta)
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 ## android
 export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 
 ### avdmanager, sdkmanager
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin"
+export PATH="$ANDROID_SDK_ROOT/tools/bin:$PATH"
 
 ### adb, logcat
-export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+export PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
 
 ### emulator
-export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
+export PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
 
 ### chrome/brave
 export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
