@@ -64,6 +64,7 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
 	echo "\nUpdating node..."
+	volta install node@12 npm@6
 	npm update --global
     fi
 
