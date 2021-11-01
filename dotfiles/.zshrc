@@ -1,4 +1,3 @@
-# general
 ZSH_THEME="ys"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
@@ -65,7 +64,6 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
 	echo "\nUpdating node..."
-	npm update npm --global
 	npm update --global
     fi
 
@@ -83,7 +81,7 @@ update() {
         echo "\nUpdating brew..."
         brew update
         brew upgrade --greedy
-        brew cleanup -s
+        brew cleanup --prune=all
         brew doctor
     fi
 }
@@ -182,7 +180,7 @@ export PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
 export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 
 ## java
-export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+302/libexec/openjdk.jdk/Contents/Home"
+export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+312/libexec/openjdk.jdk/Contents/Home"
 
 ## ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
