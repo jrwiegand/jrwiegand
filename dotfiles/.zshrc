@@ -158,12 +158,25 @@ cs() {
 }
 
 # exports
-## default path
+## base
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+## java
+export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+312/libexec/openjdk.jdk/Contents/Home"
 
 ## node (via volta)
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+## php
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
+
+## ruby
+export PATH="$HOME/.rbenv/shims:$PATH"
+
+## rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 ## android
 export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
@@ -180,18 +193,8 @@ export PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
 ### chrome/brave
 export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 
-## java
-export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+312/libexec/openjdk.jdk/Contents/Home"
-
-## ruby
-export PATH="$HOME/.rbenv/shims:$PATH"
-
-## rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
 ## composer
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 ## openssl
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
