@@ -64,7 +64,7 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
 	echo "\nUpdating node..."
-	volta install node@12 npm@6
+	nvm install --lts
 	npm update --global
     fi
 
@@ -164,9 +164,10 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
 ## java
 export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+312/libexec/openjdk.jdk/Contents/Home"
 
-## node (via volta)
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+## node (via nvm)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## php
 export PATH="/usr/local/opt/php@7.4/bin:$PATH"
