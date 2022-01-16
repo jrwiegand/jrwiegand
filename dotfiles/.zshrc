@@ -157,6 +157,23 @@ cs() {
     fi
 }
 
+## generate lorem text
+lorem() {
+    local paragraphs="${1}";
+    local sentences="${2}";
+
+    if [ "$paragraphs" = "" ]; then
+        local paragraphs=1;
+    fi
+    if [ "$sentences" = "" ]; then
+	local sentences=1;
+    fi
+
+    curl -s http://metaphorpsum.com/paragraphs/"${paragraphs}"/"${sentences}" | pbcopy
+
+    echo "Saved to clipboard..."
+}
+
 # exports
 ## base
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
