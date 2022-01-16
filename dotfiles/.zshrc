@@ -196,6 +196,9 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 ## rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+## composer
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
 ## android
 export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 
@@ -208,11 +211,11 @@ export PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
 ### emulator
 export PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
 
+### flutter
+export PATH="$HOME/Library/Flutter/sdk/bin:$PATH"
+
 ### chrome/brave
 export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
-
-## composer
-export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 ## openssl
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
