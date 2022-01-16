@@ -68,11 +68,6 @@ update() {
 	npm update --global
     fi
 
-    if [ "$all" = true ] || [ "$rust" = true ] ; then
-        echo "\nUpdating rust..."
-        rustup update
-    fi
-
     if [ "$all" = true ] || [ "$php" = true ] ; then
         echo "\nUpdating composer..."
         composer global update
