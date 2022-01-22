@@ -134,10 +134,21 @@ ah() {
 }
 
 ## hash content of the file line-by-line
-hc() {
+hash_md5() {
+    filename=$(basename -- "$1")
+    filename="${filename%.*}"
     cat "$1" | while read line
     do
-        echo -n "$line" | md5 >> "$1"_hashed.csv
+        echo -n "$line" | md5 >> "$filename"_hashed_md5.csv
+    done;
+}
+
+hash_sha_256() {
+    filename=$(basename -- "$1")
+    filename="${filename%.*}"
+    cat "$1" | while read line
+    do
+        echo -n "$line" | shasum -a 256 >> "$filename"_hashed_256.csv
     done;
 }
 
