@@ -64,7 +64,7 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
 	echo "\nUpdating node..."
-	nvm install --lts
+	nvm install 'lts/fermium' --reinstall-packages-from=current
 	npm update --global
     fi
 
