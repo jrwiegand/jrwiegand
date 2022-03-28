@@ -64,7 +64,7 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
 	echo "\nUpdating node..."
-	nvm install 'lts/fermium' --reinstall-packages-from=current
+	nvm install 'lts/gallium' --reinstall-packages-from=current
 	npm update --global
     fi
 
@@ -225,3 +225,4 @@ export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave B
 
 ## openssl
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
