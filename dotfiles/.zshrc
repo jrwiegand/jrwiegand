@@ -64,7 +64,7 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
 	echo "\nUpdating node..."
-	nvm install 'lts/gallium' --reinstall-packages-from=current
+	nvm install 16 --reinstall-packages-from=current
 	npm update --global
     fi
 
