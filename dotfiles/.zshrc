@@ -1,7 +1,7 @@
 ZSH_THEME="ys"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="yyyy.mm.dd"
+HIST_STAMPS="%Y-%m-%dT%T"
 HOMEBREW_NO_ANALYTICS=1
 
 export ZSH="$HOME"/.oh-my-zsh
@@ -191,10 +191,6 @@ export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+322/libexec/openjdk.jdk/Cont
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-## php
-export PATH="/usr/local/opt/php@7.4/bin:$PATH"
-export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
 
 ## ruby
 export PATH="$HOME/.rbenv/shims:$PATH"

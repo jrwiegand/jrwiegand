@@ -1610,6 +1610,8 @@
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
+	<key>RunJobsInServers</key>
+	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>SoundForEsc</key>
