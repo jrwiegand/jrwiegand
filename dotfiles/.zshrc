@@ -24,6 +24,10 @@ alias vim="nvim"
 ## extract the file from the tar
 alias untar="tar -zxvf"
 
+## To avoid them accidentally linking against a Pyenv-provided Python
+## https://github.com/pyenv/pyenv#getting-pyenv
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
 ## did.txt
 alias did='vim +"normal Go" +"r!date" +"put_" "$HOME"/did.txt'
 
@@ -192,6 +196,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+## python
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 ## ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
 
@@ -222,3 +231,4 @@ export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave B
 ## openssl
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
