@@ -10,20 +10,20 @@ Personal homepage for me using [Zola](https://github.com/getzola/zola) & [tailwi
 brew install zola
 ```
 
-1. Install dependencies
+2. Install dependencies
 
 ```shell
 npm install
 ```
 
-1. Build CSS
+3. Build CSS
 
 ```shell
 npm run build # build CSS
 npm run watch # build CSS and watch for changes
 ```
 
-1. Execute command
+4. Execute command
 
 ```shell
 zola build # build assets to "dist" directory
