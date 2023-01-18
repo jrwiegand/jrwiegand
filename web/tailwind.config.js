@@ -1,7 +1,3 @@
 module.exports = {
-  darkMode: "media",
-  purge: {
-    enabled: true,
-    content: ["./templates/**/*.html", "./themes/**/*.html"],
-  },
+  content: ["./templates/**/*.html", "./themes/**/*.html"],
 };
