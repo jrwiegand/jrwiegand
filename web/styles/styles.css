@@ -6,8 +6,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("IBM Plex Mono"),
-    url("../static/ibm-plex-mono-regular.woff2") format("woff2");
+  src: local("IBM Plex Mono"), url("../static/ibm-plex-mono-regular.woff2") format("woff2");
 }
 
 body {
