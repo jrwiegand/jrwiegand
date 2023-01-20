@@ -1134,16 +1134,14 @@
 			<false/>
 			<key>Bold Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.34509803921568627</real>
+				<real>0.45882352941176469</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.32549019607843138</real>
+				<real>0.43137254901960786</real>
 				<key>Red Component</key>
-				<real>0.25882352941176473</real>
+				<real>0.34509803921568627</real>
 			</dict>
 			<key>Bound Hosts</key>
 			<array/>
@@ -1160,16 +1158,14 @@
 			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.40000000000000002</real>
+				<real>0.51372549019607838</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.37647058823529411</real>
+				<real>0.4823529411764706</real>
 				<key>Red Component</key>
-				<real>0.30980392156862746</real>
+				<real>0.396078431372549</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -1209,16 +1205,14 @@
 			<false/>
 			<key>Foreground Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.40000000000000002</real>
+				<real>0.51372549019607838</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.37647058823529411</real>
+				<real>0.4823529411764706</real>
 				<key>Red Component</key>
-				<real>0.30980392156862746</real>
+				<real>0.396078431372549</real>
 			</dict>
 			<key>Guid</key>
 			<string>2C46515C-5B23-435A-8421-4EF04E1DD04A</string>
@@ -1557,16 +1551,14 @@
 			<integer>1000</integer>
 			<key>Selected Text Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.34509803921568627</real>
+				<real>0.45882352941176469</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.32549019607843138</real>
+				<real>0.43137254901960786</real>
 				<key>Red Component</key>
-				<real>0.25882352941176473</real>
+				<real>0.34509803921568627</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
@@ -1685,7 +1677,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
 </dict>
