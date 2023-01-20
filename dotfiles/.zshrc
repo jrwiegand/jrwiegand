@@ -6,7 +6,6 @@ HOMEBREW_NO_ANALYTICS=1
 
 export ZSH="$HOME"/.oh-my-zsh
 export UPDATE_ZSH_DAYS=7
-export REPO_DIR="$(dirname $(readlink "$HOME"/.zshrc))"
 
 plugins=(
     history-substring-search
@@ -67,9 +66,9 @@ update() {
     fi
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
-	echo "\nUpdating node..."
-	nvm install 16 --reinstall-packages-from=current
-	npm update --global
+        echo "\nUpdating node..."
+        nvm install 16
+        npm update --global
     fi
 
     if [ "$all" = true ] || [ "$php" = true ] ; then
@@ -189,7 +188,7 @@ lorem() {
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 ## java
-export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+345/libexec/openjdk.jdk/Contents/Home"
+export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+352/libexec/openjdk.jdk/Contents/Home"
 
 ## node (via nvm)
 export NVM_DIR="$HOME/.nvm"
@@ -211,6 +210,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 ## android
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 
 ### avdmanager, sdkmanager
@@ -223,12 +223,10 @@ export PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
 export PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
 
 ### flutter
-export PATH="$HOME/Library/Flutter/sdk/bin:$PATH"
+export PATH="$HOME/Library/Flutter/bin:$PATH"
 
 ### chrome/brave
 export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 
 ## openssl
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
