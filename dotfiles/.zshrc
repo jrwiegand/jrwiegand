@@ -188,7 +188,8 @@ lorem() {
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 ## java
-export JAVA_HOME="/usr/local/Cellar/openjdk@8/1.8.0+352/libexec/openjdk.jdk/Contents/Home"
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+export JAVA_HOME="/usr/local/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home"
 
 ## node (via nvm)
 export NVM_DIR="$HOME/.nvm"
