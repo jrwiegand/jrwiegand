@@ -1,0 +1,31 @@
+{
+  "name": "elevity",
+  "version": "0.0.1",
+  "description": "A clean and simple Eleventy 2 Starter Kit with Vite",
+  "browserslist": [
+    "> 0.5%",
+    "not IE 11"
+  ],
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "watch": "npx @11ty/eleventy --watch",
+    "serve": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy",
+    "clean": "del-cli _site"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrwiegand/elevity.git"
+  },
+  "author": "Joshua Wiegand",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrwiegand/elevity/issues"
+  },
+  "homepage": "https://github.com/jrwiegand/elevity#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0-beta.1",
+    "@11ty/eleventy-plugin-vite": "^2.0.0-canary.2",
+    "vite": "^4.0.4"
+  }
+}
