@@ -1,10 +1,10 @@
 # Elevity
 
-An Eleventy starter project using Vite.
+An Eleventy & Vite Starter Project.
 
 ## Features
 
-* Eleventy 2
+* Eleventy 2+
 * New Eleventy 2 Dev Server with live reload
 * Vite as Middleware in Eleventy Dev Server (uses [eleventy-plugin-vite](https://github.com/11ty/eleventy-plugin-vite/))
 * Eleventy build output is post-processed by [Vite](https://vitejs.dev)
