@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/jrwiegand/elevity#readme",
   "devDependencies": {
-    "@11ty/eleventy": "2.0.0-beta.2",
+    "@11ty/eleventy": "2.0.0",
     "@11ty/eleventy-plugin-vite": "4.0.0",
-    "vite": "4.0.4"
+    "vite": "4.1.1"
   }
 }
