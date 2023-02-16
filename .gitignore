@@ -1,14 +1,16 @@
+# Dependencies
+node_modules
+
+# Artifacts
+_site
+
+# Secrets
+.env
+
 # Logs
 logs
 *.log
 npm-debug.log*
 
-# Dependencies
-node_modules/
-
-# Eleventy
-_site/
-
-# Misc
+# Misc.
 .DS_Store
-.env
