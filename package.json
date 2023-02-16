@@ -2,10 +2,6 @@
   "name": "elevity",
   "version": "0.0.1",
   "description": "A clean and simple Eleventy 2 Starter Kit with Vite",
-  "browserslist": [
-    "> 0.5%",
-    "not IE 11"
-  ],
   "scripts": {
     "dev": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
