@@ -5,5 +5,5 @@ module.exports = {
   url: "https://elevity.netlify.app",
   lang: "en",
   locale: "en_us",
-  themeColor: "#5dea9c"
+  themeColor: "#5dea9c",
 };

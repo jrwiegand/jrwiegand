@@ -1,26 +1,27 @@
 {
   "name": "elevity",
   "version": "0.0.1",
-  "description": "A clean and simple Eleventy 2 Starter Kit with Vite",
-  "scripts": {
-    "dev": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy",
-    "clean": "del-cli _site"
-  },
+  "author": "Joshua Wiegand",
+  "license": "MIT",
+  "description": "A Clean & simple Eleventy Starter Kit with Vite",
+  "homepage": "https://github.com/jrwiegand/elevity#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jrwiegand/elevity.git"
   },
-  "author": "Joshua Wiegand",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jrwiegand/elevity/issues"
   },
-  "homepage": "https://github.com/jrwiegand/elevity#readme",
   "lint-staged": {
     "*.{css,html,js,md}": [
       "prettier --write"
     ]
+  },
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy",
+    "clean": "del-cli _site",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@11ty/eleventy": "2.0.0",
