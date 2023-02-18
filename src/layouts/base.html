@@ -10,12 +10,9 @@
       document.documentElement.classList.remove("no-js");
       document.documentElement.classList.add("js");
     </script>
-    {% include "meta.njk" %}
-</head>
+    {% include "meta.html" %}
+  </head>
   <body>
-    <a href="#main" class="skiplink">Skip to main content</a>
-    <main id="main" class="main">
-      {{ content | safe }}
-    </main>
+    {% block content %}{% endblock %}
   </body>
 </html>
