@@ -18,7 +18,7 @@
     ]
   },
   "scripts": {
-    "dev": "npx @11ty/eleventy --serve",
+    "dev": "npx @11ty/eleventy --serve --incremental",
     "build": "npx @11ty/eleventy",
     "clean": "del-cli _site",
     "prepare": "husky install"
