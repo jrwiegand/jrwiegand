@@ -40,9 +40,6 @@ module.exports = function (config) {
   });
 
   return {
-    templateFormats: ["md", "njk", "html", "liquid"],
-    htmlTemplateEngine: "njk",
-    passthroughFileCopy: true,
     dir: {
       input: "src",
       output: "_site",
@@ -50,5 +47,10 @@ module.exports = function (config) {
       layouts: "layouts",
       data: "_data",
     },
+    passthroughFileCopy: true,
+    templateFormats: ["html", "md", "liquid"],
+    htmlTemplateEngine: "liquid",
+    dataTemplateEngine: "liquid",
+    markdownTemplateEngine: "liquid",
   };
 };
