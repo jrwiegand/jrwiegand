@@ -1,16 +1,28 @@
 {
   "name": "elevity",
-  "version": "0.0.1",
-  "author": "Joshua Wiegand",
-  "license": "MIT",
   "description": "A Clean & simple Eleventy Starter Kit with Vite",
   "homepage": "https://github.com/jrwiegand/elevity#readme",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Josh Wiegand",
+    "email": "1606617+jrwiegand@users.noreply.github.com"
+  },
+  "keywords": [
+    "eleventy",
+    "tailwindcss",
+    "vite"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jrwiegand/elevity.git"
   },
   "bugs": {
     "url": "https://github.com/jrwiegand/elevity/issues"
+  },
+  "engines": {
+    "node": "16.x.x",
+    "npm": "8.x.x"
   },
   "lint-staged": {
     "*.{css,html,js,md}": [
