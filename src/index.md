@@ -1,6 +1,3 @@
 ---
-layout: "index"
-title: "Home"
+layout: "layouts/base.webc"
 ---
-
-# Hello World!

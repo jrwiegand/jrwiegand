@@ -1,8 +1,9 @@
 const vite = require("@11ty/eleventy-plugin-vite");
+const webc = require("@11ty/eleventy-plugin-webc");
 
 module.exports = function (config) {
-  config.setLiquidOptions({
-    dynamicPartials: true,
+  config.addPlugin(webc, {
+    components: "src/_includes/components/**/*.webc",
   });
 
   config.addPlugin(vite);
@@ -43,14 +44,11 @@ module.exports = function (config) {
     dir: {
       input: "src",
       output: "_site",
-      includes: "_includes",
-      layouts: "layouts",
-      data: "_data",
     },
     passthroughFileCopy: true,
-    templateFormats: ["html", "md", "liquid"],
-    htmlTemplateEngine: "liquid",
-    dataTemplateEngine: "liquid",
-    markdownTemplateEngine: "liquid",
+    templateFormats: ["html", "md", "webc"],
+    htmlTemplateEngine: "webc",
+    dataTemplateEngine: "webc",
+    markdownTemplateEngine: "webc",
   };
 };
