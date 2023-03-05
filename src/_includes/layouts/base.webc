@@ -6,6 +6,8 @@
 
     <title webc:is="page-title"></title>
 
+    <link webc:is="page-canonical"></link>
+
     <script>
       document.documentElement.classList.remove("no-js");
       document.documentElement.classList.add("js");
