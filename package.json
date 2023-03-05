@@ -38,7 +38,7 @@
   "devDependencies": {
     "@11ty/eleventy": "2.0.0",
     "@11ty/eleventy-plugin-vite": "4.0.0",
-    "@11ty/eleventy-plugin-webc": "0.9.1",
+    "@11ty/eleventy-plugin-webc": "0.9.3",
     "@commitlint/cli": "17.4.4",
     "@commitlint/config-conventional": "17.4.4",
     "husky": "8.0.3",
