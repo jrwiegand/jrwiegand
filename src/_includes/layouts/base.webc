@@ -8,6 +8,8 @@
 
     <link webc:is="page-canonical"></link>
 
+    <meta webc:is="meta-property"></meta>
+
     <script>
       document.documentElement.classList.remove("no-js");
       document.documentElement.classList.add("js");
