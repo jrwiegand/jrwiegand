@@ -8,7 +8,9 @@
 
     <link webc:is="page-canonical"></link>
 
-    <meta webc:is="meta-property"></meta>
+    <meta webc:is="page-properties"></meta>
+
+    <meta webc:is="page-description"></meta>
 
     <script>
       document.documentElement.classList.remove("no-js");
