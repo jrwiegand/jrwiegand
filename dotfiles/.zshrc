@@ -67,7 +67,7 @@ update() {
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
         echo "\nUpdating node..."
-        nvm install 16
+        nvm install "$(nvm ls default | sed -En "s/.+v([0-9]+).+/\\1/p")"
         npm update --global
     fi
 
