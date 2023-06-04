@@ -37,7 +37,6 @@ update() {
     local all=false
     local mac=false
     local node=false
-    local rust=false
     local php=false
     local brew=false
 
@@ -48,10 +47,8 @@ update() {
                 all=true;;
             --mac | -m)
                 mac=true;;
-	    --node | -n)
-	        node=true;;
-            --rust | -r)
-                rust=true;;
+            --node | -n)
+                node=true;;
             --php | -p)
                 php=true;;
             --brew | -b)
