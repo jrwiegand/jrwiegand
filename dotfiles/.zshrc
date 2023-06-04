@@ -58,27 +58,44 @@ update() {
     done
 
     if [ "$all" = true ] || [ "$mac" = true ] ; then
-        echo "Updating macOS..."
-        softwareupdate -i -a
+        if ! type "softwareupdate" > /dev/null; then
+            echo "Skipping macOS update, 'softwareupdate' not available\n"
+        else
+            echo "Updating macOS...\n"
+            softwareupdate -i -a
+        fi
     fi
 
     if [ "$all" = true ] || [ "$node" = true ] ; then
-        echo "\nUpdating node..."
-        nvm install "$(nvm ls default | sed -En "s/.+v([0-9]+).+/\\1/p")"
-        npm update --global
+        if ! type "nvm" > /dev/null; then
+            echo "Skipping Node.js update, 'nvm' not available\n"
+        else
+            local node_version=$(nvm ls default | sed -En "s/.+v([0-9]+).+/\\1/p")
+            echo "Updating Node.js $node_version...\n"
+            nvm install "$node_version"
+            npm update --global
+        fi
     fi
 
     if [ "$all" = true ] || [ "$php" = true ] ; then
-        echo "\nUpdating composer..."
-        composer global update
+        if ! type "composer" > /dev/null; then
+            echo "Skipping Composer update, 'composer' not available\n"
+        else
+            echo "Updating Composer...\n"
+            composer global update
+        fi
     fi
 
     if [ "$all" = true ] || [ "$brew" = true ] ; then
-        echo "\nUpdating brew..."
-        brew update
-        brew upgrade --greedy
-        brew cleanup --prune=all
-        brew doctor
+        if ! type "brew" > /dev/null; then
+            echo "Skipping Homebrew update, 'brew' not available\n"
+        else
+            echo "Updating Homebrew..."
+            brew update
+            brew upgrade --greedy
+            brew cleanup --prune=all
+            brew doctor
+        fi
     fi
 }
 
