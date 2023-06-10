@@ -3,7 +3,19 @@ const webc = require("@11ty/eleventy-plugin-webc");
 
 module.exports = function (config) {
   config.addPlugin(webc, {
-    components: "src/_includes/components/**/*.webc",
+    // Glob to find no-import global components
+    // (The default changed from `false` in Eleventy WebC v0.7.0)
+    // components: "_components/**/*.webc",
+    components: "src/_components/**/*.webc",
+
+    // Adds an Eleventy WebC transform to process all HTML output
+    useTransform: false,
+
+    // Additional global data used in the Eleventy WebC transform
+    transformData: {},
+
+    // Options passed to @11ty/eleventy-plugin-bundle
+    bundlePluginOptions: {},
   });
 
   config.addPlugin(vite);
