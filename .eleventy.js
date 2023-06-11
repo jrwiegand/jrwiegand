@@ -5,8 +5,7 @@ module.exports = function (config) {
   config.addPlugin(webc, {
     // Glob to find no-import global components
     // (The default changed from `false` in Eleventy WebC v0.7.0)
-    // components: "_components/**/*.webc",
-    components: "src/_components/**/*.webc",
+    components: "**/*.webc",
 
     // Adds an Eleventy WebC transform to process all HTML output
     useTransform: false,

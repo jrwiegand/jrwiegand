@@ -1,4 +1,4 @@
 ---
-layout: "layouts/base.webc"
+layout: "base.webc"
 title: "Home"
 ---
