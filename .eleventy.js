@@ -7,14 +7,14 @@ module.exports = function (config) {
    * Documentation: https://www.11ty.dev/docs/languages/webc/
    */
   config.addPlugin(webc, {
-    components: "**/*.webc",
+    components: "src/_includes/**/*.webc",
   });
 
   /**
    * Using the Vite plugin
    * Documentation: https://www.11ty.dev/docs/server-vite/
    */
-  config.addPlugin(vite, {});
+  config.addPlugin(vite);
 
   return {
     dir: {
