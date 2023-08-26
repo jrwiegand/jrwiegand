@@ -1,17 +1,12 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies installed by npm
-/node_modules
-
-# build artifacts
-/dist
-/static/styles.css
-
-# secrets
-.env
-
-# macOS related files
 .DS_Store
-.AppleDouble
-.LSOverride
-*.pem
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+.vercel
+.output
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
