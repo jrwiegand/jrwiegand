@@ -2,7 +2,10 @@
   "name": "jrwiegand",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --plugin-search-dir . --write .",
+    "lint": "prettier --plugin-search-dir . --check . && eslint ."
+  },
   "private": true,
   "packageManager": "pnpm@8.7.1",
   "engines": {
