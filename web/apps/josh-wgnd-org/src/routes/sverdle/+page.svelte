@@ -209,7 +209,7 @@
 	}
 
 	.how-to-play::before {
-		content: 'i';
+		content: "i";
 		display: inline-block;
 		font-size: 0.8em;
 		font-weight: 900;
@@ -235,6 +235,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
+		background-color: white;
 	}
 
 	.grid .row {
@@ -263,12 +264,12 @@
 		text-align: center;
 		box-sizing: border-box;
 		text-transform: lowercase;
-		border: none;
 		font-size: calc(0.08 * var(--width));
 		border-radius: 2px;
 		background: white;
 		margin: 0;
 		color: rgba(0, 0, 0, 0.7);
+		border: 0.5px solid var(--color-theme-2);
 	}
 
 	.letter.missing {
@@ -293,6 +294,7 @@
 		text-align: center;
 		justify-content: center;
 		height: min(18vh, 10rem);
+		background-color: white;
 	}
 
 	.keyboard {
@@ -321,6 +323,7 @@
 		border-radius: 2px;
 		font-size: calc(var(--size) * 0.5);
 		margin: 0;
+		border: 0.5px solid var(--color-theme-2);
 	}
 
 	.keyboard button.exact {
