@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { confetti } from '@neoconfetti/svelte';
-	import { enhance } from '$app/forms';
-	import type { PageData, ActionData } from './$types';
-	import { reduced_motion } from './reduced-motion';
+	import { confetti } from "@neoconfetti/svelte";
+	import { enhance } from "$app/forms";
+	import type { PageData, ActionData } from "./$types";
+	import { reduced_motion } from "./reduced-motion";
 
 	export let data: PageData;
 
 	export let form: ActionData;
 
 	/** Whether or not the user has won */
-	$: won = data.answers.at(-1) === 'xxxxx';
+	$: won = data.answers.at(-1) === "xxxxx";
 
 	/** The index of the current guess */
 	$: i = won ? -1 : data.answers.length;
@@ -21,7 +21,7 @@
 	 * A map of classnames for all letters that have been guessed,
 	 * used for styling the keyboard
 	 */
-	let classnames: Record<string, 'exact' | 'close' | 'missing'>;
+	let classnames: Record<string, "exact" | "close" | "missing">;
 
 	/**
 	 * A map of descriptions for all letters that have been guessed,
@@ -39,12 +39,12 @@
 			for (let i = 0; i < 5; i += 1) {
 				const letter = guess[i];
 
-				if (answer[i] === 'x') {
-					classnames[letter] = 'exact';
-					description[letter] = 'correct';
+				if (answer[i] === "x") {
+					classnames[letter] = "exact";
+					description[letter] = "correct";
 				} else if (!classnames[letter]) {
-					classnames[letter] = answer[i] === 'c' ? 'close' : 'missing';
-					description[letter] = answer[i] === 'c' ? 'present' : 'absent';
+					classnames[letter] = answer[i] === "c" ? "close" : "missing";
+					description[letter] = answer[i] === "c" ? "present" : "absent";
 				}
 			}
 		});
@@ -56,11 +56,9 @@
 	 */
 	function update(event: MouseEvent) {
 		const guess = data.guesses[i];
-		const key = (event.target as HTMLButtonElement).getAttribute(
-			'data-key'
-		);
+		const key = (event.target as HTMLButtonElement).getAttribute("data-key");
 
-		if (key === 'backspace') {
+		if (key === "backspace") {
 			data.guesses[i] = guess.slice(0, -1);
 			if (form?.badGuess) form.badGuess = false;
 		} else if (guess.length < 5) {
@@ -77,7 +75,7 @@
 
 		document
 			.querySelector(`[data-key="${event.key}" i]`)
-			?.dispatchEvent(new MouseEvent('click', { cancelable: true }));
+			?.dispatchEvent(new MouseEvent("click", { cancelable: true }));
 	}
 </script>
 
@@ -109,12 +107,18 @@
 			<div class="row" class:current>
 				{#each Array.from(Array(5).keys()) as column (column)}
 					{@const answer = data.answers[row]?.[column]}
-					{@const value = data.guesses[row]?.[column] ?? ''}
+					{@const value = data.guesses[row]?.[column] ?? ""}
 					{@const selected = current && column === data.guesses[row].length}
-					{@const exact = answer === 'x'}
-					{@const close = answer === 'c'}
-					{@const missing = answer === '_'}
-					<div class="letter" class:exact class:close class:missing class:selected>
+					{@const exact = answer === "x"}
+					{@const close = answer === "c"}
+					{@const missing = answer === "_"}
+					<div
+						class="letter"
+						class:exact
+						class:close
+						class:missing
+						class:selected
+					>
 						{value}
 						<span class="visually-hidden">
 							{#if exact}
@@ -140,11 +144,15 @@
 				<p>the answer was "{data.answer}"</p>
 			{/if}
 			<button data-key="enter" class="restart selected" formaction="?/restart">
-				{won ? 'you won :)' : `game over :(`} play again?
+				{won ? "you won :)" : `game over :(`} play again?
 			</button>
 		{:else}
 			<div class="keyboard">
-				<button data-key="enter" class:selected={submittable} disabled={!submittable}>enter</button>
+				<button
+					data-key="enter"
+					class:selected={submittable}
+					disabled={!submittable}>enter</button
+				>
 
 				<button
 					on:click|preventDefault={update}
@@ -156,7 +164,7 @@
 					back
 				</button>
 
-				{#each ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'] as row}
+				{#each ["qwertyuiop", "asdfghjkl", "zxcvbnm"] as row}
 					<div class="row">
 						{#each row as letter}
 							<button
@@ -187,7 +195,7 @@
 			force: 0.7,
 			stageWidth: window.innerWidth,
 			stageHeight: window.innerHeight,
-			colors: ['#ff3e00', '#40b3ff', '#676778']
+			colors: ["#ff3e00", "#40b3ff", "#676778"],
 		}}
 	/>
 {/if}
@@ -345,8 +353,8 @@
 		outline: none;
 	}
 
-	.keyboard button[data-key='enter'],
-	.keyboard button[data-key='backspace'] {
+	.keyboard button[data-key="enter"],
+	.keyboard button[data-key="backspace"] {
 		position: absolute;
 		bottom: 0;
 		width: calc(1.5 * var(--size));
@@ -356,15 +364,15 @@
 		padding-top: calc(0.15 * var(--size));
 	}
 
-	.keyboard button[data-key='enter'] {
+	.keyboard button[data-key="enter"] {
 		right: calc(50% + 3.5 * var(--size) + 0.8rem);
 	}
 
-	.keyboard button[data-key='backspace'] {
+	.keyboard button[data-key="backspace"] {
 		left: calc(50% + 3.5 * var(--size) + 0.8rem);
 	}
 
-	.keyboard button[data-key='enter']:disabled {
+	.keyboard button[data-key="enter"]:disabled {
 		opacity: 0.5;
 	}
 
