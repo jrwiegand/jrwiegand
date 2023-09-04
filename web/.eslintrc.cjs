@@ -1,5 +1,7 @@
 module.exports = {
 	root: true,
+	ignorePatterns: ["**/*"],
+	plugins: ["@nx"],
 	extends: [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",

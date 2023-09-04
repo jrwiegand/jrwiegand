@@ -4,6 +4,6 @@
 </svelte:head>
 
 <div>
-  <h1>About</h1>
-  <p>My very own place to talk about myself.</p>
+	<h1>About</h1>
+	<p>My very own place to talk about myself.</p>
 </div>

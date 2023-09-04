@@ -43,8 +43,10 @@
 					classnames[letter] = "exact";
 					description[letter] = "correct";
 				} else if (!classnames[letter]) {
-					classnames[letter] = answer[i] === "c" ? "close" : "missing";
-					description[letter] = answer[i] === "c" ? "present" : "absent";
+					classnames[letter] =
+						answer[i] === "c" ? "close" : "missing";
+					description[letter] =
+						answer[i] === "c" ? "present" : "absent";
 				}
 			}
 		});
@@ -56,7 +58,9 @@
 	 */
 	function update(event: MouseEvent) {
 		const guess = data.guesses[i];
-		const key = (event.target as HTMLButtonElement).getAttribute("data-key");
+		const key = (event.target as HTMLButtonElement).getAttribute(
+			"data-key"
+		);
 
 		if (key === "backspace") {
 			data.guesses[i] = guess.slice(0, -1);
@@ -108,7 +112,8 @@
 				{#each Array.from(Array(5).keys()) as column (column)}
 					{@const answer = data.answers[row]?.[column]}
 					{@const value = data.guesses[row]?.[column] ?? ""}
-					{@const selected = current && column === data.guesses[row].length}
+					{@const selected =
+						current && column === data.guesses[row].length}
 					{@const exact = answer === "x"}
 					{@const close = answer === "c"}
 					{@const missing = answer === "_"}
@@ -131,7 +136,12 @@
 								empty
 							{/if}
 						</span>
-						<input name="guess" disabled={!current} type="hidden" {value} />
+						<input
+							name="guess"
+							disabled={!current}
+							type="hidden"
+							{value}
+						/>
 					</div>
 				{/each}
 			</div>
@@ -143,7 +153,11 @@
 			{#if !won && data.answer}
 				<p>the answer was "{data.answer}"</p>
 			{/if}
-			<button data-key="enter" class="restart selected" formaction="?/restart">
+			<button
+				data-key="enter"
+				class="restart selected"
+				formaction="?/restart"
+			>
 				{won ? "you won :)" : `game over :(`} play again?
 			</button>
 		{:else}
@@ -175,7 +189,8 @@
 								formaction="?/update"
 								name="key"
 								value={letter}
-								aria-label="{letter} {description[letter] || ''}"
+								aria-label="{letter} {description[letter] ||
+									''}"
 							>
 								{letter}
 							</button>

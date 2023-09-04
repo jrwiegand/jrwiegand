@@ -70,8 +70,6 @@ export class Game {
 	 * Serialize game state so it can be set as a cookie
 	 */
 	toString() {
-		return `${this.index}-${this.guesses.join(" ")}-${this.answers.join(
-			" ",
-		)}`;
+		return `${this.index}-${this.guesses.join(" ")}-${this.answers.join(" ")}`;
 	}
 }
