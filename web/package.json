@@ -3,8 +3,8 @@
 	"version": "0.0.0",
 	"license": "MIT",
 	"scripts": {
-		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"format": "pnpm exec prettier --plugin prettier-plugin-svelte --write .",
+		"lint": "pnpm exec prettier --plugin prettier-plugin-svelte --check . && pnpm exec eslint ."
 	},
 	"private": true,
 	"packageManager": "pnpm@8.7.1",
