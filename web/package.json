@@ -3,8 +3,8 @@
 	"version": "0.0.0",
 	"license": "MIT",
 	"scripts": {
-		"format": "prettier --plugin-search-dir . --write .",
-		"lint": "prettier --plugin-search-dir . --check . && eslint ."
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint ."
 	},
 	"private": true,
 	"packageManager": "pnpm@8.7.1",
