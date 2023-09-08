@@ -1,0 +1,10 @@
+{
+	"name": "josh-wgnd-web",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "pnpm dlx @11ty/eleventy --serve",
+		"build": "pnpm dlx @11ty/eleventy"
+	}
+}
