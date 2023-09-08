@@ -60,16 +60,18 @@ importers:
         specifier: ^2.4.1
         version: 2.6.2
       typescript:
-        specifier: ^5.0.0
+        specifier: ^5.0.2
         version: 5.1.6
       vite:
-        specifier: ^4.4.2
+        specifier: ^4.4.5
         version: 4.4.9(@types/node@18.14.2)
       vitest:
         specifier: ^0.34.3
         version: 0.34.3
 
-  apps/josh-wgnd-org: {}
+  apps/josh-wgnd-web: {}
+
+  apps/new-edge-web: {}
 
 packages:
 
