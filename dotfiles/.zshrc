@@ -197,6 +197,43 @@ lorem() {
     echo "Saved to clipboard..."
 }
 
+# Make PDF file with blank calendar starting on month of first argument
+# and continuing for second argument months
+# https://leancrew.com/all-this/2023/09/a-shell-script-for-blank-calendars/
+bcal() {
+    usage="Usage: bcal [-n] m c
+    Arguments:
+    m  starting month number (defaults to this year)
+    c  count of months to print
+    Option:
+    -n  use next year instead of this year"
+
+    # Current year
+    y=$(date +%Y)
+
+    # If user asks for next year (-n), add one to the year
+    while getopts "nh" opt; do
+    case ${opt} in
+        n) y=$((y + 1));;
+        h) echo "$usage"; exit 0;;
+        ?) echo "$usage"; exit 1;;
+    esac
+    done
+
+    # Skip over any options to the required arguments
+    shift $(($OPTIND - 1))
+
+    # Exit with usage message if there aren't two arguments
+    if (($# < 2)); then
+    echo "Needs two arguments"
+    echo "$usage"
+    exit 1
+    fi
+
+    # Make the calendar, convert to PDF, and open in Preview
+    pcal -e -S $1 $y $2 | ps2pdf -  - | open -f -a Preview
+}
+
 # exports
 ## base
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
@@ -245,3 +282,11 @@ export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave B
 
 ## openssl
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/jwiegand/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
