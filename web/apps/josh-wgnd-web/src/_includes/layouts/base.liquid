@@ -4,147 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Josh Wiegand</title>
-		<style></style>
+		<style>{% include '../styles/post.css' %}</style>
 	</head>
 	<style>
-		/* CSS reset stolen from, https://andy-bell.co.uk/a-more-modern-css-reset/ */
-		/* Box sizing rules */
-		*,
-		*::before,
-		*::after {
-			box-sizing: border-box;
-		}
-
-		/* Prevent font size inflation */
-		html {
-			-moz-text-size-adjust: none;
-			-webkit-text-size-adjust: none;
-			text-size-adjust: none;
-		}
-
-		/* Remove default margin in favour of better control in authored CSS */
-		body,
-		h1,
-		h2,
-		h3,
-		h4,
-		p,
-		figure,
-		blockquote,
-		dl,
-		dd {
-			margin: 0;
-		}
-
-		/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-		ul[role="list"],
-		ol[role="list"] {
-			list-style: none;
-		}
-
-		/* Set core body defaults */
-		body {
-			min-height: 100vh;
-			line-height: 1.5;
-		}
-
-		/* Set shorter line heights on headings and interactive elements */
-		h1,
-		h2,
-		h3,
-		h4,
-		button,
-		input,
-		label {
-			line-height: 1.1;
-		}
-
-		/* Balance text wrapping on headings */
-		h1,
-		h2,
-		h3,
-		h4 {
-			text-wrap: balance;
-		}
-
-		/* A elements that don't have a class get default styles */
-		a:not([class]) {
-			text-decoration-skip-ink: auto;
-			color: currentColor;
-		}
-
-		/* Make images easier to work with */
-		img,
-		picture {
-			max-width: 100%;
-			display: block;
-		}
-
-		/* Inherit fonts for inputs and buttons */
-		input,
-		button,
-		textarea,
-		select {
-			font: inherit;
-		}
-
-		/* Make sure textareas without a rows attribute are not tiny */
-		textarea:not([rows]) {
-			min-height: 10em;
-		}
-
-		/* Anything that has been anchored to should have extra scroll margin */
-		:target {
-			scroll-margin-block: 5ex;
-		}
-
-		/* End CSS Reset */
-
-		body {
-			font-family:
-				-apple-system,
-				Segoe UI,
-				Roboto,
-				Noto Sans,
-				Ubuntu,
-				Cantarell,
-				Helvetica Neue,
-				sans-serif;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20.3 20.3' style='enable-background:new 0 0 20.3 20.3;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bopacity:0.15;fill:none;stroke:%2334B1BF;stroke-miterlimit:10;%7D%3C/style%3E%3Cline class='st0' x1='0.5' y1='0' x2='0.5' y2='20.3'/%3E%3Cline class='st0' x1='20.3' y1='0.5' x2='1' y2='0.5'/%3E%3C/svg%3E");
-			background-size: 20px;
-			background-position: left center;
-			margin: 0;
-			padding: 0.8rem 10px;
-			background-attachment: fixed;
-			max-width: 80ch;
-			line-height: 1.6;
-			font-size: 1.2rem;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		main {
-			max-width: 32rem;
-		}
-
-		h1 {
-			padding: 2rem 0;
-		}
-		h2 {
-			padding: 1.5rem 0;
-		}
-		p {
-			padding: 0.5rem 0;
-		}
-
-		.banner {
-			max-width: 32rem;
-			background-color: rgba(255, 255, 0, 0.14);
-			padding: 1rem;
-		}
 	</style>
 
 	<body>
@@ -157,5 +19,10 @@
 			</p>
 		</section>
 		{{ content }}
+		<footer>
+			<p><a style="text-decoration: none;" href="https://hynek.me/til/copyright-years/" target="_blank" rel="noopener noreferrer">©</a> 1989 Josh Wiegand.</p>
+			<p>This site has no tracking or cookies, I will not be monetizing your visit here in any way.</p>
+			<p>Made with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>; hosted on <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>.</p>
+		</footer>
 	</body>
 </html>
