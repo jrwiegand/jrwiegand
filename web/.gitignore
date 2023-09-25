@@ -1,7 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-apps/josh-wgnd-web/src/_includes/styles/post.css
-
 # compiled output
 build
 dist

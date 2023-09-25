@@ -4,10 +4,8 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Josh Wiegand</title>
-		<style>{% include '../styles/post.css' %}</style>
+		<link rel="stylesheet" href="index.css">
 	</head>
-	<style>
-	</style>
 
 	<body>
 		<section class="banner">
@@ -18,11 +16,31 @@
 				<a href="mailto:taken.01-extents@icloud.com">please get in touch</a>.
 			</p>
 		</section>
-		{{ content }}
+		<main>{{ content }}</main>
 		<footer>
-			<p><a style="text-decoration: none;" href="https://hynek.me/til/copyright-years/" target="_blank" rel="noopener noreferrer">©</a> 1989 Josh Wiegand.</p>
-			<p>This site has no tracking or cookies, I will not be monetizing your visit here in any way.</p>
-			<p>Made with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>; hosted on <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>.</p>
+			<p>
+				<a
+					style="text-decoration: none"
+					href="https://hynek.me/til/copyright-years/"
+					target="_blank"
+					rel="noopener noreferrer"
+					>©</a
+				>
+				1989 Josh Wiegand.
+			</p>
+			<p>
+				This site has no tracking or cookies, I will not be monetizing your visit here in
+				any way.
+			</p>
+			<p>
+				Made with
+				<a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer"
+					>Eleventy</a
+				>; hosted on
+				<a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer"
+					>Cloudflare Pages</a
+				>.
+			</p>
 		</footer>
 	</body>
 </html>

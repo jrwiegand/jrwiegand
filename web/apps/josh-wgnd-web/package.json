@@ -5,10 +5,10 @@
 	"type": "module",
 	"scripts": {
 		"dev": "run-p dev:css dev:html",
-		"dev:css": "postcss src/_includes/styles/pre.css --output src/_includes/styles/post.css --watch",
+		"dev:css": "postcss src/_includes/styles/index.css --output _site/index.css --watch",
 		"dev:html": "eleventy --serve --incremental",
 		"build": "run-s build:css build:html",
-		"build:css": "postcss src/_includes/styles/pre.css --output src/_includes/styles/post.css ",
+		"build:css": "postcss src/_includes/styles/index.css --output _site/index.css",
 		"build:html": "eleventy"
 	}
 }
