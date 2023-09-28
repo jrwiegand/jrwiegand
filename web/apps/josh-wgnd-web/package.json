@@ -4,11 +4,12 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "run-p dev:css dev:html",
-		"dev:css": "postcss src/_includes/styles/main.css --output _site/main.css --watch",
+		"clean": "rimraf _site",
+		"dev": "npm-run-all -s clean -p dev:css dev:html",
+		"dev:css": "postcss src/styles/main.css --output _site/main.css --watch",
 		"dev:html": "eleventy --serve --incremental",
-		"build": "run-s build:css build:html",
-		"build:css": "postcss src/_includes/styles/main.css --output _site/main.css",
+		"build": "npm-run-all -s clean build:css build:html",
+		"build:css": "postcss src/styles/main.css --output _site/main.css",
 		"build:html": "eleventy"
 	}
 }

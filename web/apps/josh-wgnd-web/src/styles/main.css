@@ -12,7 +12,6 @@ html {
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-body,
 h1,
 h2,
 h3,
@@ -29,12 +28,6 @@ dd {
 ul[role="list"],
 ol[role="list"] {
 	list-style: none;
-}
-
-/* Set core body defaults */
-body {
-	min-height: 100vh;
-	line-height: 1.5;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -99,14 +92,12 @@ body {
 		Cantarell,
 		Helvetica Neue,
 		sans-serif;
-	margin: 0 auto 0 auto;
-	padding: 0.8rem 10px;
-	max-width: 80ch;
+	padding: 5vh 10vw;
 	line-height: 1.6;
 	font-size: 1.2rem;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	justify-content: center;
+	min-height: 100vh;
 }
 
 footer {
@@ -130,8 +121,8 @@ p {
 	padding: 0.5rem 0;
 }
 
-.banner {
-	max-width: 32rem;
-	background-color: rgba(255, 255, 0, 0.14);
-	padding: 1rem;
+.profile {
+	border-radius: 3.5rem;
+	height: 7rem;
+	margin: 0.5rem 0;
 }
