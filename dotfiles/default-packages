@@ -1,0 +1,10 @@
+@angular/cli@latest
+@ionic/cli@latest
+@nestjs/cli
+autocannon@latest
+clinic@latest
+cordova@latest
+neovim@latest
+npm@latest
+typescript@latest
+yarn@latest
