@@ -1,5 +1,12 @@
 <script>
-	let string = `this string contains some <strong>HTML!!!</strong>`;
+	let count = 0;
+
+	function increment() {
+		count += 1;
+	}
 </script>
 
-<p>{@html string}</p>
+<button on:click={increment}>
+	Clicked {count}
+	{count === 1 ? 'time' : 'times'}
+</button>
