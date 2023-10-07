@@ -1,14 +1,5 @@
 <script>
-    import Nested from './nested.svelte';
+	let string = `this string contains some <strong>HTML!!!</strong>`;
 </script>
 
-<p>This is a paragraph.</p>
-<Nested />
-
-<style>
-    p {
-        color: goldenrod;
-        font-family: 'Comic Sans MS', cursive;
-        font-size: 2em;
-    }
-</style>
+<p>{@html string}</p>
