@@ -1,22 +1,15 @@
 <script>
-	let count = 0;
-    $: {
-        console.log(`the count is ${count}`);
-        console.log(`this will also be logged whenever count changes`);
-    }
+	let numbers = [1, 2, 3, 4];
 
-    $: if (count >= 10) {
-        alert('count is dangerously high!');
-        count = 0;
-    }
-
-
-	function handleClick() {
-		count += 1;
+	function addNumber() {
+		numbers = [...numbers, numbers.length + 1];
 	}
+
+	$: sum = numbers.reduce((total, currentNumber) => total + currentNumber, 0);
 </script>
 
-<button on:click={handleClick}>
-	Clicked {count}
-	{count === 1 ? 'time' : 'times'}
+<p>{numbers.join(' + ')} = {sum}</p>
+
+<button on:click={addNumber}>
+	Add a number
 </button>
