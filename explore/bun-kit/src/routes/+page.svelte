@@ -1,9 +1,14 @@
-<script>
-	import Outer from './Outer.svelte';
+<script lang="ts">
+	import BigRedButton from './BigRedButton.svelte';
 
-	function handleMessage(event) {
-		alert(event.detail.text);
+	let horn = '/horn.mp3';
+
+	const audio = new Audio();
+	audio.src = horn;
+
+	function handleClick() {
+		audio.play();
 	}
 </script>
 
-<Outer on:message={handleMessage} />
+<BigRedButton on:click={handleClick} />
