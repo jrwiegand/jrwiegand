@@ -22,18 +22,11 @@
 
 <h2>Flavours</h2>
 
+<select multiple bind:value={flavours} name="flavours" id="flavours">
 {#each ['cookies and cream', 'mint choc chip', 'raspberry ripple'] as flavour}
-	<label>
-		<input
-			type="checkbox"
-			name="flavours"
-			value={flavour}
-			bind:group={flavours}
-		/>
-
-		{flavour}
-	</label>
+	<option>{flavour}</option>
 {/each}
+</select>
 
 {#if flavours.length === 0}
 	<p>Please select at least one flavour</p>
