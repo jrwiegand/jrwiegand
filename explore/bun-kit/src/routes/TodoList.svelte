@@ -1,5 +1,6 @@
 <script>
-    import { send, receive } from './transition.js';
+	import { flip } from 'svelte/animate';
+	import { send, receive } from './transition.js';
 
 	export let store;
 	export let done;
@@ -9,8 +10,9 @@
 	{#each $store.filter((todo) => todo.done === done) as todo (todo.id)}
 		<li
 			class:done
-            in:receive={{ key: todo.id }}
-            out:send={{ key: todo.id }}
+			in:receive={{ key: todo.id }}
+			out:send={{ key: todo.id }}
+			animate:flip={{ duration: 200 }}
 		>
 			<label>
 				<input
@@ -34,11 +36,27 @@
 		display: flex;
 	}
 
+	.done {
+		opacity: 0.5;
+	}
+
 	span {
 		flex: 1;
 	}
 
 	button {
 		background-image: url(./remove.svg);
+		border: none;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		background-size: 1rem 1rem;
+		cursor: pointer;
+		width: 3em;
+		height: 3em;
+		margin: -0.5em -0.5em -0.5em 0;
+		aspect-ratio: 1;
+		opacity: 0.5;
+		transition: opacity 0.2s;
 	}
 </style>
