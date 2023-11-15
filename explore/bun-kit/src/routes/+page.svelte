@@ -6,7 +6,10 @@
 	Flip the card
 	<button
 		class="card"
-		class:flipped
+		style:transform={flipped ? 'rotateY(0)' : ''}
+		style:--bg-1="palegoldenrod"
+		style:--bg-2="black"
+		style:--bg-3="goldenrod"
 		on:click={() => flipped = !flipped}
 	>
 		<div class="front">
