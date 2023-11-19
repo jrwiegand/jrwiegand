@@ -1,5 +1,14 @@
 <div class="card">
-	<slot />
+	<header>
+        <slot name="telephone" />
+        <slot name="company" />
+    </header>
+
+    <slot />
+
+    <footer>
+        <slot name="address" />
+    </footer>
 </div>
 
 <style>
