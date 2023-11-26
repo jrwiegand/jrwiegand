@@ -12,11 +12,11 @@
 	<label>
 		Filter: <input bind:value={search} />
 	</label>
-
-	<div class="header">
-		<slot name="header"/>
-	</div>
-
+	{#if $$slots.header}
+		<div class="header">
+			<slot name="header"/>
+		</div>
+	{/if}
 	<div class="content">
 		{#each data.filter(matches) as item}
 			<slot {item} />

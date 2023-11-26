@@ -8,14 +8,6 @@
 	field="name"
 	let:item={row}
 >
-	<header slot="header" class="row">
-		<span class="color" />
-		<span class="name">name</span>
-		<span class="hex">hex</span>
-		<span class="rgb">rgb</span>
-		<span class="hsl">hsl</span>
-	</header>
-
 	<div class="row">
 		<span class="color" style="background-color: {row.hex}" />
 		<span class="name">{row.name}</span>
