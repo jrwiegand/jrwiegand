@@ -1,14 +1,22 @@
 <div class="card">
 	<header>
-        <slot name="telephone" />
-        <slot name="company" />
-    </header>
+		<slot name="telephone">
+            <i>(telephone)</i>
+        </slot>
+		<slot name="company">
+            <i>(company)</i>
+        </slot>
+	</header>
 
-    <slot />
+	<slot>
+        <i>(name)</i>
+    </slot>
 
-    <footer>
-        <slot name="address" />
-    </footer>
+	<footer>
+		<slot name="address">
+            <i>(address)</i>
+        </slot>
+	</footer>
 </div>
 
 <style>
