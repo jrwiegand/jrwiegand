@@ -1,68 +1,42 @@
 <script>
-	import FilterableList from './FilterableList.svelte';
-	import { colors } from './colors.js';
+	import Canvas from './Canvas.svelte';
+	import Square from './Square.svelte';
+
+	// we use a seeded random number generator to get consistent jitter
+	let seed = 1;
+
+	function random() {
+		seed *= 16807;
+		seed %= 2147483647;
+		return (seed - 1) / 2147483646;
+	}
+
+	function jitter(amount) {
+		return amount * (random() - 0.5);
+	}
 </script>
 
-<FilterableList
-	data={colors}
-	field="name"
-	let:item={row}
->
-	<div class="row">
-		<span class="color" style="background-color: {row.hex}" />
-		<span class="name">{row.name}</span>
-		<span class="hex">{row.hex}</span>
-		<span class="rgb">{row.rgb}</span>
-		<span class="hsl">{row.hsl}</span>
-	</div>
-</FilterableList>
+<div class="container">
+	<Canvas width={800} height={1200}>
+		{#each Array(12) as _, c}
+			{#each Array(22) as _, r}
+				<Square
+					x={180 + c * 40 + jitter(r * 2)}
+					y={180 + r * 40 + jitter(r * 2)}
+					size={40}
+					rotate={jitter(r * 0.05)}
+				/>
+			{/each}
+		{/each}
+	</Canvas>
+</div>
 
 <style>
-	.row {
-		display: grid;
-		align-items: center;
-		grid-template-columns: 2em 4fr 3fr;
-		gap: 1em;
-		padding: 0.1em;
-		background: var(--bg-1);
-		border-radius: 0.2em;
-	}
-
-	header {
-		font-weight: bold;
-	}
-
-	.row:not(header):hover {
-		background: var(--bg-2);
-	}
-
-	.color {
-		aspect-ratio: 1;
+	.container {
 		height: 100%;
-		border-radius: 0.1em;
-	}
-
-	.rgb, .hsl {
-		display: none;
-	}
-
-	@media (min-width: 40rem) {
-		.row {
-			grid-template-columns: 2em 4fr 3fr 3fr;
-		}
-
-		.rgb {
-			display: block;
-		}
-	}
-
-	@media (min-width: 60rem) {
-		.row {
-			grid-template-columns: 2em 4fr 3fr 3fr 3fr;
-		}
-
-		.hsl {
-			display: block;
-		}
+		aspect-ratio: 2 / 3;
+		margin: 0 auto;
+		background: rgb(224, 219, 213);
+		filter: drop-shadow(0.5em 0.5em 1em rgba(0, 0, 0, 0.1));
 	}
 </style>
