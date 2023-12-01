@@ -1,14 +1,42 @@
 <script>
-	const options = ['h1', 'h2', 'h3', 'p', 'marquee'];
-	let selected = options[0];
+	let key;
+	let keyCode;
+
+	function handleKeydown(event) {
+		key = event.key;
+		keyCode = event.keyCode;
+	}
 </script>
 
-<select bind:value={selected}>
-	{#each options as option}
-		<option value={option}>{option}</option>
-	{/each}
-</select>
+<svelte:window on:keydown={handleKeydown} />
 
-<svelte:element this={selected}>
-	I'm a <code>&lt;{selected}&gt;</code> Element
-</svelte:element>
+<div style="text-align: center">
+	{#if key}
+		<kbd>{key === ' ' ? 'Space' : key}</kbd>
+		<p>{keyCode}</p>
+	{:else}
+		<p>Focus this window and press any key</p>
+	{/if}
+</div>
+
+<style>
+	div {
+		display: flex;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	kbd {
+		border-radius: 4px;
+		font-size: 6em;
+		padding: 0.2em 0.5em;
+		background-color: #eeeeee;
+		border-top: 5px solid #f9f9f9;
+		border-left: 5px solid #f9f9f9;
+		border-right: 5px solid #aaaaaa;
+		border-bottom: 5px solid #aaaaaa;
+		color: #555;
+	}
+</style>
