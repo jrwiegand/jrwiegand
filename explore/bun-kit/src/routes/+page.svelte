@@ -1,22 +1,38 @@
 <script>
-	let y = 0;
+	import kitten from './kitten.png';
+
+	let hereKitty = false;
 </script>
 
-<svelte:window bind:scrollY={y}/>
+<svelte:body
+	on:mouseenter={() => hereKitty = true}
+	on:mouseleave={() => hereKitty = false}
+/>
 
-<span>depth: {y}px</span>
+<!-- creative commons BY-NC http://www.pngall.com/kitten-png/download/7247 -->
+<img
+	class:curious={hereKitty}
+	alt="Kitten wants to know what's going on"
+	src={kitten}
+/>
 
 <style>
-	:global(body) {
-		height: 400vw;
-		background: url(./deepsea.webp);
-		background-size: cover;
+	img {
+		position: absolute;
+		left: 0;
+		bottom: -60px;
+		transform: translate(-80%, 0) rotate(-15deg);
+		transform-origin: 100% 100%;
+		transition: transform 0.4s;
 	}
 
-	span {
-		position: fixed;
-		font-size: 2em;
-		color: white;
-		font-variant: tabular-nums;
+	.curious {
+		transform: translate(-15%, 0) rotate(0deg);
+	}
+
+	:global(body) {
+		overflow: hidden;
+		height: 100vh;
+		width: 100vw;
 	}
 </style>
