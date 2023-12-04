@@ -1,38 +1,10 @@
-<script>
-	import kitten from './kitten.png';
+<script lang="ts">
+	let selection: Selection | null = null;
 
-	let hereKitty = false;
+	const handleSelectionChange = () => selection = document.getSelection();
 </script>
 
-<svelte:body
-	on:mouseenter={() => hereKitty = true}
-	on:mouseleave={() => hereKitty = false}
-/>
+<svelte:document on:selectionchange={handleSelectionChange}/>
 
-<!-- creative commons BY-NC http://www.pngall.com/kitten-png/download/7247 -->
-<img
-	class:curious={hereKitty}
-	alt="Kitten wants to know what's going on"
-	src={kitten}
-/>
-
-<style>
-	img {
-		position: absolute;
-		left: 0;
-		bottom: -60px;
-		transform: translate(-80%, 0) rotate(-15deg);
-		transform-origin: 100% 100%;
-		transition: transform 0.4s;
-	}
-
-	.curious {
-		transform: translate(-15%, 0) rotate(0deg);
-	}
-
-	:global(body) {
-		overflow: hidden;
-		height: 100vh;
-		width: 100vw;
-	}
-</style>
+<h1>Select this text to fire events</h1>
+<p>Selection: {selection ? selection.toString() : ''}</p>
