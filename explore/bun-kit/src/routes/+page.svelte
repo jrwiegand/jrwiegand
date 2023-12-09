@@ -1,42 +1,67 @@
 <script>
-	import Todo from './Todo.svelte';
+	import Board from './Board.svelte';
+	import { getWinningLine } from './utils.js';
 
-	let todos = [
-		{ id: 1, done: true, text: 'wash the car' },
-		{ id: 2, done: false, text: 'take the dog for a walk' },
-		{ id: 3, done: false, text: 'mow the lawn' }
-	];
+	let squares = Array(9).fill('');
+	let next = 'x';
 
-	function toggle(toggled) {
-		todos = todos.map((todo) => {
-			if (todo === toggled) {
-				// return a new object
-				return {
-					id: todo.id,
-					text: todo.text,
-					done: !todo.done
-				};
-			}
-
-			// return the same object
-			return todo;
-		});
-	}
+	$: winningLine = getWinningLine(squares);
 </script>
 
-<div class="centered">
-	<h1>todos</h1>
+<div class="container">
+	<Board size={3}>
+		<svelte:fragment slot="game">
+			{#each squares as square, i}
+				<button
+					class="square"
+					class:winning={winningLine?.includes(i)}
+					disabled={square}
+					on:click={() => {
+						squares[i] = next;
+						next = next === 'x' ? 'o' : 'x';
+					}}
+				>
+					{square}
+				</button>
+			{/each}
+		</svelte:fragment>
 
-	<ul class="todos">
-		{#each todos as todo (todo.id)}
-			<Todo {todo} on:change={() => toggle(todo)} />
-		{/each}
-	</ul>
+		<div slot="controls">
+			<button on:click={() => {
+				squares = Array(9).fill('');
+				next = 'x';
+			}}>
+				Reset
+			</button>
+		</div>
+	</Board>
 </div>
 
 <style>
-	.centered {
-		max-width: 20em;
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
 		margin: 0 auto;
+	}
+
+	.square, .square:disabled {
+		background: white;
+		border-radius: 0;
+		color: #222;
+		opacity: 1;
+		font-size: 2em;
+		padding: 0;
+	}
+
+	.winning {
+		font-weight: bold;
+	}
+
+	.container:has(.winning) .square:not(.winning) {
+		color: #ccc;
 	}
 </style>
