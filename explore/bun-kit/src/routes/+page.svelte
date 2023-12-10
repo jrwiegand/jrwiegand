@@ -1,24 +1,20 @@
 <script>
-	import AudioPlayer, { stopAll } from './AudioPlayer.svelte';
-	import { tracks } from './tracks.js';
+	let user = {
+		firstname: 'Ada',
+		lastname: 'Lovelace'
+	};
 </script>
 
-<div class="centered">
-	{#each tracks as track}
-		<AudioPlayer {...track} />
-	{/each}
-</div>
+<label>
+	<input bind:value={user.firstname} />
+	first name
+</label>
 
-<button on:click={stopAll}>stop all</button>
+<label>
+	<input bind:value={user.lastname} />
+	last name
+</label>
 
-<style>
-	.centered {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		justify-content: center;
-		gap: 0.5em;
-		max-width: 40em;
-		margin: 0 auto;
-	}
-</style>
+{@debug user}
+
+<h1>Hello {user.firstname}!</h1>
