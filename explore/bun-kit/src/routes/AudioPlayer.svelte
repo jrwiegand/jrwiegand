@@ -1,5 +1,9 @@
 <script context="module">
 	let current;
+
+	export function stopAll() {
+		current?.pause();
+	}
 </script>
 
 <script>
