@@ -2,5 +2,5 @@
 	import { message } from '$lib/message';
 </script>
 
-<h1>home</h1>
+<h1>a deeply nested route</h1>
 <p>{message}</p>
