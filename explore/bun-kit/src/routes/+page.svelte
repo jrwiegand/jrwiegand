@@ -1,1 +1,6 @@
-<h1>hello world</h1>
+<script>
+    export let data;
+    console.log(data);
+</script>
+
+<h1>Hello {data.visited ? 'friend' : 'stranger'}!</h1>
