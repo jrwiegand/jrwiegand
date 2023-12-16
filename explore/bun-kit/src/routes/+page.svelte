@@ -1,16 +1,23 @@
 <script>
 	export let data;
+	export let form;
 </script>
 
 <main>
 	<h1>todos</h1>
+
+	{#if form?.error}
+		<p class="error">{form.error}</p>
+	{/if}
 
 	<form method="POST" action="?/create">
 		<label>
 			add a todo:
 			<input
 				name="description"
+				value="{form?.description ?? ''}"
 				autocomplete="off"
+				required
 			/>
 		</label>
 	</form>
@@ -45,7 +52,6 @@
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
-		padding: 0 1em;
 	}
 
 	input {
@@ -57,7 +63,7 @@
 	}
 
 	ul {
-		padding: 0 1em;
+		padding: 0 0 0 1em;
 	}
 
 	button {
@@ -67,11 +73,17 @@
 		cursor: pointer;
 		aspect-ratio: 1;
 		height: 100%;
+		width: 1em;
 		opacity: 0.5;
 		transition: opacity 0.2s;
+		padding: 0;
 	}
 
 	button:hover {
 		opacity: 1;
+	}
+
+	.error {
+		color: red;
 	}
 </style>
