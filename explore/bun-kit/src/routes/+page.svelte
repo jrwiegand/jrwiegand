@@ -2,10 +2,10 @@
 	export let data;
 </script>
 
-<div class="centered">
+<main>
 	<h1>todos</h1>
 
-	<form method="POST">
+	<form method="POST" action="?/create">
 		<label>
 			add a todo:
 			<input
@@ -15,31 +15,49 @@
 		</label>
 	</form>
 
-	<ul class="todos">
+	<ul>
 		{#each data.todos as todo (todo.id)}
 			<li>
-				{todo.description}
+				<form method="POST" action="?/delete">
+					<input type="hidden" name="id" value="{todo.id}" />
+					<span>{todo.description}</span>
+					<button aria-label="Mark as Complete" />
+				</form>
 			</li>
 		{/each}
 	</ul>
-</div>
+</main>
 
 <style>
-	.centered {
+	main {
 		max-width: 20em;
 		margin: 0 auto;
 	}
 
+	form {
+		display: flex;
+		align-items: center;
+		height: 3em;
+	}
+
 	label {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		width: 100%;
+		padding: 0 1em;
 	}
 
 	input {
-		flex: 1;
+		width: 12em;
 	}
 
 	span {
 		flex: 1;
+	}
+
+	ul {
+		padding: 0 1em;
 	}
 
 	button {
@@ -47,17 +65,13 @@
 		background: url(./remove.svg) no-repeat 50% 50%;
 		background-size: 1rem 1rem;
 		cursor: pointer;
-		height: 100%;
 		aspect-ratio: 1;
+		height: 100%;
 		opacity: 0.5;
 		transition: opacity 0.2s;
 	}
 
 	button:hover {
 		opacity: 1;
-	}
-
-	.saving {
-		opacity: 0.5;
 	}
 </style>
