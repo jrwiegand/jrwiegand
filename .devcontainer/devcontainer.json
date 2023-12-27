@@ -22,5 +22,5 @@
 		"github-cli": "latest"
 	},
 	"postCreateCommand": "zsh .devcontainer/post-create.zsh",
-	"remoteUser": "jrwiegand"
+	"remoteUser": "vscode"
 }
