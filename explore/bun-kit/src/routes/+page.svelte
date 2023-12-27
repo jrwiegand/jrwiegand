@@ -46,14 +46,24 @@
 						on:change={async (e) => {
 							const done = e.currentTarget.checked;
 
-							// TODO handle change
+							await fetch(`/todo/${todo.id}`, {
+								method: 'PUT',
+								body: JSON.stringify({ done }),
+								headers: {
+									'Content-Type': 'application/json'
+								}
+							});
 						}}
 					/>
 					<span>{todo.description}</span>
 					<button
 						aria-label="Mark as complete"
 						on:click={async (e) => {
-							// TODO handle delete
+							await fetch(`/todo/${todo.id}`, {
+								method: 'DELETE'
+							});
+
+							data.todos = data.todos.filter((t) => t !== todo);
 						}}
 					/>
 				</label>
