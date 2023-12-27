@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 mcr.microsoft.com/vscode/devcontainers/base:dev-alpine
+FROM --platform=linux/amd64 mcr.microsoft.com/vscode/devcontainers/base:dev-jammy
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
