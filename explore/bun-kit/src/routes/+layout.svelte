@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page, navigating } from '$app/stores';
 </script>
 
 <nav>
@@ -10,6 +10,10 @@
 	<a href="/about" aria-current={$page.url.pathname === '/about'}>
 		about
 	</a>
+
+	{#if $navigating}
+        navigating to {$navigating.to?.url.pathname}
+    {/if}
 </nav>
 
 <slot />
