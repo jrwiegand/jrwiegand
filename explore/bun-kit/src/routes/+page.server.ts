@@ -1,5 +1,7 @@
-export function load(event) {
+export async function load({ fetch }) {
+	const response = await fetch('/a');
+
 	return {
-		message: `the answer is ${event.locals.answer}`
+		message: await response.text()
 	};
 }
