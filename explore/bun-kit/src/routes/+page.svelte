@@ -1,5 +1,1 @@
-<script>
-	export let data;
-</script>
-
-<h1>{data.message}</h1>
+<h1>home</h1>
