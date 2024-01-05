@@ -1,0 +1,7 @@
+{
+    "name": "jrwiegand",
+    "private": true,
+    "workspaces": [
+      "sites/*"
+    ]
+  }
