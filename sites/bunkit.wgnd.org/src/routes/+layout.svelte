@@ -1,26 +1,24 @@
 <script lang="ts">
-	import { navigating } from "$app/stores";
+	import { onMount } from "svelte";
 
-	let previous: { from: { url: URL }, to: { url: URL } };
-	let start: number;
-	let end: number;
+	let seconds = 0;
 
-	$: if ($navigating) {
-		start = Date.now();
-		end = 0;
-		previous = $navigating;
-	} else {
-		end = Date.now();
-	}
+	onMount(() => {
+		const interval = setInterval(() => {
+			seconds += 1;
+		}, 1000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	});
 </script>
-<nav>
+
+<nav data-sveltekit-reload>
 	<a href="/">home</a>
-	<a href="/slow-a" data-sveltekit-preload-data>/slow-a</a>
-	<a href="/slow-b">/slow-b</a>
+	<a href="/about">/about</a>
 </nav>
 
 <slot />
 
-{#if previous && end}
-	<p>navigated from {previous.from.url.pathname} to {previous.to.url.pathname} in <strong>{end - start}ms</strong></p>
-{/if}
+<p>the page has been open for {seconds} seconds</p>
