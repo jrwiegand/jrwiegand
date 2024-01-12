@@ -12,7 +12,17 @@
 	</p>
 </footer>
 
-<style global>
+<style>
+	@font-face {
+		font-family: 'IBM Plex Mono';
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src:
+			local('IBM Plex Mono'),
+			url('/ibm-plex-mono-regular.woff2') format('woff2');
+	}
+
 	/* Box sizing rules */
 	:global(*, *::before, *::after) {
 		box-sizing: border-box;
@@ -79,15 +89,7 @@
 	}
 
 	:global(body) {
-		font-family:
-			-apple-system,
-			Segoe UI,
-			Roboto,
-			Noto Sans,
-			Ubuntu,
-			Cantarell,
-			Helvetica Neue,
-			sans-serif;
+		font-family: IBM Plex Mono, monospace;
 		padding: 5vh 10vw;
 		line-height: 1.6;
 		font-size: 1.2rem;
