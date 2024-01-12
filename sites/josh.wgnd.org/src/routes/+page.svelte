@@ -2,7 +2,7 @@
 	<h1>Hello.</h1>
 	<h2>My name is Josh Wiegand.</h2>
 
-	<img src="/profile.png" alt="profile" />
+	<img src="/profile.png" alt="profile" class="profile" />
 
 	<p>
 		I craft computer bits and bytes to help people. I enjoy learning and talking many topics
@@ -30,3 +30,33 @@
 		book or doing something else that is vitally important for the next five minutes.
 	</p>
 </main>
+
+<style>
+	main {
+		height: 100%;
+		max-width: 32rem;
+	}
+
+	h1 {
+		padding: 2rem 0;
+	}
+
+	h2 {
+		padding: 1.5rem 0;
+	}
+
+	main {
+		max-width: 32rem;
+		height: 100%;
+	}
+
+	p {
+		padding: 0.5rem 0;
+	}
+
+	.profile {
+		border-radius: 3.5rem;
+		height: 7rem;
+		margin: 0.5rem 0;
+	}
+</style>
