@@ -1,38 +1,26 @@
-<nav>
+<script>
+  import { page } from "$app/stores";
+</script>
+
+<nav
+  class:has-color={!!$page.data.color}
+  style:background={$page.data.color ?? "var(--bg-2)"}
+>
 	<a href="/">home</a>
-	<a href="/a">a</a>
-	<a href="/a/b">a/b</a>
-	<a href="/a/b/c">a/b/c</a>
+	<a href="/red">red</a>
+	<a href="/green">green</a>
+	<a href="/blue">blue</a>
+
+	{#if $page.data.component}
+		<svelte:component this={$page.data.component} />
+	{/if}
 </nav>
 
-<div class="layout" data-name="root">
-	<slot />
-</div>
+<slot />
 
 <style>
-	:global(.layout) {
-		position: relative;
-		border: 1px solid #999;
-		padding: 1em;
-		margin: 1em 0 0 0;
-		border-radius: 4px;
-	}
-
-	:global(.layout::before) {
-		position: absolute;
-		content: attr(data-name) ' layout';
-		left: 1em;
-		top: -1em;
-		background-color: white;
-		color: #222;
-		padding: 0.5em;
-		line-height: 1;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:global(.layout::before) {
-			background: #2e2e2e;
-			color: #e6e6e6;
-		}
+	nav.has-color,
+	nav.has-color a {
+		color: white;
 	}
 </style>
