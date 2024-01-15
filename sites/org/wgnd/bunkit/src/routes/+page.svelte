@@ -1,1 +1,5 @@
-<h1>pick a colour</h1>
+<script lang="ts">
+    export let data;
+</script>
+
+<svelte:component this={data.component} message={data.message} />
