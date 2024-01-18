@@ -1,4 +1,4 @@
-import { PASSPHRASE } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import { fail, redirect } from "@sveltejs/kit";
 
 export async function load({ cookies }) {
@@ -11,7 +11,7 @@ export const actions = {
   default: async ({ request, cookies }) => {
     const data = await request.formData();
 
-    if (data.get("passphrase") === PASSPHRASE) {
+    if (data.get("passphrase") === env.PASSPHRASE) {
       cookies.set("allowed", "true", {
         path: "/",
       });
