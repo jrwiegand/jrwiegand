@@ -1,6 +1,4 @@
-export async function load({ depends }) {
-  depends("data:now");
-
+export async function load() {
   return {
     now: Date.now(),
   };
