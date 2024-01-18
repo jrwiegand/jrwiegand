@@ -1,8 +1,7 @@
-export async function load({ fetch }) {
-  const response = await fetch("/api/now");
-  const now = await response.json();
+export async function load({ depends }) {
+  depends("data:now");
 
   return {
-    now,
+    now: Date.now(),
   };
 }

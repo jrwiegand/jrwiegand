@@ -6,7 +6,7 @@
 
   onMount(() => {
     const interval = setInterval(() => {
-      invalidate("/api/now");
+      invalidate("data:now");
     }, 1000);
 
     return () => {
