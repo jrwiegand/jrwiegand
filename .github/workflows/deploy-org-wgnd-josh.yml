@@ -25,3 +25,4 @@ jobs:
               apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
               accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
               command: pages deploy .svelte-kit/cloudflare --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME}}
+              workingDirectory: "./sites/org/wgnd/josh"
