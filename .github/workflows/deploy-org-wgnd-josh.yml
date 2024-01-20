@@ -1,0 +1,22 @@
+name: Deploy josh.wgnd.org
+
+run-name: ${{ github.actor }} is deploying to josh.wgnd.org 🚀
+
+on:
+  push:
+    path:
+      - "sites/org/wgnd/josh/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy josh.wgnd.org
+    steps:
+          - uses: actions/checkout@v3
+          - name: Deploy
+            uses: cloudflare/wrangler-action@v3
+            with:
+              apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+              accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+              command: pages deploy --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME}}
+              workingDirectory: "sites/org/wgnd/josh"
