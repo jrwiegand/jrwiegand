@@ -12,27 +12,14 @@ defaults:
     working-directory: ./sites/org/wgnd/josh
 
 jobs:
-  install:
-    name: Install 📦
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
-      - run: bun install
-
-  build:
-    name: Build 🛠️
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
-      - run: bun run build
-
   deploy:
     name: Deploy 🚀
     runs-on: ubuntu-latest
     steps:
           - uses: actions/checkout@v3
+          - uses: oven-sh/setup-bun@v1
+          - run: bun install
+          - run: bun run build
           - uses: cloudflare/wrangler-action@v3
             with:
               apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
