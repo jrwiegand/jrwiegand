@@ -13,10 +13,11 @@ jobs:
     name: Deploy josh.wgnd.org
     steps:
           - uses: actions/checkout@v3
+          - uses: oven-sh/setup-bun@v1
           - name: Deploy
             uses: cloudflare/wrangler-action@v3
             with:
               apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
               accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-              command: pages deploy --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME}}
+              command: pages deploy .svelte-kit/cloudflare --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME}}
               workingDirectory: "sites/org/wgnd/josh"
