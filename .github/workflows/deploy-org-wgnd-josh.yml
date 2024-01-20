@@ -20,7 +20,7 @@ jobs:
     name: Build 🛠️
     runs-on: ubuntu-latest
     defaults:
-      runs:
+      run:
         working-directory: ./sites/org/wgnd/josh
     steps:
       - uses: actions/checkout@v3
@@ -31,7 +31,7 @@ jobs:
     name: Deploy 🚀
     runs-on: ubuntu-latest
     defaults:
-      runs:
+      run:
         working-directory: ./sites/org/wgnd/josh
     steps:
           - uses: actions/checkout@v3
