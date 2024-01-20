@@ -8,18 +8,29 @@ on:
       - "sites/org/wgnd/josh/**"
 
 jobs:
-  deploy:
+  install:
+    name: Install 📦
     runs-on: ubuntu-latest
-    name: Deploy josh.wgnd.org
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+
+  build:
+    name: Build 🛠️
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+      - run: bun run build
+
+  deploy:
+    name: Deploy 🚀
+    runs-on: ubuntu-latest
     steps:
           - uses: actions/checkout@v3
           - uses: oven-sh/setup-bun@v1
-          - name: Install
-              command: bun install
-          - name: Build
-              command: bun run build
-          - name: Deploy
-            uses: cloudflare/wrangler-action@v3
+          - uses: cloudflare/wrangler-action@v3
             with:
               apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
               accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
