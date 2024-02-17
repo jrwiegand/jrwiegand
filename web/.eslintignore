@@ -1,9 +1,0 @@
-.DS_Store
-.svelte-kit
-.env
-.env.*
-!.env.example
-build
-node_modules
-package
-pnpm-lock.yaml
