@@ -89,7 +89,9 @@
 	}
 
 	:global(body) {
-		font-family: IBM Plex Mono, monospace;
+		font-family:
+			IBM Plex Mono,
+			monospace;
 		padding: 5vh 10vw;
 		line-height: 1.6;
 		font-size: 1.2rem;

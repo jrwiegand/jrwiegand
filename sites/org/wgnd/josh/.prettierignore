@@ -1,5 +1,13 @@
-# Ignore files for BUN, PNPM, NPM and YARN
+# Files
+.DS_Store
+.env
+.env.*
+!.env.example
 bun.lockb
-pnpm-lock.yaml
-package-lock.json
-yarn.lock
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Directories
+.svelte-kit
+.wrangler
+node_modules
