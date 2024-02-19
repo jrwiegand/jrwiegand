@@ -16,6 +16,7 @@ plugins=(
 source "$ZSH"/oh-my-zsh.sh
 
 source "$DOTFILES"/environments/*.sh
+source "$DOTFILES"/functions/*.sh
 
 # disable auto correct
 unsetopt correct_all
