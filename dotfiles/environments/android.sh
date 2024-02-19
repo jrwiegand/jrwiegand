@@ -12,9 +12,9 @@ if [ -d "$HOME/Library/Android" ]; then
 	### emulator
 	export PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
 
-	if [ -d "/Applications/Brave Browser.app" ]
+	if [ -d "/Applications/Brave Browser.app" ]; then
 		export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
-	elif [ -d "/Applications/Google Chrome.app"]
+	elif [ -d "/Applications/Google Chrome.app"]; then
 		export CHROME_EXECUTABLE="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 	fi
 	export ANDROID=true
