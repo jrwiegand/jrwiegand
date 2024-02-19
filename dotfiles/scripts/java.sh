@@ -4,5 +4,6 @@ if type java > /dev/null && type javac > /dev/null; then
 	if [ -d "/usr/local/opt/openjdk@$JAVA_MAJOR_VERSION" ]; then
 		export PATH="/usr/local/opt/openjdk@$JAVA_MAJOR_VERSION/bin:$PATH"
 		export JAVA_HOME="/usr/local/Cellar/openjdk@$JAVA_MAJOR_VERSION/$JAVA_VERSION/libexec/openjdk.jdk/Contents/Home"
+		export JAVA=true
 	fi
 fi
