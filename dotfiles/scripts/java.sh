@@ -1,3 +1,4 @@
+export JAVA=false
 if type java > /dev/null && type javac > /dev/null; then
 	JAVA_VERSION=$(java -version 2>&1 | grep -Eow -m 1 "[0-9]+\.[0-9]+\.[0-9]+")
 	JAVA_MAJOR_VERSION=$(echo "$JAVA_VERSION" | cut -d . -f 1)
