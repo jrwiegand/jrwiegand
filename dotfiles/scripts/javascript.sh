@@ -1,5 +1,7 @@
 export BUN=false
 if type bun > /dev/null; then
+	# completions
+	[ -s "/Users/jwiegand/.bun/_bun" ] && source "/Users/jwiegand/.bun/_bun"
 	export BUN=true
 fi
 
