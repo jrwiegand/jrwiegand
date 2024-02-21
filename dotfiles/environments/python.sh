@@ -1,12 +1,3 @@
-## To avoid them accidentally linking against a Pyenv-provided Python
-## https://github.com/pyenv/pyenv#getting-pyenv
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-
-## python
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/jwiegand/Dev/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -21,3 +12,13 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+if [ -d "$HOME/.pyenv" ]; then
+	## To avoid them accidentally linking against a Pyenv-provided Python
+	## https://github.com/pyenv/pyenv#getting-pyenv
+	alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
+	export PYENV_ROOT="$HOME/.pyenv"
+	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
