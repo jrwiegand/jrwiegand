@@ -1,5 +1,4 @@
 set nocompatible                      " Make Vim more useful
-colorscheme material                  " Set color scheme!
 set clipboard=unnamed                 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set wildmenu                          " Enhance command-line completion
 set backspace=indent,eol,start        " Allow backspace in insert mode
