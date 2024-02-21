@@ -1,16 +1,10 @@
+<script>
+	import Footer from '$lib/components/footer.svelte';
+</script>
+
 <slot />
 
-<footer>
-	<p>
-		<a
-			style="text-decoration: none"
-			href="https://hynek.me/til/copyright-years/"
-			target="_blank"
-			rel="noopener noreferrer">©</a
-		>
-		1989 Josh Wiegand
-	</p>
-</footer>
+<Footer />
 
 <style>
 	@font-face {
