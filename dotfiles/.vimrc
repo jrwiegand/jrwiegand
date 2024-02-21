@@ -22,7 +22,7 @@ set exrc                              " Enable per-directory .vimrc files
 set secure                            " disable unsafe commands in them
 
 syntax on                             " Enable syntax highlighting
-set tabstop=4                         " Make tabs as wide as two spaces
+set tabstop=2                         " Make tabs as wide as 2 spaces
 set number                            " Enable line numbers
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_  " Show “invisible” characters
 set list
@@ -41,7 +41,7 @@ set showmode                          " Show the current mode
 set title                             " Show the filename in the window titlebar
 set showcmd                           " Show the (partial) command as it’s being typed
 
-set scrolloff=3                       " Start scrolling three lines before the horizontal window border
+set scrolloff=2                       " Start scrolling two lines before the horizontal window border
 
 set rtp+=/usr/local/opt/fzf           " Turn on fuzzy finder
 
@@ -63,6 +63,4 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript " Treat .json files as .js
 endif
 
-let g:python_host_prog = "/usr/local/bin/python2"
 let g:python3_host_prog = "/usr/local/bin/python3"
-
