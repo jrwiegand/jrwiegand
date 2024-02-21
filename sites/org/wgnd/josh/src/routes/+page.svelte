@@ -45,11 +45,6 @@
 		padding: 1.5rem 0;
 	}
 
-	main {
-		max-width: 32rem;
-		height: 100%;
-	}
-
 	p {
 		padding: 0.5rem 0;
 	}
