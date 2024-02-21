@@ -32,23 +32,6 @@
 </main>
 
 <style>
-	main {
-		height: 100%;
-		max-width: 32rem;
-	}
-
-	h1 {
-		padding: 2rem 0;
-	}
-
-	h2 {
-		padding: 1.5rem 0;
-	}
-
-	p {
-		padding: 0.5rem 0;
-	}
-
 	.profile {
 		border-radius: 3.5rem;
 		height: 7rem;

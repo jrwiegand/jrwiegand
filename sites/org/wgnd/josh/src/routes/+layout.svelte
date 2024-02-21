@@ -99,8 +99,24 @@
 		grid-template-rows: auto 1fr auto;
 		min-height: 100vh;
 	}
-
-	footer {
+	:global(footer) {
 		max-width: 32rem;
+	}
+
+	:global(main) {
+		height: 100%;
+		max-width: 32rem;
+	}
+
+	:global(h1) {
+		padding: 2rem 0;
+	}
+
+	:global(h2) {
+		padding: 1.5rem 0;
+	}
+
+	:global(p) {
+		padding: 0.5rem 0;
 	}
 </style>
