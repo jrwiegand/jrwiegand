@@ -1,8 +1,12 @@
+<script lang="ts">
+	import profile from '$lib/assets/images/profile.png';
+</script>
+
 <main>
 	<h1>Hello.</h1>
 	<h2>My name is Josh Wiegand.</h2>
 
-	<img src="/profile.png" alt="profile" class="profile" />
+	<img src={profile} alt="profile" class="profile" />
 
 	<p>
 		I craft computer bits and bytes to help people. I enjoy learning and talking many topics

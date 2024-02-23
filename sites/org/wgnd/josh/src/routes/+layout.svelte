@@ -1,5 +1,6 @@
 <script>
 	import Footer from '$lib/components/footer.svelte';
+	import font from '$lib/assets/fonts/ibm-plex-mono-regular.woff2';
 </script>
 
 <slot />
@@ -14,7 +15,7 @@
 		font-display: swap;
 		src:
 			local('IBM Plex Mono'),
-			url('/ibm-plex-mono-regular.woff2') format('woff2');
+			url({font}) format('woff2');
 	}
 
 	/* Box sizing rules */
