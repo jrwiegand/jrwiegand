@@ -10,4 +10,4 @@ fi
 ln -sfv "$REPO_DIR"/.zshrc            "$HOME"/.zshrc
 ln -sfv "$REPO_DIR"/.vimrc            "$HOME"/.vimrc
 ln -sfv "$REPO_DIR"/.vim              "$HOME"/.vim
-ln -sfv "$REPO_DIR"/default-packgages "$HOME/".nvm/default-packages
+ln -sfc "$REPO_DIR"/config.toml       "$HOME"/.config/helix/config.toml
