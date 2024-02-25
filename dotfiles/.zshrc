@@ -10,13 +10,16 @@ export DOTFILES="$HOME"/Dev/jrwiegand/dotfiles
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 plugins=(
-    history-substring-search
+	history-substring-search
 )
 
 source "$ZSH"/oh-my-zsh.sh
 
-source "$DOTFILES"/environments/*.sh
-source "$DOTFILES"/functions/*.sh
+# Source all the environment files
+for environment_file in "$DOTFILES"/environments/*.sh; do source $environment_file; done
+
+# Source all the function files
+for function_file in "$DOTFILES"/functions/*.sh; do source $function_file; done
 
 # disable auto correct
 unsetopt correct_all
