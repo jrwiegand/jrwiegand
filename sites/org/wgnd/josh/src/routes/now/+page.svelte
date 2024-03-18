@@ -41,8 +41,8 @@
 
 	<h2>Watching</h2>
 	<ul>
-		<li>Masters of the Air</li>
+		<li>March Madness ⛹️‍♀️ ⛹️‍♂️ 🏀</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-02-24</em></strong></p>
+	<p><strong><em>Updated: 2024-03-18</em></strong></p>
 </main>
