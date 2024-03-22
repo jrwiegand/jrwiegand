@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WorkoutActivity"
+    android:background="@color/background_material_dark">
+
+    <TextView
+        android:id="@+id/clock_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/end_button"
+        android:gravity="center"
+        android:text="@string/clock_text"
+        android:textStyle="bold"
+        android:textSize="100sp"
+        android:textColor="@color/background_floating_material_light"/>
+
+    <Button
+        android:id="@+id/end_button"
+        android:onClick="onSendTimerData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#ffe3141e"
+        android:text="@string/stop_workout"
+        android:textStyle="bold"
+        android:textColor="@color/background_floating_material_light" />
+
+</RelativeLayout>
