@@ -29,10 +29,12 @@
 		<li>TickTick</li>
 		<li>1Password</li>
 		<li>Visual Studio Code</li>
+		<li>Helix Editor</li>
+		<li>Datagrip</li>
 		<li>iTerm2</li>
 		<li>YNAB</li>
 		<li>Tailscale</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-02-24</em></strong></p>
+	<p><strong><em>Updated: 2024-04-01</em></strong></p>
 </main>

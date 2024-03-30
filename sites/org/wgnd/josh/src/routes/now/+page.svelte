@@ -12,14 +12,30 @@
 
 	<h2>Making</h2>
 	<ul>
-		<li>This website!</li>
+		<li>My repos more organized! 🧹</li>
 	</ul>
 
 	<h2>Learning</h2>
 	<ul>
-		<li>Machine Learning</li>
-		<li>Distributed Systems</li>
-		<li>Rust Lang</li>
+		<li>
+			<a href="https://doc.rust-lang.org/stable/book/" target="_blank" rel="noopener noreferrer"
+				>Rust Lang 🦀</a
+			>
+		</li>
+		<li>
+			<a
+				href="https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB"
+				target="_blank"
+				rel="noopener noreferrer">Distributed Systems</a
+			>
+		</li>
+		<li>
+			<a
+				href="https://www.youtube.com/playlist?list=PLGLfVvz_LVvTHOWIEBAl-YOr_FC8lRmWX"
+				target="_blank"
+				rel="noopener noreferrer">Data Science</a
+			>
+		</li>
 	</ul>
 
 	<h2>Reading</h2>
@@ -30,6 +46,7 @@
 				target="_blank"
 				rel="noopener noreferrer">Army Leadership and the Profession</a
 			>
+			🪖
 		</li>
 		<li>Software Engineering at Google</li>
 	</ul>
@@ -44,5 +61,5 @@
 		<li>March Madness ⛹️‍♀️ ⛹️‍♂️ 🏀</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-03-18</em></strong></p>
+	<p><strong><em>Updated: 2024-04-01</em></strong></p>
 </main>
