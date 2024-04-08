@@ -1,0 +1,49 @@
+{
+  "name": "elevity",
+  "description": "A Clean & simple Eleventy Starter Kit with Vite",
+  "homepage": "https://github.com/jrwiegand/elevity#readme",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Josh Wiegand",
+    "email": "1606617+jrwiegand@users.noreply.github.com"
+  },
+  "keywords": [
+    "eleventy",
+    "tailwindcss",
+    "vite"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrwiegand/elevity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jrwiegand/elevity/issues"
+  },
+  "engines": {
+    "node": "18.x.x",
+    "npm": "9.x.x"
+  },
+  "lint-staged": {
+    "*.{css,html,js,md}": [
+      "prettier --write"
+    ]
+  },
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve --incremental",
+    "build": "npx @11ty/eleventy",
+    "clean": "del-cli _site",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "2.0.1",
+    "@11ty/eleventy-plugin-vite": "4.0.0",
+    "@11ty/eleventy-plugin-webc": "0.11.1",
+    "@commitlint/cli": "17.6.5",
+    "@commitlint/config-conventional": "17.6.5",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.2",
+    "prettier": "2.8.8",
+    "vite": "4.3.9"
+  }
+}

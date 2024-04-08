@@ -1,0 +1,2 @@
+WEB COMPONENT
+<style webc:scoped>:host { font-weight: bold; }</style>
