@@ -16,6 +16,7 @@
 		<li>MacBook Pro (15-inch, 2019)</li>
 		<li>MX Master 3</li>
 		<li>iPhone 13 Pro</li>
+		<li>AirPods Pro (1st generation)</li>
 		<li>Apple TV 4K</li>
 		<li>Netgate 2100</li>
 		<li>U6 Pro</li>
@@ -36,5 +37,5 @@
 		<li>Tailscale</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-03-30</em></strong></p>
+	<p><strong><em>Updated: 2024-04-08</em></strong></p>
 </main>
