@@ -58,7 +58,16 @@
 
 	<h2>Watching</h2>
 	<ul>
-		<li>March Madness ⛹️‍♀️ ⛹️‍♂️ 🏀</li>
+		<li>
+			<a href="https://www.imdb.com/title/tt0804503/" target="_blank" rel="noopener noreferrer"
+				>Mad Men</a
+			>
+		</li>
+		<li>
+			<a href="https://www.imdb.com/title/tt16912512/" target="_blank" rel="noopener noreferrer"
+				>Manhunt</a
+			>
+		</li>
 	</ul>
 
 	<p><strong><em>Updated: 2024-03-30</em></strong></p>
