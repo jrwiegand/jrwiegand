@@ -2,3 +2,4 @@
 .DS_Store
 repl/out
 data/files/*.csv
+!data/files/stocks.csv
