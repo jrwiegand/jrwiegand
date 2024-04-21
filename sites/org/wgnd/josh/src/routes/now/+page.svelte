@@ -64,11 +64,11 @@
 			>
 		</li>
 		<li>
-			<a href="https://www.imdb.com/title/tt16912512/" target="_blank" rel="noopener noreferrer"
-				>Manhunt</a
+			<a href="https://www.imdb.com/title/tt0765425/" target="_blank" rel="noopener noreferrer"
+				>Top Chef (Season 21)</a
 			>
 		</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-04-09</em></strong></p>
+	<p><strong><em>Updated: 2024-04-20</em></strong></p>
 </main>
