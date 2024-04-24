@@ -59,11 +59,6 @@
 	<h2>Watching</h2>
 	<ul>
 		<li>
-			<a href="https://www.imdb.com/title/tt0804503/" target="_blank" rel="noopener noreferrer"
-				>Mad Men</a
-			>
-		</li>
-		<li>
 			<a href="https://www.imdb.com/title/tt0765425/" target="_blank" rel="noopener noreferrer"
 				>Top Chef (Season 21)</a
 			>
