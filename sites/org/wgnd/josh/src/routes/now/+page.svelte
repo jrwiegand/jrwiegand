@@ -59,11 +59,16 @@
 	<h2>Watching</h2>
 	<ul>
 		<li>
+			<a href="https://www.imdb.com/title/tt7660850/" target="_blank" rel="noopener noreferrer"
+				>Succession</a
+			>
+		</li>
+		<li>
 			<a href="https://www.imdb.com/title/tt0765425/" target="_blank" rel="noopener noreferrer"
 				>Top Chef (Season 21)</a
 			>
 		</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-04-20</em></strong></p>
+	<p><strong><em>Updated: 2024-04-27</em></strong></p>
 </main>
