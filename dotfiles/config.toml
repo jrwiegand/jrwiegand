@@ -1,2 +1,4 @@
 theme = "solarized_light"
 
+[editor.file-picker]
+hidden = false
