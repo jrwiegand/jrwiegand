@@ -1,9 +1,13 @@
 ## replace vim with neovim
-export NEOVIM=false
-export VIM=false
-if type nvim > /dev/null; then
+export UPDATE_HX=false
+export UPDATE_NEOVIM=false
+export UPDATE_VIM=false
+
+if type hx > /dev/null; then
+	alias vim="hx"
+elif type nvim > /dev/null; then
 	alias vim="nvim"
-	export NEOVIM=true
+	export UPDATE_NEOVIM=true
 elif type vim > /dev/null; then
-	export VIM=true
+	export UPDATE_VIM=true
 fi

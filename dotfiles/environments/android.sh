@@ -1,4 +1,4 @@
-export ANDROID=false
+export UPDATE_ANDROID=false
 if [ -d "$HOME/Library/Android" ]; then
 	export ANDROID_HOME="$HOME/Library/Android/sdk"
 	export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
@@ -17,11 +17,11 @@ if [ -d "$HOME/Library/Android" ]; then
 	elif [ -d "/Applications/Google Chrome.app"]; then
 		export CHROME_EXECUTABLE="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 	fi
-	export ANDROID=true
+	export UPDATE_ANDROID=true
 fi
 
-export FLUTTER=false
+export UPDATE_FLUTTER=false
 if [ -d "$HOME/Library/Flutter" ]; then
 	export PATH="$HOME/Library/Flutter/bin:$PATH"
-	export FLUTTER=true
+	export UPDATE_FLUTTER=true
 fi
