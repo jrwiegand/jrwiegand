@@ -18,9 +18,9 @@
 	<h2>Learning</h2>
 	<ul>
 		<li>
-			<a href="https://doc.rust-lang.org/stable/book/" target="_blank" rel="noopener noreferrer"
-				>Rust Lang 🦀</a
-			>
+			<a href="https://rust-exercises.com/" target="_blank" rel="noopener noreferrer">
+				100 Exercises To Learn Rust 🦀
+			</a>
 		</li>
 		<li>
 			<a
@@ -70,5 +70,5 @@
 		</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-04-27</em></strong></p>
+	<p><strong><em>Updated: 2024-05-11</em></strong></p>
 </main>
