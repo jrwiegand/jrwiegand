@@ -64,11 +64,11 @@
 			>
 		</li>
 		<li>
-			<a href="https://www.imdb.com/title/tt0765425/" target="_blank" rel="noopener noreferrer"
-				>Top Chef (Season 21)</a
+			<a href="https://www.imdb.com/title/tt11198330/" target="_blank" rel="noopener noreferrer"
+				>House of the Dragon</a
 			>
 		</li>
 	</ul>
 
-	<p><strong><em>Updated: 2024-06-01</em></strong></p>
+	<p><strong><em>Updated: 2024-06-23</em></strong></p>
 </main>
