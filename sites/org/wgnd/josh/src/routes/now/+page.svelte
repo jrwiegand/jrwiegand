@@ -53,14 +53,42 @@
 
 	<h2>Listening</h2>
 	<ul>
-		<li>Many Podcasts</li>
+		<li>
+			<a href="https://99percentinvisible.org/" target="_blank" rel="noopener noreferrer"
+				>99% Invisible</a
+			>
+		</li>
+		<li>
+			<a href="https://www.acquired.fm/" target="_blank" rel="noopener noreferrer">Acquired</a>
+		</li>
+		<li>
+			<a href="https://thisiscriminal.com/" target="_blank" rel="noopener noreferrer">Criminal</a>
+		</li>
+		<li>
+			<a href="https://www.theringer.com/house-of-r" target="_blank" rel="noopener noreferrer"
+				>House of R</a
+			>
+		</li>
+		<li>
+			<a href="https://thememorypalace.us/" target="_blank" rel="noopener noreferrer"
+				>the memory palace</a
+			>
+		</li>
+		<li>
+			<a
+				href="https://oxide.computer/podcasts/oxide-and-friends"
+				target="_blank"
+				rel="noopener noreferrer">Oxide And Friends</a
+			>
+		</li>
+		<li><a href="https://radiolab.org/" target="_blank" rel="noopener noreferrer">Radiolab</a></li>
 	</ul>
 
 	<h2>Watching</h2>
 	<ul>
 		<li>
-			<a href="https://www.imdb.com/title/tt7660850/" target="_blank" rel="noopener noreferrer"
-				>Succession</a
+			<a href="https://olympics.com/en/paris-2024" target="_blank" rel="noopener noreferrer"
+				>2024 Summer Olympics</a
 			>
 		</li>
 		<li>
@@ -68,7 +96,16 @@
 				>House of the Dragon</a
 			>
 		</li>
+		<li>
+			<a href="https://www.imdb.com/title/tt2575988/" target="_blank" rel="noopener noreferrer"
+				>Silicon Valley</a
+			>
+		</li>
+		<li>
+			<a href="https://www.imdb.com/title/tt7660850/" target="_blank" rel="noopener noreferrer"
+				>Succession</a
+			>
+		</li>
 	</ul>
-
-	<p><strong><em>Updated: 2024-06-23</em></strong></p>
+	<p><strong><em>Updated: 2024-08-04</em></strong></p>
 </main>
