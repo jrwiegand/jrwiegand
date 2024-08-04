@@ -12,7 +12,8 @@
 
 	<h2>Making</h2>
 	<ul>
-		<li>My repos more organized! 🧹</li>
+		<li>A new secret project 👀</li>
+		<li>A playground? 🛝</li>
 	</ul>
 
 	<h2>Learning</h2>
@@ -21,6 +22,13 @@
 			<a href="https://rust-exercises.com/" target="_blank" rel="noopener noreferrer">
 				100 Exercises To Learn Rust 🦀
 			</a>
+		</li>
+		<li>
+			<a
+				href="https://www.goodreads.com/book/show/22847284-grokking-algorithms-an-illustrated-guide-for-programmers-and-other-curio"
+				target="_blank"
+				rel="noopener noreferrer">Data Structures & Algorithms</a
+			>
 		</li>
 		<li>
 			<a
