@@ -19,13 +19,13 @@
 	"devDependencies": {
 		"@playwright/test": "^1.45.3",
 		"@sveltejs/adapter-auto": "^3.2.2",
-		"@sveltejs/adapter-cloudflare": "^3.0.2",
+		"@sveltejs/adapter-cloudflare": "4.7.0",
 		"@sveltejs/kit": "^2.5.20",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
-		"@types/eslint": "8.56.0",
-		"@typescript-eslint/eslint-plugin": "^6.21.0",
-		"@typescript-eslint/parser": "^6.21.0",
-		"eslint": "^8.57.0",
+		"@types/eslint": "9.6.0",
+		"@typescript-eslint/eslint-plugin": "8.0.0",
+		"@typescript-eslint/parser": "8.0.0",
+		"eslint": "9.8.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.43.0",
 		"prettier": "^3.3.3",
@@ -35,7 +35,7 @@
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.4",
 		"vite": "^5.3.5",
-		"vitest": "^1.6.0",
+		"vitest": "2.0.5",
 		"wrangler": "^3.68.0"
 	},
 	"type": "module"
