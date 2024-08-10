@@ -100,11 +100,6 @@
 			>
 		</li>
 		<li>
-			<a href="https://www.imdb.com/title/tt11198330/" target="_blank" rel="noopener noreferrer"
-				>House of the Dragon</a
-			>
-		</li>
-		<li>
 			<a href="https://www.imdb.com/title/tt2575988/" target="_blank" rel="noopener noreferrer"
 				>Silicon Valley</a
 			>
@@ -115,5 +110,5 @@
 			>
 		</li>
 	</ul>
-	<p><strong><em>Updated: 2024-08-04</em></strong></p>
+	<p><strong><em>Updated: 2024-08-10</em></strong></p>
 </main>
