@@ -1,8 +1,15 @@
 <script>
 	import Footer from '$lib/components/footer.svelte';
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let { children } = $props();
 </script>
 
-<slot />
+{@render children?.()}
 
 <Footer />
 
@@ -77,10 +84,11 @@
 		min-height: 10em;
 	}
 
-	/* Anything that has been anchored to should have extra scroll margin */
+	/* Anything that has been anchored to should have extra scroll margin
 	:target {
 		scroll-margin-block: 5ex;
 	}
+	*/
 
 	:global(body) {
 		font-family:

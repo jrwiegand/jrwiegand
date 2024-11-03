@@ -1,12 +1,19 @@
 <script lang="ts">
-	import profile from '$lib/assets/images/profile.png';
+	import profile from '$lib/assets/images/profile.webp';
+	import profileBackup from '$lib/assets/images/profile.png';
 </script>
 
 <main>
 	<h1>Hello.</h1>
+
 	<h2>My name is Josh Wiegand.</h2>
 
-	<img src={profile} alt="profile" class="profile" />
+	<span class="profile">
+		<picture>
+			<source srcset={profile} type="image/webp" />
+			<img src={profileBackup} alt="Profile" />
+		</picture>
+	</span>
 
 	<p>
 		I craft computer bits and bytes to help people. I enjoy learning and talking many topics
@@ -15,7 +22,7 @@
 
 	<p>
 		You can follow me on <a
-			href="https://twitter.com/joshrwiegand"
+			href="https://x.com/joshrwiegand"
 			target="_blank"
 			rel="noopener noreferrer">Twitter</a
 		>
@@ -36,7 +43,7 @@
 </main>
 
 <style>
-	.profile {
+	.profile img {
 		border-radius: 3.5rem;
 		height: 7rem;
 		margin: 0.5rem 0;
