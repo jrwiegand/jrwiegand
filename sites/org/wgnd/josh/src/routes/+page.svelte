@@ -3,9 +3,7 @@
 
 	<h2>My name is Josh Wiegand.</h2>
 
-	<span class="profile">
-		<enhanced:img src="/images/profile.png" alt="Profile" />
-	</span>
+	<enhanced:img src="../lib/assets/images/profile.png" alt="Profile" />
 
 	<p>
 		I craft computer bits and bytes to help people. I enjoy learning and talking
@@ -41,9 +39,10 @@
 </main>
 
 <style>
-	.profile img {
+	img {
 		border-radius: 3.5rem;
 		height: 7rem;
 		margin: 0.5rem 0;
+		width: 7rem;
 	}
 </style>
