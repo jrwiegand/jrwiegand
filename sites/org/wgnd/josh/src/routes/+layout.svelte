@@ -1,5 +1,5 @@
 <script>
-	import Footer from '$lib/components/footer.svelte';
+	import Footer from "$lib/components/footer.svelte";
 	/**
 	 * @typedef {Object} Props
 	 * @property {import('svelte').Snippet} [children]
@@ -15,13 +15,13 @@
 
 <style>
 	@font-face {
-		font-family: 'IBM Plex Mono';
+		font-family: "IBM Plex Mono";
 		font-style: normal;
 		font-weight: 400;
 		font-display: swap;
 		src:
-			local('IBM Plex Mono'),
-			url('/fonts/ibm-plex-mono-regular.woff2') format('woff2');
+			local("IBM Plex Mono"),
+			url("/fonts/ibm-plex-mono-regular.woff2") format("woff2");
 	}
 
 	/* Box sizing rules */
@@ -42,7 +42,7 @@
 	}
 
 	/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-	:global(ul[role='list'], ol[role='list']) {
+	:global(ul[role="list"], ol[role="list"]) {
 		list-style: none;
 	}
 

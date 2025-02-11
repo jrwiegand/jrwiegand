@@ -19,7 +19,11 @@
 	<h2>Learning</h2>
 	<ul>
 		<li>
-			<a href="https://rust-exercises.com/" target="_blank" rel="noopener noreferrer">
+			<a
+				href="https://rust-exercises.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
 				100 Exercises To Learn Rust 🦀
 			</a>
 		</li>
@@ -62,24 +66,38 @@
 	<h2>Listening</h2>
 	<ul>
 		<li>
-			<a href="https://99percentinvisible.org/" target="_blank" rel="noopener noreferrer"
-				>99% Invisible</a
+			<a
+				href="https://99percentinvisible.org/"
+				target="_blank"
+				rel="noopener noreferrer">99% Invisible</a
 			>
 		</li>
 		<li>
-			<a href="https://www.acquired.fm/" target="_blank" rel="noopener noreferrer">Acquired</a>
-		</li>
-		<li>
-			<a href="https://thisiscriminal.com/" target="_blank" rel="noopener noreferrer">Criminal</a>
-		</li>
-		<li>
-			<a href="https://www.theringer.com/house-of-r" target="_blank" rel="noopener noreferrer"
-				>House of R</a
+			<a
+				href="https://www.acquired.fm/"
+				target="_blank"
+				rel="noopener noreferrer">Acquired</a
 			>
 		</li>
 		<li>
-			<a href="https://thememorypalace.us/" target="_blank" rel="noopener noreferrer"
-				>the memory palace</a
+			<a
+				href="https://thisiscriminal.com/"
+				target="_blank"
+				rel="noopener noreferrer">Criminal</a
+			>
+		</li>
+		<li>
+			<a
+				href="https://www.theringer.com/house-of-r"
+				target="_blank"
+				rel="noopener noreferrer">House of R</a
+			>
+		</li>
+		<li>
+			<a
+				href="https://thememorypalace.us/"
+				target="_blank"
+				rel="noopener noreferrer">the memory palace</a
 			>
 		</li>
 		<li>
@@ -89,26 +107,29 @@
 				rel="noopener noreferrer">Oxide And Friends</a
 			>
 		</li>
-		<li><a href="https://radiolab.org/" target="_blank" rel="noopener noreferrer">Radiolab</a></li>
+		<li>
+			<a href="https://radiolab.org/" target="_blank" rel="noopener noreferrer"
+				>Radiolab</a
+			>
+		</li>
 	</ul>
 
 	<h2>Watching</h2>
 	<ul>
 		<li>
-			<a href="https://olympics.com/en/paris-2024" target="_blank" rel="noopener noreferrer"
-				>2024 Summer Olympics</a
+			<a
+				href="https://www.imdb.com/title/tt11280740/"
+				target="_blank"
+				rel="noopener noreferrer">Severance</a
 			>
 		</li>
 		<li>
-			<a href="https://www.imdb.com/title/tt2575988/" target="_blank" rel="noopener noreferrer"
-				>Silicon Valley</a
-			>
-		</li>
-		<li>
-			<a href="https://www.imdb.com/title/tt7660850/" target="_blank" rel="noopener noreferrer"
-				>Succession</a
+			<a
+				href="https://www.imdb.com/title/tt13918776/"
+				target="_blank"
+				rel="noopener noreferrer">The Night Agent</a
 			>
 		</li>
 	</ul>
-	<p><strong><em>Updated: 2024-08-10</em></strong></p>
+	<p><strong><em>Updated: 2025-02-10</em></strong></p>
 </main>

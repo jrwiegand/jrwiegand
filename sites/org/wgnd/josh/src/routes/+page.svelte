@@ -1,23 +1,15 @@
-<script lang="ts">
-	import profile from '$lib/assets/images/profile.webp';
-	import profileBackup from '$lib/assets/images/profile.png';
-</script>
-
 <main>
 	<h1>Hello.</h1>
 
 	<h2>My name is Josh Wiegand.</h2>
 
 	<span class="profile">
-		<picture>
-			<source srcset={profile} type="image/webp" />
-			<img src={profileBackup} alt="Profile" />
-		</picture>
+		<enhanced:img src="/images/profile.png" alt="Profile" />
 	</span>
 
 	<p>
-		I craft computer bits and bytes to help people. I enjoy learning and talking many topics
-		including new tech, movies, lawn care, house projects, etc.
+		I craft computer bits and bytes to help people. I enjoy learning and talking
+		many topics including new tech, movies, lawn care, house projects, etc.
 	</p>
 
 	<p>
@@ -27,18 +19,24 @@
 			rel="noopener noreferrer">Twitter</a
 		>
 		or
-		<a href="https://www.instagram.com/josh.wiegand/" target="_blank" rel="noopener noreferrer"
-			>Instagram</a
+		<a
+			href="https://www.instagram.com/josh.wiegand/"
+			target="_blank"
+			rel="noopener noreferrer">Instagram</a
 		>
 		where I infrequently post about anything. I also do my best to stay active on
-		<a href="https://github.com/jrwiegand" target="_blank" rel="noopener noreferrer">GitHub</a>,
-		opening the occasional PR.
+		<a
+			href="https://github.com/jrwiegand"
+			target="_blank"
+			rel="noopener noreferrer">GitHub</a
+		>, opening the occasional PR.
 	</p>
 
 	<p>
-		When I am not programming, I am likely helping my wife raise our two kids, playing or watching
-		sports (especially basketball), fixing a thing, taking in a movie, mowing the grass, reading a
-		book or doing something else that is vitally important for the next five minutes.
+		When I am not programming, I am likely helping my wife raise our two kids,
+		playing or watching sports (especially basketball), fixing a thing, taking
+		in a movie, mowing the grass, reading a book or doing something else that is
+		vitally important for the next five minutes.
 	</p>
 </main>
 
