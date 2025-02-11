@@ -6,9 +6,14 @@
 	<enhanced:img src="../lib/assets/images/profile.png" alt="Profile" />
 
 	<p>
-		I craft computer bits and bytes to help people. I enjoy learning and talking
-		many topics including new tech, movies, lawn care, house projects, etc.
+		Josh Wiegand is a software developer who enjoys programming, spending time
+		with his family, and engaging in various hobbies such as sports, movies, and
+		reading.
 	</p>
+
+	<p>Disclaimer: that was written by an AI. 👆</p>
+
+	<p>I'll leave it up to you to determine the accurate of the statement. 🧐</p>
 
 	<p>
 		You can follow me on <a
