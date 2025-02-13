@@ -1,5 +1,5 @@
 package jmodern;
- 
+
 import com.codahale.metrics.*;
 import com.codahale.metrics.annotation.*;
 import com.fasterxml.jackson.annotation.*;
@@ -41,15 +41,15 @@ public class Main extends Application<Main.JModernConfiguration> {
     @Override
     public void run(JModernConfiguration cfg, Environment env) throws ClassNotFoundException {
         JmxReporter.forRegistry(env.metrics()).build().start(); // Manually add JMX reporting (Dropwizard regression)
-        
+
         env.jersey().register(new HelloWorldResource(cfg));
-        
+
         Feign.Builder feignBuilder = Feign.builder()
                 .contract(new JAXRSModule.JAXRSContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder());
         env.jersey().register(new ConsumerResource(feignBuilder));
-        
+
         final DBI dbi = new DBIFactory().build(env, cfg.getDataSourceFactory(), "db");
         env.jersey().register(new DBResource(dbi));
 
@@ -70,8 +70,8 @@ public class Main extends Application<Main.JModernConfiguration> {
         public String getTemplate()    { return template; }
         public String getDefaultName() { return defaultName; }
     }
-    
-    // The actual service 
+
+    // The actual service
     @Path("/hello-world")
     @Produces(MediaType.APPLICATION_JSON)
     public static class HelloWorldResource {
@@ -90,7 +90,7 @@ public class Main extends Application<Main.JModernConfiguration> {
             return new Saying(counter.incrementAndGet(), value);
         }
     }
-    
+
     @Path("/consumer")
     @Produces(MediaType.TEXT_PLAIN)
     public static class ConsumerResource {
@@ -107,7 +107,7 @@ public class Main extends Application<Main.JModernConfiguration> {
             return String.format("The service is saying: %s (id: %d)",  saying.getContent(), saying.getId());
         }
     }
-    
+
     @Path("/db")
     @Produces(MediaType.APPLICATION_JSON)
     public static class DBResource {
@@ -159,11 +159,11 @@ public class Main extends Application<Main.JModernConfiguration> {
     interface HelloWorldAPI {
         @GET @Path("/hello-world")
         Saying hi(@QueryParam("name") String name);
-        
+
         @GET @Path("/hello-world")
         Saying hi();
     }
-    
+
     // JSON (immutable!) payload
     public static class Saying {
         private long id;
