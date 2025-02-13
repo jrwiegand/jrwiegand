@@ -1,9 +1,9 @@
 theme = "solarized_light"
 
 [editor.cursor-shape]
-normal = block
-insert = block
-select = block
+normal = "block"
+insert = "block"
+select = "block"
 
 [editor.file-picker]
 hidden = false
