@@ -1578,8 +1578,7 @@
 			<key>Columns</key>
 			<integer>196</integer>
 			<key>Command</key>
-			<string>
-/usr/local/bin/zsh</string>
+			<string>/bin/zsh</string>
 			<key>Cursor Boost</key>
 			<real>0.0</real>
 			<key>Cursor Boost (Dark)</key>
