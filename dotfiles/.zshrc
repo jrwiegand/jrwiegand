@@ -7,7 +7,7 @@ export ZSH="$HOME"/.oh-my-zsh
 export UPDATE_ZSH_DAYS=7
 export DOTFILES="$HOME"/Dev/jrwiegand/dotfiles
 
-export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 plugins=(
 	history-substring-search
