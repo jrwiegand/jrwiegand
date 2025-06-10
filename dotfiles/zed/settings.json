@@ -1,0 +1,53 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+	"agent": {
+		"single_file_review": false,
+		"always_allow_tool_actions": true,
+		"model_parameters": [],
+		"default_model": {
+			"provider": "amazon-bedrock",
+			"model": "anthropic.claude-sonnet-4-20250514-v1:0"
+		},
+		"version": "2"
+	},
+	"language_models": {
+		"bedrock": {
+			"authentication_method": "named_profile",
+			"region": "us-east-1",
+			"profile": "0634-iam"
+		}
+	},
+	"debugger": {
+		"dock": "left"
+	},
+	"base_keymap": "VSCode",
+	"buffer_font_family": "SF Mono",
+	"buffer_font_size": 14,
+	"buffer_line_height": { "custom": 1.8 },
+	"features": {
+		"edit_prediction_provider": "none"
+	},
+	"format_on_save": "off",
+	"hard_tabs": true,
+	"preview_tabs": {
+		"enabled": false,
+		"enable_preview_from_file_finder": false,
+		"enable_preview_from_code_navigation": false
+	},
+	"show_whitespaces": "boundary",
+	"theme": "Fleet Light",
+	"tab_size": 2,
+	"telemetry": {
+		"diagnostics": false,
+		"metrics": false
+	},
+	"ui_font_family": "SF Mono",
+	"vim_mode": true
+}
