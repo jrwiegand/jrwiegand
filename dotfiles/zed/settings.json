@@ -12,8 +12,8 @@
 		"always_allow_tool_actions": true,
 		"model_parameters": [],
 		"default_model": {
-			"provider": "amazon-bedrock",
-			"model": "anthropic.claude-sonnet-4-20250514-v1:0"
+			"provider": "zed.dev",
+			"model": "claude-sonnet-4-thinking"
 		},
 		"version": "2"
 	},
