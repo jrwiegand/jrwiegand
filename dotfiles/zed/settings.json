@@ -12,16 +12,13 @@
 		"single_file_review": false,
 		"always_allow_tool_actions": true,
 		"model_parameters": [],
+		"inline_assistant_model": {
+			"provider": "zed.dev",
+			"model": "claude-sonnet-4"
+		},
 		"default_model": {
 			"provider": "zed.dev",
 			"model": "claude-opus-4"
-		}
-	},
-	"language_models": {
-		"bedrock": {
-			"authentication_method": "named_profile",
-			"region": "us-east-1",
-			"profile": "0634-iam"
 		}
 	},
 	"debugger": {
@@ -36,6 +33,39 @@
 	},
 	"format_on_save": "off",
 	"hard_tabs": true,
+	"language_models": {
+		"bedrock": {
+			"authentication_method": "named_profile",
+			"region": "us-east-1",
+			"profile": "0634-iam"
+		}
+	},
+	"languages": {
+		"TypeScript": {
+			"formatter": {
+				"external": {
+					"command": "prettier",
+					"arguments": ["--stdin-filepath", "{buffer_path}"]
+				}
+			}
+		},
+		"TSX": {
+			"formatter": {
+				"external": {
+					"command": "prettier",
+					"arguments": ["--stdin-filepath", "{buffer_path}"]
+				}
+			}
+		},
+		"JavaScript": {
+			"formatter": {
+				"external": {
+					"command": "prettier",
+					"arguments": ["--stdin-filepath", "{buffer_path}"]
+				}
+			}
+		}
+	},
 	"preview_tabs": {
 		"enabled": false,
 		"enable_preview_from_file_finder": false,
