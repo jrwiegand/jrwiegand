@@ -1,4 +1,13 @@
-# Files
+# macOS files
 .DS_Store
+
+# Output files
 repl/out
+
+# Data files
 data/files/stocks/*
+
+# Zed Editor files
+.tmp*
+*.mdb
+embeddings_db*
