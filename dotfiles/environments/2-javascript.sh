@@ -5,6 +5,13 @@ if type bun > /dev/null; then
 	export UPDATE_BUN=true
 fi
 
+export UPDATE_VOLTA= false
+if [ -d "$HOME/.volta" ]; then
+	export VOLTA_HOME="$HOME/.volta"
+	export PATH="$VOLTA_HOME/bin:$PATH"
+	export UPDATE_VOLTA=true
+fi
+
 export UPDATE_NVM=false
 if [ -d "$HOME/.nvm" ]; then
 	export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
