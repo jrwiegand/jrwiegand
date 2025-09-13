@@ -18,7 +18,7 @@
 		},
 		"default_model": {
 			"provider": "zed.dev",
-			"model": "claude-opus-4"
+			"model": "claude-sonnet-4"
 		}
 	},
 	"debugger": {
@@ -72,7 +72,11 @@
 		"enable_preview_from_code_navigation": false
 	},
 	"show_whitespaces": "boundary",
-	"theme": "GitHub Light",
+	"theme": {
+		"light": "GitHub Light",
+		"dark": "GitHub Dark",
+		"mode": "system"
+	},
 	"tab_size": 2,
 	"telemetry": {
 		"diagnostics": false,
