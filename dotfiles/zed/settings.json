@@ -73,8 +73,8 @@
 	},
 	"show_whitespaces": "boundary",
 	"theme": {
-		"light": "GitHub Light",
-		"dark": "GitHub Dark",
+		"light": "Solarized Light",
+		"dark": "Solarized Dark",
 		"mode": "system"
 	},
 	"tab_size": 2,
