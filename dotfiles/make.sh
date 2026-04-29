@@ -5,7 +5,7 @@ export REPO_DIR="$(dirname $(readlink "$HOME"/.zshrc))"
 # link directories
 ln -sfv "$REPO_DIR"/.vim           "$HOME"
 ln -sfv "$REPO_DIR"/zed            "$HOME"/.config
-ln -sfv "$REPO_DIR"/ghostty/config "$HOME"/Library/Application\ Support/com.mitchellh.ghostty/config
+ln -sfv "$REPO_DIR"/ghostty/config.ghostty "$HOME"/Library/Application\ Support/com.mitchellh.ghostty/config.ghostty
 
 
 # link files
