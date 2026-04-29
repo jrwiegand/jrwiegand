@@ -7,6 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+	"cli_default_open_behavior": "existing_window",
+	"agent_servers": {
+		"cursor": {
+			"type": "registry",
+		},
+		"codex-acp": {
+			"type": "registry",
+		},
+		"claude-acp": {
+			"type": "registry",
+		},
+	},
 	"project_panel": {
 		"dock": "left",
 	},
@@ -22,7 +34,7 @@
 	"agent": {
 		"dock": "right",
 		"default_profile": "ask",
-		"single_file_review": false,
+		"single_file_review": true,
 		"model_parameters": [],
 		"inline_assistant_model": {
 			"provider": "zed.dev",
@@ -31,6 +43,9 @@
 		"default_model": {
 			"provider": "zed.dev",
 			"model": "claude-sonnet-4",
+		},
+		"tool_permissions": {
+			"default": "confirm",
 		},
 	},
 	"debugger": {
@@ -42,6 +57,7 @@
 	"buffer_line_height": { "custom": 1.8 },
 	"format_on_save": "off",
 	"hard_tabs": true,
+	"language_models": {},
 	"languages": {
 		"TypeScript": {
 			"formatter": {

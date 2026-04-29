@@ -1,10 +1,2 @@
 [
-	{
-		"bindings": {
-			"ctrl-cmd-h": "project_panel::CollapseAllEntries"
-		}
-	},
-	{
-		"context": "Workspace"
-	}
 ]
