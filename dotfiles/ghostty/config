@@ -1,0 +1,7 @@
+cursor-style = block
+font-size = 13
+font-family = "SF Mono Regular"
+shell-integration-features = no-cursor
+theme = dark:Selenized Dark,light:Selenized Light
+window-height = 30
+window-width = 150

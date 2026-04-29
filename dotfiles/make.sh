@@ -3,10 +3,12 @@
 export REPO_DIR="$(dirname $(readlink "$HOME"/.zshrc))"
 
 # link directories
-ln -sfv "$REPO_DIR"/.vim                     "$HOME"
-ln -sfv "$REPO_DIR"/zed                      "$HOME"/.config
+ln -sfv "$REPO_DIR"/.vim           "$HOME"
+ln -sfv "$REPO_DIR"/zed            "$HOME"/.config
+ln -sfv "$REPO_DIR"/ghostty/config "$HOME"/Library/Application\ Support/com.mitchellh.ghostty/config
+
 
 # link files
-ln -sfv "$REPO_DIR"/.zshrc                   "$HOME"/.zshrc
-ln -sfv "$REPO_DIR"/.vimrc                   "$HOME"/.vimrc
-ln -sfv "$REPO_DIR"/config.toml              "$HOME"/.config/helix/config.toml
+ln -sfv "$REPO_DIR"/.zshrc         "$HOME"/.zshrc
+ln -sfv "$REPO_DIR"/.vimrc         "$HOME"/.vimrc
+ln -sfv "$REPO_DIR"/config.toml    "$HOME"/.config/helix/config.toml
